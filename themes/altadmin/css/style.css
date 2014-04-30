@@ -1,0 +1,102 @@
+/* 
+    Document   : style
+    Created on : 15.04.2014, 11:35:17
+    Author     : Администратор
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.modal-error-header {
+    background-color: #F7F0EF;
+    border-bottom-color: #E8E0DF;
+    color: #B75445;
+    text-shadow: none;
+}
+
+.modal-norm-header {
+    background-color: #E5EDF8;
+    border-bottom-color: #D5DDE8;
+    color: #3F79B6;
+    text-shadow: none;
+}
+
+.modal-success-header{
+    background-color: #E8F2E3;
+    border-bottom-color: #D8E2D3;
+    color: #629B58;
+    text-shadow: none;
+}
+
+.error.help-block,
+.error.control-label,
+.error.radio,
+.error.checkbox,
+.error.radio-inline,
+.error.checkbox-inline {
+  color: #a94442;
+}
+
+.error.form-control {
+  border-color: #a94442;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.error.form-control:focus {
+  border-color: #843534;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;
+}
+
+.error.input-group-addon {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #a94442;
+}
+label.error{
+    color: #a94442;
+}
+.errorMessage {
+    color: #a94442;
+}
+input.error{
+    border-color: #a94442;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+input:hover.error{
+    border-color: #a94442;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+input.error:focus {
+  border-color: #a94442;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;
+}
+
+.image-form-table{
+    width: 100%;
+}
+#image-preview{
+    width: 100%;
+    float: right;
+    text-align: right;
+}
+.image-preview{
+    width: 100%;
+    float: right;
+    text-align: right;
+}
+.image-preview-empty{
+    width: 100%;
+    text-align: center;    
+}
+.recordDelete{
+    text-align: center!important;
+    background-color: #3A87AD;
+    color: #fff;
+}
+.td-checkbox{
+    width: 10px;
+}
