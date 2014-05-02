@@ -27,9 +27,13 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-		// renders the view file 'protected/views/site/index.php'
-		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+        $this->layout = 'mainPage';
+        $model = Page::model()->findByPk(Yii::app()->params['altadmin']['systemPageId']['main']);
+        Yii::app()->clientScript->registerMetaTag($model->metaKeywords, 'keywords');
+        Yii::app()->clientScript->registerMetaTag($model->metaDescription, 'description');
+        $this->pageTitle = $model->metaTitle;
+        $this->pageHeader = $model->header;
+        $this->render('index', array('model' => $model));
 	}
 
 	/**
