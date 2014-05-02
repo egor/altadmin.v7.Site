@@ -1,335 +1,236 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
-<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
-<!--[if (IE 9)]><html class="no-js ie9" lang="en"><![endif]-->
-<!--[if gt IE 8]><!--> <html lang="ru-Ru"> <!--<![endif]-->
+<html lang="en" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;">
 <head>
-
-<!-- Meta Tags -->
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-<title><?php echo $this->pageTitle; ?></title>   
-
-<meta name="description" content="Insert Your Site Description" /> 
-
-<!-- Mobile Specifics -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="HandheldFriendly" content="true"/>
-<meta name="MobileOptimized" content="320"/>   
-
-<!-- Mobile Internet Explorer ClearType Technology -->
-<!--[if IEMobile]>  <meta http-equiv="cleartype" content="on">  <![endif]-->
-
-<!-- Bootstrap -->
-<link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Main Style -->
-<link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/main.css" rel="stylesheet">
-
-<!-- Supersized -->
-<link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/supersized.css" rel="stylesheet">
-<link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/supersized.shutter.css" rel="stylesheet">
-
-<!-- FancyBox -->
-<link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/fancybox/jquery.fancybox.css" rel="stylesheet">
-
-<!-- Font Icons -->
-<link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/fonts.css" rel="stylesheet">
-
-<!-- Shortcodes -->
-<link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/shortcodes.css" rel="stylesheet">
-
-<!-- Responsive -->
-<link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap-responsive.min.css" rel="stylesheet">
-<link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/responsive.css" rel="stylesheet">
-
-<!-- Supersized -->
-<link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/supersized.css" rel="stylesheet">
-<link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/supersized.shutter.css" rel="stylesheet">
-
-<!-- Google Font -->
-<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-
-<!-- Fav Icon -->
-<link rel="shortcut icon" href="#">
-
-<link rel="apple-touch-icon" href="#">
-<link rel="apple-touch-icon" sizes="114x114" href="#">
-<link rel="apple-touch-icon" sizes="72x72" href="#">
-<link rel="apple-touch-icon" sizes="144x144" href="#">
-
-<!-- Modernizr -->
-<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/modernizr.js"></script>
-
-<!-- Analytics -->
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'Insert Your Code']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-<!-- End Analytics -->
-
-</head>
-
-
-<body>
-
-<!-- This section is for Splash Screen -->
-<div class="ole">
-<section id="jSplash">
-	<div id="circle"></div>
-</section>
-</div>
-<!-- End of Splash Screen -->
-
-<!-- Homepage Slider -->
-<div id="home-slider">	
-    <div class="overlay"></div>
-
-    <div class="slider-text">
-    	<div id="slidecaption"></div>
-    </div>   
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0" />
+	<title>Curve - Free CSS template by ChocoTemplates.com</title>
+	<link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
+	<link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/flexslider.css" type="text/css" media="all" />
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700' rel='stylesheet' type='text/css' />
 	
-	<div class="control-nav">
-        <a id="prevslide" class="load-item"><i class="font-icon-arrow-simple-left"></i></a>
-        <a id="nextslide" class="load-item"><i class="font-icon-arrow-simple-right"></i></a>
-        <ul id="slide-list"></ul>
-        
-        <a id="nextsection" href="#work"><i class="font-icon-arrow-simple-down"></i></a>
-    </div>
-</div>
-<!-- End Homepage Slider -->
+	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery-1.8.0.min.js" type="text/javascript"></script>
+	<!--[if lt IE 9]>
+		<script src="js/modernizr.custom.js"></script>
+	<![endif]-->
+	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.flexslider-min.js" type="text/javascript"></script>
+	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/functions.js" type="text/javascript"></script>
+</head>
+<body>
+	<!-- wraper -->
+	<div id="wrapper">
+		<!-- shell -->
+		<div class="shell">
+			<!-- container -->
+			<div class="container">
+				<!-- header -->
+				<header id="header">
+					<h1 id="logo"><a href="#">Curve</a></h1>
+					<!-- search -->
+					<div class="search">
+						<form method="post">
+							<span class="field"><input type="text" class="field" value="keywords here ..." title="keywords here ..." /></span>
+							<input type="submit" class="search-btn" value="" />
+						</form>
+					</div>
+					<!-- end of search -->
+				</header>
+				<!-- end of header -->
+				<!-- navigation -->
+				<nav id="navigation">
+					<a href="#" class="nav-btn">HOME<span class="arr"></span></a>
+					<ul>
+						<li class="active"><a href="#">HOME</a></li>
+						<li><a href="#">SERVICES</a></li>
+						<li><a href="#">projects</a></li>
+						<li><a href="#">solutions</a></li>
+						<li><a href="#">jobs</a></li>
+						<li><a href="#">blog</a></li>
+						<li><a href="#">contacts</a></li>
+					</ul>
+				</nav>
+				<!-- end of navigation -->
+				<!-- slider -->
+				<div class="m-slider">
+					<div class="slider-holder">
+						<span class="slider-shadow"></span>
+						<span class="slider-b"></span>
+						<div class="slider flexslider">
+							<ul class="slides">
+								<li>
+									<div class="img-holder">
+										<img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/slide-img1.png" alt="" />
+									</div>
+									<div class="slide-cnt">
+										<h2>Your Title Here</h2>
+										<div class="box-cnt">
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget augue quis lorem ipsum dolor sit amet, consectetur adipiscing elit. llus eget augue quis lorem ipsum dolor sit amet, free css templates</p>
+										</div>
+										<a href="#" class="grey-btn">request a demo</a>
+									</div>
+								</li>
+								<li>
+									<div class="img-holder">
+										<img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/slide-img2.png" alt="" />
+									</div>
+									<div class="slide-cnt">
+										<h2>Your Title Here</h2>
+										<div class="box-cnt">
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget augue quis lorem ipsum dolor sit amet, consectetur adipiscing elit. llus eget augue quis lorem ipsum dolor sit amet, free css templates</p>
+										</div>
+										<a href="#" class="grey-btn">request a demo</a>
+									</div>
+								</li>
+								<li>
+									<div class="img-holder">
+										<img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/slide-img1.png" alt="" />
+									</div>
+									<div class="slide-cnt">
+										<h2>Your Title Here</h2>
+										<div class="box-cnt">
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget augue quis lorem ipsum dolor sit amet, consectetur adipiscing elit. llus eget augue quis lorem ipsum dolor sit amet, free css templates</p>
+										</div>
+										<a href="#" class="grey-btn">request a demo</a>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>		
+				<!-- end of slider -->
+				<!-- main -->
+				<div class="main">
+					<a href="#" class="m-btn-grey grey-btn">request a demo</a>
+					<section class="cols">
+						<div class="col">
+							<img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/col-img1.png" alt="" />
+							<div class="col-cnt">
+								<h2>Design</h2>
+								<p>Lorem ipsum dolor sit amet, con-<br />sectetur adipiscing dolor emor</p>
+								<a href="#" class="more">view more</a>
+							</div>
+						</div>
+						<div class="col">
+							<img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/col-img2.png" alt="" />
+							<div class="col-cnt">
+								<h2>Branding</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing dolor</p>
+								<a href="#" class="more">view more</a>
+							</div>
+						</div>
+						<div class="col">
+							<img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/col-img3.png" alt="" />
+							<div class="col-cnt">
+								<h2>Development</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing dolor</p>
+								<a href="#" class="more">view more</a>
+							</div>
+						</div>
+						<div class="cl">&nbsp;</div>
+					</section>
+					<section class="post">
+						<div class="video-holder">
+							<img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/video-img.png" alt="" />
+						</div>
 
-<!-- Header -->
-<header>
-    <div class="sticky-nav">
-    	<a id="mobile-nav" class="menu-nav" href="#menu-nav"></a>
-        
-        <div id="logo">
-        	<a id="goUp" href="#home-slider" title="Brushed | Responsive One Page Template">Brushed Template</a>
-        </div>
-        
-        <nav id="menu">
-        	<ul id="menu-nav">
-            	<li class="current"><a href="#home-slider">главная</a></li>
-                <li><a href="#work">портфолио</a></li>
-                <li><a href="#about">о нас</a></li>
-                <li><a href="#contact">контакты</a></li>
-				<li><a href="shortcodes.html" class="external">Shortcodes</a></li>
-            </ul>
-        </nav>
-        
-    </div>
-</header>
-<!-- End Header -->
+						<div class="post-cnt">
+							<h2>What’s in the box?</h2>
+							<p><strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit adispicing amet</strong> Cras molestie condimentum consequat. Nam leo libero, scelerisque tincidunt amet nsectetur adipiscing elit. Cras molestie condimentum nsectetur adipiscing elit. Cras molestie condimentum consequat pretium donec dictum mattis elit, nec:</p>
 
-     <?php $this->widget('application.widgets.MainPage', array('method' => 'portfolio')); ?>        
-        
-<!-- About Section -->
-<div id="about" class="page-alternate">
-<div class="container">
-    <!-- Title Page -->
-    <div class="row">
-        <div class="span12">
-            <div class="title-page">
-                <h2 class="title">О нас</h2>
-                <h3 class="title-description">Learn About our Team &amp; Culture.</h3>
-            </div>
-        </div>
-    </div>
-    <!-- End Title Page -->
-    
-    <!-- People -->
-    <div class="row">
-    	
-        <!-- Start Profile -->
-    	<div class="span4 profile">
-        	<div class="image-wrap">
-                <div class="hover-wrap">
-                    <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb">CTO/Founder</span>
-                </div>
-                <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/profile/profile-01.jpg" alt="John Doe">
-            </div>
-            <h3 class="profile-name">John Doe</h3>
-            <p class="profile-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac augue at erat <a href="#">hendrerit dictum</a>. 
-            Praesent porta, purus eget sagittis imperdiet, nulla mi ullamcorper metus, id hendrerit metus diam vitae est. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-            	
-            <div class="social">
-            	<ul class="social-icons">
-                	<li><a href="#"><i class="font-icon-social-twitter"></i></a></li>
-                    <li><a href="#"><i class="font-icon-social-dribbble"></i></a></li>
-                    <li><a href="#"><i class="font-icon-social-facebook"></i></a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- End Profile -->
-        
-        <!-- Start Profile -->
-    	<div class="span4 profile">
-        	<div class="image-wrap">
-                <div class="hover-wrap">
-                    <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb">Creative Director</span>
-                </div>
-                <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/profile/profile-02.jpg" alt="Jane Helf">
-            </div>
-            <h3 class="profile-name">Jane Helf</h3>
-            <p class="profile-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac augue at erat <a href="#">hendrerit dictum</a>. 
-            Praesent porta, purus eget sagittis imperdiet, nulla mi ullamcorper metus, id hendrerit metus diam vitae est. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-            	
-            <div class="social">
-            	<ul class="social-icons">
-                	<li><a href="#"><i class="font-icon-social-twitter"></i></a></li>
-                    <li><a href="#"><i class="font-icon-social-email"></i></a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- End Profile -->
-        
-        <!-- Start Profile -->
-    	<div class="span4 profile">
-        	<div class="image-wrap">
-                <div class="hover-wrap">
-                    <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb">Lead Designer</span>
-                </div>
-                <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/profile/profile-03.jpg" alt="Joshua Insanus">
-            </div>
-            <h3 class="profile-name">Joshua Insanus</h3>
-            <p class="profile-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac augue at erat <a href="#">hendrerit dictum</a>. 
-            Praesent porta, purus eget sagittis imperdiet, nulla mi ullamcorper metus, id hendrerit metus diam vitae est. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-            	
-            <div class="social">
-            	<ul class="social-icons">
-                	<li><a href="#"><i class="font-icon-social-twitter"></i></a></li>
-                    <li><a href="#"><i class="font-icon-social-linkedin"></i></a></li>
-                    <li><a href="#"><i class="font-icon-social-google-plus"></i></a></li>
-                    <li><a href="#"><i class="font-icon-social-vimeo"></i></a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- End Profile -->
-        
-    </div>
-    <!-- End People -->
-</div>
-</div>
-<!-- End About Section -->
+							<ul>
+								<li><a href="#">jQuery Fader</a></li>
+								<li><a href="#">Various column options</a></li>
+								<li><a href="#">Valid XHTML and CSS tableless Design</a></li>
+								<li><a href="#">Tested on Mac &amp; PC</a></li>
+							</ul>
+						</div>
+						<div class="cl">&nbsp;</div>
+					</section>
 
+					<section class="testimonial">
+						<h2>Responsive CSS Template with jQuery Fader</h2>
 
-<!-- Contact Section -->
-<div id="contact" class="page">
-<div class="container">
-    <!-- Title Page -->
-    <div class="row">
-        <div class="span12">
-            <div class="title-page">
-                <h2 class="title">Обратная связь</h2>
-                <h3 class="title-description">В настоящее время мы принимать новые клиентские проекты. Мы с нетерпением ждем сотрудничества с Вами.</h3>
-            </div>
-        </div>
-    </div>
-    <!-- End Title Page -->
-    
-    <!-- Contact Form -->
-    <div class="row">
-    	<div class="span9">        
-        	<?php $this->widget('application.widgets.Feedback'); ?>
-        </div>
-        
-        <div class="span3">
-        	<div class="contact-details">
-        		<h3>Контакты</h3>
-                <ul>
-                    <li><a href="mailto:info@alt.dp.ua">info@alt.dp.ua</a></li>
-                    <li>(050) 93-4444-7</li>                    
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- End Contact Form -->
-</div>
-</div>
-<!-- End Contact Section -->
+						<p><strong class="quote">“</strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie condimentum consequat. Nam leo libero, scelerisque tincidunt commodo id, hendrerit vitae orci. Suspendisse eget nibh turpis. Sed at accumsan neque. Praesent purus eros, egestas eu tempus ut, mollis et libero”</p>
 
-<!-- Twitter Feed -->
-<div id="twitter-feed" class="page-alternate">
-	<div class="container">
-    	<div class="row">
-            <div class="span12">
-                <div class="follow">
-                    <a href="https://twitter.com/Bluxart" title="Follow Me on Twitter" target="_blank"><i class="font-icon-social-twitter"></i></a>
-                </div>
-                    
-                <div id="ticker" class="query"> 
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Twitter Feed -->
-
-<!-- Socialize -->
-<div id="social-area" class="page">
-	<div class="container">
-    	<div class="row">
-            <div class="span12">
-                <nav id="social">
-                    <ul>
-                        <li><a href="https://twitter.com/Bluxart" title="Follow Me on Twitter" target="_blank"><span class="font-icon-social-twitter"></span></a></li>
-                        <li><a href="http://dribbble.com/Bluxart" title="Follow Me on Dribbble" target="_blank"><span class="font-icon-social-dribbble"></span></a></li>
-                        <li><a href="http://forrst.com/people/Bluxart" title="Follow Me on Forrst" target="_blank"><span class="font-icon-social-forrst"></span></a></li>
-                        <li><a href="http://www.behance.net/alessioatzeni" title="Follow Me on Behance" target="_blank"><span class="font-icon-social-behance"></span></a></li>
-                        <li><a href="https://www.facebook.com/Bluxart" title="Follow Me on Facebook" target="_blank"><span class="font-icon-social-facebook"></span></a></li>
-                        <li><a href="https://plus.google.com/105500420878314068694" title="Follow Me on Google Plus" target="_blank"><span class="font-icon-social-google-plus"></span></a></li>
-                        <li><a href="http://www.linkedin.com/in/alessioatzeni" title="Follow Me on LinkedIn" target="_blank"><span class="font-icon-social-linkedin"></span></a></li>
-                        <li><a href="http://themeforest.net/user/Bluxart" title="Follow Me on ThemeForest" target="_blank"><span class="font-icon-social-envato"></span></a></li>
-                        <li><a href="http://zerply.com/Bluxart/public" title="Follow Me on Zerply" target="_blank"><span class="font-icon-social-zerply"></span></a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Socialize -->
-
-<!-- Footer -->
-<footer>
-	<p class="credits">&copy;2013 ALT. Все права защищены</p>
-</footer>
-<!-- End Footer -->
-
-<!-- Back To Top -->
-<a id="back-to-top" href="#">
-	<i class="font-icon-arrow-simple-up"></i>
-</a>
-<!-- End Back to Top -->
-
-
-<!-- Js -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> <!-- jQuery Core -->
-<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script> <!-- Bootstrap -->
-<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/supersized.3.2.7.min.js"></script> <!-- Slider -->
-<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/waypoints.js"></script> <!-- WayPoints -->
-<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/waypoints-sticky.js"></script> <!-- Waypoints for Header -->
-<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.isotope.js"></script> <!-- Isotope Filter -->
-<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.fancybox.pack.js"></script> <!-- Fancybox -->
-<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.fancybox-media.js"></script> <!-- Fancybox for Media -->
-<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.tweet.js"></script> <!-- Tweet -->
-<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/plugins.js"></script> <!-- Contains: jPreloader, jQuery Easing, jQuery ScrollTo, jQuery One Page Navi -->
-<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/main.js"></script> <!-- Default JS -->
-<!-- End Js -->
-
+						<p class="author">John Doe, <strong>Company Name</strong></p>
+					</section>
+				</div>
+				<!-- end of main -->
+				<div class="socials">
+					<div class="socials-inner">
+						<h3>Follow us</h3>
+						<ul>
+							<li><a href="#" class="facebook-ico"><span></span>Facebook</a></li>
+							<li><a href="#" class="twitter-ico"><span></span>Twitter</a></li>
+							<li><a href="#" class="rss-feed-ico"><span></span>Rss-feed</a></li>
+							<li><a href="#" class="myspace-ico"><span></span>myspace</a></li>
+							<li><a href="#" class="john-doe-123-ico"><span></span>john.doe.123</a></li>
+						</ul>
+						<div class="cl">&nbsp;</div>
+					</div>
+				</div>
+				<div id="footer">
+					<div class="footer-cols">
+						<div class="col">
+							<h2>Services</h2>
+							<ul>
+								<li><a href="#">Web Design</a></li>
+								<li><a href="#">Branding</a></li>
+								<li><a href="#">Seo Optimization</a></li>
+								<li><a href="#">Mobile App Development</a></li>
+							</ul>
+						</div>
+						<div class="col">
+							<h2>Projects</h2>
+							<ul>
+								<li><a href="#">Lorem ipsum dolor </a></li>
+								<li><a href="#">Consectetuer adipiscing</a></li>
+								<li><a href="#">Proin sed odio et ante </a></li>
+								<li><a href="#">Mazim sensibus et usu</a></li>
+							</ul>
+						</div>
+						<div class="col">
+							<h2>Solutions</h2>
+							<ul>
+								<li><a href="#">Lorem ipsum dolor</a></li>
+								<li><a href="#">Consectetuer adipiscing</a></li>
+								<li><a href="#">Proin sed odio et ante </a></li>
+								<li><a href="#">Mazim sensibus et usu</a></li>
+							</ul>
+						</div>
+						<div class="col">
+							<h2>Partners</h2>
+							<ul>
+								<li><a href="#">Company Name 1</a></li>
+								<li><a href="#">Company Name 2</a></li>
+								<li><a href="#">Company Name 3</a></li>
+								<li><a href="#">Company Name 4</a></li>
+							</ul>
+						</div>
+						<div class="cl">&nbsp;</div>
+					</div>
+					<!-- end of footer-cols -->
+					<div class="footer-bottom">
+						<nav class="footer-nav">
+							<ul>
+								<li class="active"><a href="#">Home</a></li>
+								<li><a href="#">Services</a></li>
+								<li><a href="#">Projects</a></li>
+								<li><a href="#">Solutions</a></li>
+								<li><a href="#">Jobs</a></li>
+								<li><a href="#">Blog</a></li>
+								<li><a href="#">Contacts</a></li>
+							</ul>
+						</nav>
+						<p class="copy">&copy; Copyright 2012 Company Name <span>|</span> <strong>Design by <a href="http://chocotemplates.com" target="_blank">ChocoTemplates.com</a></strong></p>
+						<div class="cl">&nbsp;</div>
+					</div>
+				</div>
+			</div>
+			<!-- end of container -->	
+		</div>
+		<!-- end of shell -->	
+	</div>
+	<!-- end of wrapper -->
 </body>
 </html>
