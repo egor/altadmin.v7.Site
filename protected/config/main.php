@@ -25,6 +25,7 @@ return array(
         //altadmin CMS
         'altadmin',
         'altadmin.*',
+        'news',
         
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
@@ -47,6 +48,9 @@ return array(
 			'urlFormat'=>'path',
             'showScriptName' => false,
 			'rules'=>array(
+                //site
+                'news/<url:[\w\-]+>' => 'news/default/detail',
+                
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
@@ -58,7 +62,7 @@ return array(
                 'altadmin/<modules:\w+>/<controller:\w+>/<id:\d+>' => 'altadmin/<modules>/<controller>/view',
                 'altadmin/<modules:\w+>/<controller:\w+>/<action:\w+>/<id:\d+>' => 'altadmin/<modules>/<controller>/<action>',
                 'altadmin/<modules:\w+>/<controller:\w+>/<action:\w+>' => 'altadmin/<modules>/<controller>/<action>',
-                
+                                
 			),
 		),
 		
@@ -130,6 +134,7 @@ return array(
                             'width'     =>  100,    //ширина изображения
                             'height'    =>  100)    //высота изображения
                         ),
+                    'baseUrl'       =>  'news',
                 ),
                 'portfolio' => array(
                     'work'          =>  1,  //вкл./выкл. портфолио

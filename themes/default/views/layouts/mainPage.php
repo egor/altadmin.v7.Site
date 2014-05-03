@@ -47,25 +47,25 @@
 						<div class="col">
 							<img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/col-img1.png" alt="" />
 							<div class="col-cnt">
-								<h2>Design</h2>
-								<p>Lorem ipsum dolor sit amet, con-<br />sectetur adipiscing dolor emor</p>
-								<a href="#" class="more">view more</a>
+								<h2>Дизайн</h2>
+								<p>Творческий процесс создания вещи, в котором эстетика определяет суть</p>
+								<a href="#" class="more">подробнее</a>
 							</div>
 						</div>
 						<div class="col">
 							<img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/col-img2.png" alt="" />
 							<div class="col-cnt">
-								<h2>Branding</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing dolor</p>
-								<a href="#" class="more">view more</a>
+								<h2>Брендирование</h2>
+								<p>Бренд как информация, сохранённая в памяти потребителя</p>
+								<a href="#" class="more">подробнее</a>
 							</div>
 						</div>
 						<div class="col">
 							<img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/col-img3.png" alt="" />
 							<div class="col-cnt">
-								<h2>Development</h2>
+								<h2>Разработка</h2>
 								<p>Lorem ipsum dolor sit amet, consectetur adipiscing dolor</p>
-								<a href="#" class="more">view more</a>
+								<a href="#" class="more">подробнее</a>
 							</div>
 						</div>
 						<div class="cl">&nbsp;</div>

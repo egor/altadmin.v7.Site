@@ -7,6 +7,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
 	<link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css" type="text/css" media="all" />
 	<link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/flexslider.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/alt.css" type="text/css" media="all" />
 	<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css' />
 	<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery-1.8.0.min.js" type="text/javascript"></script>
 	<!--[if lt IE 9]>
@@ -36,46 +37,11 @@
 				</header>
 				<!-- end of header -->
 				<?php $this->widget('application.widgets.Menu', array('method' => 'horizontalMenu')); ?>        
-				<!-- slider -->
-				<?php $this->widget('application.widgets.MainPage', array('method' => 'slider')); ?>		
-				<!-- end of slider -->
 				<!-- main -->
                 
 				<div class="main">
-					<a href="#" class="m-btn-grey grey-btn">request a demo</a>
-					<section class="cols">
-						<div class="col">
-							<img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/col-img1.png" alt="" />
-							<div class="col-cnt">
-								<h2>Design</h2>
-								<p>Lorem ipsum dolor sit amet, con-<br />sectetur adipiscing dolor emor</p>
-								<a href="#" class="more">view more</a>
-							</div>
-						</div>
-						<div class="col">
-							<img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/col-img2.png" alt="" />
-							<div class="col-cnt">
-								<h2>Branding</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing dolor</p>
-								<a href="#" class="more">view more</a>
-							</div>
-						</div>
-						<div class="col">
-							<img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/col-img3.png" alt="" />
-							<div class="col-cnt">
-								<h2>Development</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing dolor</p>
-								<a href="#" class="more">view more</a>
-							</div>
-						</div>
-						<div class="cl">&nbsp;</div>
-					</section>
-					<section class="post">						
-                        <h1><?php echo $this->pageHeader; ?></h1>
-                        <br />
-                        <?php echo $content; ?>                        						
-						<div class="cl">&nbsp;</div>
-					</section>					
+                        <h1 class="alt-h1"><?php echo $this->pageHeader; ?></h1>
+                        <?php echo $content; ?>                        																				
 				</div>
 				<!-- end of main -->
 				<div class="socials">
