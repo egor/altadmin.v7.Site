@@ -1,3 +1,8 @@
+<?php
+$this->breadcrumbs = array(
+    $page->menuName,
+);
+?>
 <h1><?php echo $this->pageHeader; ?></h1>
 <?php
 echo $page->text;
