@@ -47,7 +47,11 @@ return array(
 		'urlManager'=>array(
 			'urlFormat'=>'path',
             'showScriptName' => false,
-			'rules'=>array(
+			'rules'=>array(                                
+                array(
+                    'class' => 'application.components.UrlManager',
+                    'connectionID' => 'db',
+                ),
                 //site
                 'news/<url:[\w\-]+>' => 'news/default/detail',
                 
@@ -62,7 +66,7 @@ return array(
                 'altadmin/<modules:\w+>/<controller:\w+>/<id:\d+>' => 'altadmin/<modules>/<controller>/view',
                 'altadmin/<modules:\w+>/<controller:\w+>/<action:\w+>/<id:\d+>' => 'altadmin/<modules>/<controller>/<action>',
                 'altadmin/<modules:\w+>/<controller:\w+>/<action:\w+>' => 'altadmin/<modules>/<controller>/<action>',
-                                
+                                                
 			),
 		),
 		

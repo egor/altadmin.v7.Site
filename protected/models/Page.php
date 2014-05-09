@@ -318,4 +318,29 @@ class Page extends CActiveRecord {
         }
     }
 
+    public function getUrl ($id) {
+        $url = '';
+        $model = Page::model()->findByPk($id);
+        $children = $model->ancestors()->findAll(array('condition' => 'visibility = "1"'));
+        foreach ($children as $value) {
+            $url .= $value->url.'/';
+        }
+        return '/' . $url . $model->url;
+    }
+    
+    public function getBreadcrumbs ($id, $prefixUrl = '') {
+        $breadcrumbs = '';
+        $model = Page::model()->findByPk($id);
+        $children = $model->ancestors()->findAll(array('condition' => 'visibility = "1"'));
+        foreach ($children as $value) {
+            $url .= $value->url;
+            $breadcrumbs[$value->menuName] = '/' . $url;
+            $url .= '/';
+        }
+        if (is_array($breadcrumbs)) {
+            return $breadcrumbs;
+        } else {
+            return array();
+        }
+    }
 }
