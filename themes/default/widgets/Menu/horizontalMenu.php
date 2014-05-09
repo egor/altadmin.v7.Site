@@ -1,7 +1,8 @@
-<div class="navbar-wrapper">
+<!--<div class="navbar-wrapper">-->
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">    
     <div class="container">
-        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
-            <div class="container">
+        <!--<div class="navbar navbar-inverse navbar-static-top" role="navigation">-->
+            <!--<div class="container">-->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
@@ -22,7 +23,7 @@
                         ?>                        
                     </ul>
                 </div>
-            </div>
-        </div>
+            <!--</div>-->
+        <!--</div>-->
     </div>
 </div>

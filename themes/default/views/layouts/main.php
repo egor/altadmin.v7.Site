@@ -26,6 +26,7 @@
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/carousel.css" rel="stylesheet">
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/alt.css" rel="stylesheet">
     </head>
+    <body role="document">
     <?php $this->widget('application.widgets.Menu', array('method' => 'horizontalMenu')); ?>
     <hr class="horizontal-menu-hr">
     <div class="container marketing">
