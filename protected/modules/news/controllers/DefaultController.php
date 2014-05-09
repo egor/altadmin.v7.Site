@@ -41,10 +41,11 @@ class DefaultController extends Controller {
 
     public function actionDetail($url) {
         $model = SiteNews::model()->with('newsSection')->find(array('condition' => 't.url="' . $url . '"'));
+        $page = Page::model()->findByPk(Yii::app()->params['altadmin']['systemPageId']['news']);
         if ($model) {
             $this->pageTitle = $model->metaTitle;
             $this->pageHeader = $model->header;            
-            $this->render('detail', array('model' => $model));
+            $this->render('detail', array('model' => $model, 'page' => $page));
         } else {
             throw new CHttpException(404, 'Указанная запись не найдена');
         }
