@@ -8,7 +8,7 @@
         <meta name="author" content="">
         <link rel="shortcut icon" href="<?php echo Yii::app()->theme->baseUrl; ?>/ico/favicon.ico">
 
-        <title>Carousel Template for Bootstrap</title>
+        <title><?php echo $this->pageTitle; ?></title>
 
         <!-- Bootstrap core CSS -->
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.css" rel="stylesheet">
