@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,6 +29,17 @@
         <?php $this->widget('application.widgets.Menu', array('method' => 'horizontalMenu')); ?>
         <?php $this->widget('application.widgets.MainPage', array('method' => 'slider')); ?>
         <div class="container marketing">
+            <?php
+            $this->widget('zii.widgets.CBreadcrumbs', array(
+                'links' => $this->breadcrumbs,
+                'homeLink' => '<li><a href="/">Главная</a></li>',
+                'tagName' => 'ol',
+                'separator' => ' ',
+                'inactiveLinkTemplate' => '<li class="active">{label}</li>',
+                'activeLinkTemplate' => '<li><a href="{url}">{label}</a></li>',
+                'htmlOptions' => array('class' => 'breadcrumb'),
+            ));
+            ?>
             <h1><?php echo $this->pageHeader; ?></h1>
             <?php echo $content; ?>
             <hr class="featurette-divider">           

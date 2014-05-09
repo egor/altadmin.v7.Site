@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,18 +27,30 @@
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/alt.css" rel="stylesheet">
     </head>
     <body role="document">
-    <?php $this->widget('application.widgets.Menu', array('method' => 'horizontalMenu')); ?>
-    <hr class="horizontal-menu-hr">
-    <div class="container marketing">
-        <?php echo $content; ?>
-        <hr class="featurette-divider">
-        <footer>
-            <p class="pull-right"><a href="#">Back to top</a></p>
-            <p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-        </footer>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script>
-    <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/docs.min.js"></script>
-</body>
+        <?php $this->widget('application.widgets.Menu', array('method' => 'horizontalMenu')); ?>
+        <hr class="horizontal-menu-hr">
+
+        <div class="container marketing">
+            <?php
+            $this->widget('zii.widgets.CBreadcrumbs', array(
+                'links' => $this->breadcrumbs,
+                'homeLink' => '<li><a href="/">Главная</a></li>',
+                'tagName' => 'ol',
+                'separator' => ' ',
+                'inactiveLinkTemplate' => '<li class="active">{label}</li>',
+                'activeLinkTemplate' => '<li><a href="{url}">{label}</a></li>',
+                'htmlOptions' => array('class' => 'breadcrumb'),
+            ));
+            ?>
+            <?php echo $content; ?>
+            <hr class="featurette-divider">
+            <footer>
+                <p class="pull-right"><a href="#">Back to top</a></p>
+                <p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+            </footer>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script>
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/docs.min.js"></script>
+    </body>
 </html>
