@@ -21,19 +21,26 @@ class DefaultController extends Controller {
         $criteria->order = 't.date DESC, t.id DESC';
         $count = SiteNews::model()->count($criteria);
         $paginator = new CPagination($count);
-        $paginator->pageSize = Yii::app()->params['altadmin']['modules']['news']['limit'];
+        $paginator->pageSize = SiteNewsSettings::getPagerSize();
+        $paginator->route = '/' . Yii::app()->params['altadmin']['modules']['news']['baseUrl'];
         $paginator->applyLimit($criteria);
         $model = SiteNews::model()->with('newsSection')->findAll($criteria);
-        $this->pageHeader = $this->pageTitle = $this->breadcrumbsTitle = 'Новости';
+        $page = Page::model()->findByPk(Yii::app()->params['altadmin']['systemPageId']['news']);
+        $this->pageTitle = $page->metaTitle;
+        $this->pageHeader = $page->header;
+        $this->breadcrumbsTitle = $page->menuName;
+        if (isset($_GET['page'])) {
+            $page->text = '';
+        }
         if (Yii::app()->request->isAjaxRequest) {
-            $this->renderPartial('index', array('model' => $model, 'paginator' => $paginator));
+            $this->renderPartial('index', array('model' => $model, 'paginator' => $paginator, 'page' => $page, 'maxButtonCount' => SiteNewsSettings::getPagerMaxButtonCount()));
         } else {
-            $this->render('index', array('model' => $model, 'paginator' => $paginator));
+            $this->render('index', array('model' => $model, 'paginator' => $paginator, 'page' => $page, 'maxButtonCount' => SiteNewsSettings::getPagerMaxButtonCount()));
         }
     }
 
     public function actionDetail($url) {
-        $model = SiteNews::model()->find(array('condition' => 'url="' . $url . '"'));
+        $model = SiteNews::model()->with('newsSection')->find(array('condition' => 't.url="' . $url . '"'));
         if ($model) {
             $this->pageTitle = $model->metaTitle;
             $this->pageHeader = $model->header;            

@@ -37,9 +37,11 @@ class News extends CActiveRecord {
         // will receive user inputs.
         return array(
             //array('url, menuName, text, shortText, visibility, metaTitle, metaKeywords, metaDescription, header, date, image, imageAlt, imageTitle, newsSectionId', 'required'),
-            array('url, menuName, metaTitle, header, date, newsSectionId', 'required'),
+            //array('url, menuName, metaTitle, date, header, newsSectionId', 'required'),
+            array('url, menuName, metaTitle, header, newsSectionId', 'required'),
             array('url, menuName, text, shortText, visibility, metaTitle, metaKeywords, metaDescription, header, date, image, imageAlt, imageTitle, newsSectionId', 'safe'),
-            array('visibility, date', 'numerical', 'integerOnly' => true),
+            //array('visibility, date', 'numerical', 'integerOnly' => true),
+            array('visibility', 'numerical', 'integerOnly' => true),
             array('url, menuName, metaTitle, metaKeywords, header, image, imageAlt, imageTitle', 'length', 'max' => 255),
             array('newsSectionId', 'length', 'max' => 10),
             array('url', 'unique'),

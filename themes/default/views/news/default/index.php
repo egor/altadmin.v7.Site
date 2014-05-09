@@ -1,32 +1,44 @@
-<section class="post">    
-    <ul class="news-list">
-        <?php
-        foreach ($model as $value) {
-            $url = '/'. Yii::app()->params['altadmin']['modules']['news']['baseUrl'] . '/' . $value->url;
-            $img = '';
-            if ($value->image && file_exists(Yii::getPathOfAlias('webroot') . '/images/news/list/'.$value->image)) {
-                $img = '<div class="news-list-img"><a href="'.$url.'"><img src="/images/news/list/'.$value->image.'" /></a></div>';
-            }
-            ?>
-        <li>
-            <h2><a href="<?php echo $url; ?>"><?php echo $value->menuName; ?></a></h2>
-            <?php echo $img; ?>
+<h1><?php echo $this->pageHeader; ?></h1>
+<?php
+echo $page->text;
+$this->widget('CLinkPager', array(
+    'pages' => $paginator,
+    'id'=>'',
+    'header'=>'',
+    'htmlOptions' => array('class' => 'pagination'),
+    'maxButtonCount'=>'8',
+    'selectedPageCssClass' => 'active',
+    'prevPageLabel' => '&lsaquo;',
+    'nextPageLabel' => '&rsaquo;',
+    'firstPageLabel' => '&laquo;',
+    'lastPageLabel' => '&raquo;',
+));
+foreach ($model as $value) {
+    $url = '/' . Yii::app()->params['altadmin']['modules']['news']['baseUrl'] . '/' . $value->url;
+    $img = '<img data-src="holder.js/100x100" class="media-object">';
+    if ($value->image && file_exists(Yii::getPathOfAlias('webroot') . '/images/news/list/' . $value->image)) {
+        $img = '<img src="/images/news/list/' . $value->image . '" class="media-object">';
+    }
+    ?>
+    <div class="media">
+        <a href="<?php echo $url; ?>" class="pull-left"><?php echo $img; ?></a>
+        <div class="media-body">
+            <h4 class="media-heading"><a href="<?php echo $url; ?>"><?php echo $value->menuName; ?></a></h4>
+            <span class="label label-primary"><?php echo date('d.m.Y', $value->date); ?></span> <span class="label label-default"><?php echo $value->newsSection->name; ?></span>
             <?php echo $value->shortText; ?>
-            <br clear="all"/>
-            <a class="more-news" href="<?php echo $url; ?>">подробнее...</a>
-        </li>
-        <?php           
-        }
-        ?>
-    </ul>
-    <div class="cl">&nbsp;</div>
-</section>
-<ul class="pagination">
-  <li><a href="#">&laquo;</a></li>
-  <li><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-  <li><a href="#">5</a></li>
-  <li><a href="#">&raquo;</a></li>
-</ul>
+        </div>
+    </div>
+    <?php
+}
+$this->widget('CLinkPager', array(
+    'pages' => $paginator,
+    'id'=>'',
+    'header'=>'',
+    'htmlOptions' => array('class' => 'pagination'),
+    'maxButtonCount' => $maxButtonCount,
+    'selectedPageCssClass' => 'active',
+    'prevPageLabel' => '&lsaquo;',
+    'nextPageLabel' => '&rsaquo;',
+    'firstPageLabel' => '&laquo;',
+    'lastPageLabel' => '&raquo;',
+));
