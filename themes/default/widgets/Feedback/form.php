@@ -5,24 +5,29 @@ $form = $this->beginWidget('CActiveForm', array(
     'clientOptions' => array(
         'validateOnSubmit' => true,
     ),
-    'htmlOptions' => array('class' => 'contact-form'),
+    'htmlOptions' => array('class' => 'contact-form', 'role' => 'form'),
         ));
 ?>
-
-    <p class="contact-name">
-        <?php echo $form->textField($model, 'name', array('id'=>'contact_name', 'placeholder' => FrontEditFields::getSettings('FeedbackSettings', 'namePlaceholder'))); ?>
-    </p>
-    <p class="contact-email">
-        <?php echo $form->textField($model, 'email', array('id'=>'contact-email', 'placeholder' => FrontEditFields::getSettings('FeedbackSettings', 'emailPlaceholder'))); ?>
-    </p>
-    <p class="contact-message">
-        <?php echo $form->textArea($model,'body',array('rows'=>15, 'cols'=>40, 'id' => 'contact_message', 'placeholder' => FrontEditFields::getSettings('FeedbackSettings', 'textPlaceholder'))); ?>        
-    </p>
-    <p class="contact-submit">
-        <a id="contact-submit" class="submit" href="#"><?php echo FrontEditFields::getSettings('FeedbackSettings', 'sendBtnText'); ?></a>
-    </p>
-
-    <div id="response">
-
+<h3>Форма обратной связи</h3>
+<div class="row col-md-6">
+    <div class="form-group">
+        <?php echo $form->labelEx($model,'name'); ?>
+        <?php echo $form->textField($model, 'name', array('id'=>'contact_name', 'class' => 'form-control', 'placeholder' => FrontEditFields::getSettings('FeedbackSettings', 'namePlaceholder'))); ?>
+        <?php echo $form->error($model,'name'); ?>
     </div>
-<?php $this->endWidget(); ?>
+    <div class="form-group">
+        <?php echo $form->labelEx($model,'email'); ?>
+        <?php echo $form->textField($model, 'email', array('id'=>'contact-email', 'class' => 'form-control', 'placeholder' => FrontEditFields::getSettings('FeedbackSettings', 'emailPlaceholder'))); ?>
+        <?php echo $form->error($model,'email'); ?>
+    </div>
+    <div class="form-group">
+        <?php echo $form->labelEx($model,'body'); ?>
+        <?php echo $form->textArea($model,'body',array('rows'=>15, 'cols'=>40, 'id' => 'contact_message', 'class' => 'form-control', 'placeholder' => FrontEditFields::getSettings('FeedbackSettings', 'textPlaceholder'))); ?>
+        <?php echo $form->error($model,'body'); ?>
+    </div>
+    <div class="form-group">
+		<?php echo CHtml::submitButton(FrontEditFields::getSettings('FeedbackSettings', 'sendBtnText'), array('class'=>'btn btn-success alt-right')); ?>
+	</div>
+</div>
+<?php 
+$this->endWidget();

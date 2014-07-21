@@ -42,7 +42,7 @@
                 'htmlOptions' => array('class' => 'breadcrumb'),
             ));
             ?>
-            <?php echo $content; ?>
+            <div class="row"><?php echo $content; ?></div>
             <hr class="featurette-divider">
             <footer>
                 <p class="pull-right"><a href="#">Back to top</a></p>

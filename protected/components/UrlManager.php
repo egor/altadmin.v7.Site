@@ -26,6 +26,9 @@ class UrlManager extends CUrlManager {
         $page = Page::model()->find(array('condition' => '`url`="'.$this->endUrlPath.'"'));
         if ($page) {            
             if (in_array($page->id, Yii::app()->params['altadmin']['systemPageId'])) {
+                if ($page->id == Yii::app()->params['altadmin']['systemPageId']['contact']) {
+                    return 'site/contact';
+                }
                 return false;
             }
             $good = 1;
