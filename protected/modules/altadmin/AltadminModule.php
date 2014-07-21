@@ -12,6 +12,7 @@ class AltadminModule extends CWebModule
 		$this->setImport(array(
 			'altadmin.models.*',            
 			'altadmin.components.*',
+            'altadmin.modules.user.models.*',
 		));
         $this->modules=array('news', 'portfolio', 'widget', 'user');
 	}

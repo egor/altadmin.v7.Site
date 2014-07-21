@@ -25,8 +25,7 @@ return array(
         //altadmin CMS
         'altadmin',
         'altadmin.*',
-        'news',
-        
+        'news',        
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'test',
