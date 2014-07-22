@@ -52,7 +52,7 @@ class NavigationMenu extends CWidget {
         }
         
         if (Yii::app()->params['altadmin']['modules']['user']['work']) {
-            $userMenu = array(1 => array('ico' => 'icon-calendar', 'title' => 'Пользователи', 'url' => 'user', 'class' => ( Yii::app()->controller->module->id == 'altadmin/user' ? 'active open' : ''),
+            $userMenu = array(1 => array('ico' => 'icon-user', 'title' => 'Пользователи', 'url' => 'user', 'class' => ( Yii::app()->controller->module->id == 'altadmin/user' ? 'active open' : ''),
                     'subMenu' => array(
                         0 => array('ico' => 'icon-double-angle-right', 'title' => 'Список', 'url' => 'default', 'class' => ( Yii::app()->controller->id == 'default' ? 'active open' : ''),                            
                         ),
