@@ -37,12 +37,12 @@ class NavigationMenu extends CWidget {
             $menu = array_merge($menu, $portfolioMenu);
         }
         if (Yii::app()->params['altadmin']['modules']['widget']['work']) {
-            $widgetMenu = array(1 => array('ico' => 'icon-calendar', 'title' => 'Виджеты', 'url' => 'widget', 'class' => ( Yii::app()->controller->module->id == 'altadmin/widget' ? 'active open' : ''),
+            $widgetMenu = array(1 => array('ico' => 'icon-th', 'title' => 'Виджеты', 'url' => 'widget', 'class' => ( Yii::app()->controller->module->id == 'altadmin/widget' ? 'active open' : ''),
                     'subMenu' => array(
                         0 => array('ico' => 'icon-double-angle-right', 'title' => 'ФОС', 'url' => 'feedback', 'class' => ( Yii::app()->controller->id == 'feedback' ? 'active open' : ''),
                             'subMenu' => array(
                                 0 => array('ico' => 'icon-envelope', 'title' => 'База', 'url' => 'index', 'class' => ( Yii::app()->controller->id == 'feedback' && Yii::app()->controller->action->id == 'index' ? 'active' : '')),
-                                1 => array('ico' => 'icon-cog', 'title' => 'Настройка', 'url' => 'index', 'class' => ( Yii::app()->controller->id == 'feedback' && Yii::app()->controller->action->id == 'settings' ? 'active' : '')),
+                                1 => array('ico' => 'icon-cog', 'title' => 'Настройка', 'url' => 'settings', 'class' => ( Yii::app()->controller->id == 'feedback' && Yii::app()->controller->action->id == 'settings' ? 'active' : '')),
                             )
                         ),
                     ),

@@ -9,6 +9,7 @@ $form = $this->beginWidget('CActiveForm', array(
         ));
 ?>
 <h3>Форма обратной связи</h3>
+<div class="row col-md-12"><?php echo Yii::app()->user->getFlash('contact'); ?></div>
 <div class="row col-md-6">
     <div class="form-group">
         <?php echo $form->labelEx($model,'name'); ?>
