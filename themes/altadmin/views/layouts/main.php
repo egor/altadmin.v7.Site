@@ -245,25 +245,21 @@
 
             <div class="main-content">
                 <div class="breadcrumbs" id="breadcrumbs">
-                    <ul class="breadcrumb">
-                        <li>
-                            <i class="icon-home home-icon"></i>
-                            <a href="#">Home</a>
-
-                            <span class="divider">
-                                <i class="icon-angle-right arrow-icon"></i>
-                            </span>
-                        </li>
-
-                        <li>
-                            <a href="#">Other Pages</a>
-
-                            <span class="divider">
-                                <i class="icon-angle-right arrow-icon"></i>
-                            </span>
-                        </li>
-                        <li class="active">Blank Page</li>
-                    </ul><!--.breadcrumb-->
+                    <?php
+                    if ($this->breadcrumbs) {
+                        $this->widget('zii.widgets.CBreadcrumbs', array(
+                            'htmlOptions' => array('class' => 'breadcrumb'),
+                            'separator' => '<span class="divider">
+								<i class="icon-angle-right arrow-icon"></i>
+							</span>',
+                            'tagName' => 'ul',
+                            'activeLinkTemplate' => '<li><a href="{url}">{label}</a></li>',
+                            'inactiveLinkTemplate' => '<li class="active">{label}</li>',
+                            'homeLink' => '<li><i class="icon-home home-icon"></i><a href="' . Yii::app()->createUrl('altadmin') . '">Alt Admin</a></li>',
+                            'links' => $this->breadcrumbs
+                        ));
+                    }
+                    ?>
 
                     <div class="nav-search" id="nav-search">
                         <form class="form-search" />
