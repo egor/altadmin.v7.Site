@@ -25,7 +25,8 @@ return array(
         //altadmin CMS
         'altadmin',
         'altadmin.*',
-        'news',        
+        'news',
+        'blog',
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'test',
@@ -53,6 +54,7 @@ return array(
                 ),
                 //site
                 'news/<url:[\w\-]+>' => 'news/default/detail',
+                'blog/<url:[\w\-]+>' => 'blog/default/detail',
                 
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
@@ -138,6 +140,19 @@ return array(
                             'height'    =>  100)    //высота изображения
                         ),
                     'baseUrl'       =>  'news',
+                ),
+                'blog' => array(
+                    'work'          =>  1,  //вкл./выкл. блога
+                    'section'       =>  1,  //вкл./выкл. разделов блога
+                    'tags'          =>  0,  //вкл./выкл. тегов в блоге
+                    'limit'         =>  10,  //количества записей на страницу в админке
+                    'sectionLimit'  =>  10,  //количества разделов на страницу в админке
+                    'image'     =>  array ( //настройки изображений
+                        'list'  =>   array( //список изображений
+                            'width'     =>  600,    //ширина изображения
+                            'height'    =>  200)    //высота изображения
+                        ),
+                    'baseUrl'       =>  'blog',
                 ),
                 'portfolio' => array(
                     'work'          =>  1,  //вкл./выкл. портфолио

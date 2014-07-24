@@ -385,6 +385,8 @@
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/ace/flot/jquery.flot.pie.min.js"></script>
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/ace/flot/jquery.flot.resize.min.js"></script>-->
 
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/ace/bootstrap-tag.min.js"></script>
+        
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/ace/date-time/bootstrap-datepicker.min.js"></script>
 
         <!--ace scripts-->
@@ -398,6 +400,25 @@
                 $('.date-picker').datepicker().next().on(ace.click_event, function() {
                     $(this).prev().focus();
                 });
+                //we could just set the data-provide="tag" of the element inside HTML, but IE8 fails!
+				var tag_input = $('#form-field-tags');
+				if(! ( /msie\s*(8|7|6)/.test(navigator.userAgent.toLowerCase())) ) 
+					tag_input.tag({placeholder:tag_input.attr('placeholder')});
+				else {
+					//display a textarea for old IE, because it doesn't support this plugin or another one I tried!
+					tag_input.after('<textarea id="'+tag_input.attr('id')+'" name="'+tag_input.attr('name')+'" rows="3">'+tag_input.val()+'</textarea>').remove();
+					//$('#form-field-tags').autosize({append: "\n"});
+				}
+                
+                //we could just set the data-provide="tag" of the element inside HTML, but IE8 fails!
+				var tag_input = $('#ALTBlog_tags');
+				if(! ( /msie\s*(8|7|6)/.test(navigator.userAgent.toLowerCase())) ) 
+					tag_input.tag({placeholder:tag_input.attr('placeholder')});
+				else {
+					//display a textarea for old IE, because it doesn't support this plugin or another one I tried!
+					tag_input.after('<textarea id="'+tag_input.attr('id')+'" name="'+tag_input.attr('name')+'" rows="3">'+tag_input.val()+'</textarea>').remove();
+					//$('#form-field-tags').autosize({append: "\n"});
+				}
             });
         </script>
         <!--inline scripts related to this page-->
