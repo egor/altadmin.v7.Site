@@ -1,23 +1,22 @@
 <?php
 
 /**
- * This is the model class for table "newsSettings".
+ * This is the model class for table "loger".
  *
- * The followings are the available columns in table 'newsSettings':
- * @property integer $id
- * @property string $key
- * @property string $name
- * @property string $value
- * @property string $position
- * @property string $fieldType
+ * The followings are the available columns in table 'loger':
+ * @property string $id
+ * @property string $userId
+ * @property string $date
+ * @property string $info
+ * @property string $addInfo
  */
-class NewsSettings extends CActiveRecord {
+class Loger extends News {
 
     /**
      * @return string the associated database table name
      */
     public function tableName() {
-        return 'newsSettings';
+        return 'loger';
     }
 
     /**
@@ -27,12 +26,14 @@ class NewsSettings extends CActiveRecord {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('key, name, value, position, fieldType', 'required'),
-            array('key, name, value, fieldType', 'length', 'max' => 255),
-            array('position', 'length', 'max' => 10),
+            //array('userId, date, info, addInfo, header', 'required'),
+            array('userId, date, info, addInfo, header, status, type, module', 'safe'),
+            array('userId, date', 'length', 'max' => 10),
+            array('status', 'length', 'max' => 1),
+            array('addInfo, header, type, module', 'length', 'max' => 255),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-            array('id, key, name, value, position, fieldType', 'safe', 'on' => 'search'),
+            array('id, userId, date, info, addInfo, header, status, type, module', 'safe', 'on' => 'search'),
         );
     }
 
@@ -43,6 +44,7 @@ class NewsSettings extends CActiveRecord {
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
         return array(
+            'user'=>array(self::BELONGS_TO, 'User', 'userId'),
         );
     }
 
@@ -52,11 +54,14 @@ class NewsSettings extends CActiveRecord {
     public function attributeLabels() {
         return array(
             'id' => 'ID',
-            'key' => 'Key',
-            'name' => 'Name',
-            'value' => 'Value',
-            'position' => 'Position',
-            'fieldType' => 'Field Type',
+            'userId' => 'User',
+            'date' => 'Date',
+            'info' => 'Info',
+            'addInfo' => 'Add Info',
+            'header' => 'Header',
+            'status' => 'Status',
+            'type' => 'Type',
+            'module' => 'Module',
         );
     }
 
@@ -77,12 +82,15 @@ class NewsSettings extends CActiveRecord {
 
         $criteria = new CDbCriteria;
 
-        $criteria->compare('id', $this->id);
-        $criteria->compare('key', $this->key, true);
-        $criteria->compare('name', $this->name, true);
-        $criteria->compare('value', $this->value, true);
-        $criteria->compare('position', $this->position, true);
-        $criteria->compare('fieldType', $this->fieldType, true);
+        $criteria->compare('id', $this->id, true);
+        $criteria->compare('userId', $this->userId, true);
+        $criteria->compare('date', $this->date, true);
+        $criteria->compare('info', $this->info, true);
+        $criteria->compare('addInfo', $this->addInfo, true);
+        $criteria->compare('header', $this->header, true);
+        $criteria->compare('status', $this->status, true);
+        $criteria->compare('type', $this->type, true);
+        $criteria->compare('module', $this->module, true);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
@@ -93,7 +101,7 @@ class NewsSettings extends CActiveRecord {
      * Returns the static model of the specified AR class.
      * Please note that you should have this exact method in all your CActiveRecord descendants!
      * @param string $className active record class name.
-     * @return NewsSettings the static model class
+     * @return Loger the static model class
      */
     public static function model($className = __CLASS__) {
         return parent::model($className);

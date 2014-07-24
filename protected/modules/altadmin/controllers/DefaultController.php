@@ -13,6 +13,7 @@ class DefaultController extends Controller {
             if (isset($_POST['LoginForm'])) {
                 $model->attributes = $_POST['LoginForm'];
                 if ($model->validate() && $model->login()) {
+                    ALTLoger::saveLog('Авторизация пользователя', 'Пользователь успешно авторизирован', 1, 'login', 'user');
                     $this->redirect('/altadmin');
                 }
             }

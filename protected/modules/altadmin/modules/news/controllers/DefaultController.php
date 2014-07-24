@@ -26,6 +26,7 @@ class DefaultController extends Controller {
         $model = ALTNews::model()->with('newsSection')->findAll($criteria);
         $this->pageHeader = $this->pageTitle = $this->breadcrumbsTitle = 'Новости';
         $this->pageAddHeader = 'Список новостей';
+        ALTLoger::saveLog('Просмотр списка новостей', 'Список новостей, страница: ' . (isset($_GET['page']) && (int)$_GET['page'] > 1 ? $_GET['page'] : 1) . '.', 1, 'list', 'news');
         if (Yii::app()->request->isAjaxRequest) {
             $this->renderPartial('index', array('model' => $model, 'paginator' => $paginator));
         } else {
@@ -47,6 +48,7 @@ class DefaultController extends Controller {
                 Yii::app()->request->redirect((isset($_POST['yt1']) ? '/altadmin/news' : '/altadmin/news/default/edit/' . $model->id));
             } else {
                 Yii::app()->user->setFlash('error', 'Проверте поля еще раз.');
+                ALTLoger::saveLog('Добавление новости', 'Ошибка при добавлении новости. заголовок: ' . $model->menuName .'.', 0, 'add', 'news');
             }
         }
         $this->render('_form', array('model' => $model));
@@ -70,6 +72,7 @@ class DefaultController extends Controller {
                 Yii::app()->request->redirect((isset($_POST['yt1']) ? '/altadmin/news' : '/altadmin/news/default/edit/' . $model->id));
             } else {
                 Yii::app()->user->setFlash('error', '<strong>Ошибка!</strong> Проверте поля еще раз.');
+                ALTLoger::saveLog('Редактирование новости', 'Ошибка при редактировании новости. id: ' . $model->id . ', заголовок: ' . $model->menuName .'.', 0, 'edit', 'news');
             }
         }
         $model->date = date('d.m.Y', $model->date);
@@ -85,6 +88,7 @@ class DefaultController extends Controller {
         if (ALTNews::model()->findByPk($id)->delete()) {
             echo json_encode(array('error' => 0));
         } else {
+            ALTLoger::saveLog('Удаление новости', 'Ошибка при удалении новости. id: ' . $id .'.', 0, 'delete', 'news');
             echo json_encode(array('error' => 1));
         }        
     }    
@@ -106,8 +110,10 @@ class DefaultController extends Controller {
      */
     public function actionDeleteImage($id) {
         if (ALTNews::model()->findByPk($id)->deleteImage($id, 'image', '/images/news/list/')) {
+            ALTLoger::saveLog('Удаление изображения новости', 'Изображение новости успешно удалено. id: ' . $id . '.', 1, 'delete image', 'news');
             echo json_encode(array('error' => 0));
         } else {
+            ALTLoger::saveLog('Удаление изображения новости', 'Ошибка при удалении изображения новости. Не удалось удалить изображение. id: ' . $id .'.', 0, 'delete image', 'news');
             echo json_encode(array('error' => 1));
         }
     }
@@ -123,6 +129,7 @@ class DefaultController extends Controller {
             echo json_encode(array('error' => 0));
         } else {
             echo json_encode(array('error' => 1, 'message' => '<p>Нет данных для удаления!</p>'));
+            ALTLoger::saveLog('Массовое удаление новостей', 'Нет данных для удаления', 0, 'mass delete', 'news');
         }        
     }
 }

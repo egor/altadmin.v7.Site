@@ -26,6 +26,7 @@ class SectionController extends Controller {
         $model = ALTNewsSection::model()->with('newsCount')->findAll($criteria);
         $this->pageHeader = $this->pageTitle = $this->breadcrumbsTitle = 'Разделы';
         $this->pageAddHeader = 'Список разделов';
+        ALTLoger::saveLog('Просмотр списка разделов новостей', 'Список разделов новостей, страница: ' . (isset($_GET['page']) && (int)$_GET['page'] > 1 ? $_GET['page'] : 1) . '.', 1, 'section list', 'news');
         if (Yii::app()->request->isAjaxRequest) {
             $this->renderPartial('index', array('model' => $model, 'paginator' => $paginator));
         } else {
@@ -41,13 +42,6 @@ class SectionController extends Controller {
         $model = new ALTNewsSection;
         if (isset($_POST['ALTNewsSection']) && !isset($_POST['yt2'])) {
             $model->attributes = $_POST['ALTNewsSection'];
-            if (empty($model->url)) {
-                //если пустой урл, то транслитим из краткого заголовка
-                $model->url = Transliteration::ruToLat($model->name);
-            } else {
-                //если урл не пустой, то транслитим для исключения кириллицы
-                $model->url = Transliteration::ruToLat($model->url);
-            }            
             if ($model->validate()) {
                 $model->save();
                 Yii::app()->user->setFlash('success', 'Раздел успешно добавлен.');
@@ -58,6 +52,7 @@ class SectionController extends Controller {
                 }
             } else {
                 Yii::app()->user->setFlash('error', 'Проверте поля еще раз.');
+                ALTLoger::saveLog('Добавление раздела новости', 'Ошибка при добавлении раздела новости. заголовок: ' . $model->name .'.', 0, 'section add', 'news');
             }
         }
         $this->render('_form', array('model' => $model));
@@ -82,6 +77,7 @@ class SectionController extends Controller {
                 }
             } else {
                 Yii::app()->user->setFlash('error', '<strong>Ошибка!</strong> Проверте поля еще раз.');
+                ALTLoger::saveLog('Редактирование раздела новости', 'Ошибка при редактировании раздела новости. id: ' . $model->id . ', заголовок: ' . $model->name .'.', 0, 'section edit', 'news');
             }
         }
         $this->render('_form', array('model' => $model, 'edit' => 1));
@@ -93,9 +89,10 @@ class SectionController extends Controller {
      * @param int $id - id новости
      */
     public function actionDelete($id) {
-        if (ALTNewsSection::deleteRecord($id)) {
+        if (ALTNewsSection::model()->findByPk($id)->delete()) {
             echo json_encode(array('error' => 0));
         } else {
+            ALTLoger::saveLog('Удаление раздела новости', 'Ошибка при удалении раздела новости. id: ' . $id .'.', 0, 'section delete', 'news');
             echo json_encode(array('error' => 1, 'message' => 'Ошибка при удалении новости!'));
         }        
     }    
@@ -112,11 +109,12 @@ class SectionController extends Controller {
 
     public function actionDeleteMass() {
         if ($_POST) {
-            foreach ($_POST as $key => $value) {
-                ALTNewsSection::deleteRecord((int)$key);
+            foreach ($_POST as $key => $value) {                
+                ALTNewsSection::model()->findByPk((int)$key)->delete();
             }
             echo json_encode(array('error' => 0));
         } else {
+            ALTLoger::saveLog('Массовое удаление разделов новостей', 'Нет данных для удаления', 0, 'section mass delete', 'news');
             echo json_encode(array('error' => 1, 'message' => '<p>Нет данных для удаления!</p>'));
         }        
     }

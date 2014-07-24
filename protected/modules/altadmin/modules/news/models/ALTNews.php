@@ -76,6 +76,11 @@ class ALTNews extends News {
     protected function afterSave() {
         parent::afterSave();
         $this->image = $this->uploadImage($this->id, 'image', '/images/news/list/', Yii::app()->params['altadmin']['modules']['news']['image']['list']['width'], Yii::app()->params['altadmin']['modules']['news']['image']['list']['height'], $this->oldListImage);
+        if ($this->isNewRecord) {
+            ALTLoger::saveLog('Добавление новости', 'Новость успешно добавлена. id: ' . $this->id . ', заголовок: ' . $this->menuName .'.', 1, 'add', 'news');
+        } else {
+            ALTLoger::saveLog('Редактирование новости', 'Новость успешно отредактирована. id: ' . $this->id . ', заголовок: ' . $this->menuName .'.', 1, 'edit', 'news');
+        }
         return true;
     }
 
@@ -87,6 +92,12 @@ class ALTNews extends News {
     protected function beforeDelete() {
         parent::beforeDelete();
         $this->deleteImage($this->id, 'image', '/images/news/list/');
+        return true;
+    }
+    
+    protected function afterDelete() {
+        parent::afterDelete();
+        ALTLoger::saveLog('Удаление новости', 'Новость успешно удалена. id: ' . $this->id . ', заголовок: ' . $this->menuName .'.', 1, 'delete', 'news');
         return true;
     }
 
@@ -106,4 +117,5 @@ class ALTNews extends News {
         }
         return false;
     }
+
 }

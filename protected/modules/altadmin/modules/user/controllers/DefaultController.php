@@ -43,6 +43,7 @@ class DefaultController extends Controller {
         $model = ALTUser::model()->findAll($criteria);
         $this->pageHeader = $this->pageTitle = $this->breadcrumbsTitle = 'Пользователи';
         $this->pageAddHeader = 'Список пользователей';
+        ALTLoger::saveLog('Просмотр списка пользователей', 'Список пользователей, страница: ' . (isset($_GET['page']) && (int)$_GET['page'] > 1 ? $_GET['page'] : 1) . '.', 1, 'list', 'user');
         if (Yii::app()->request->isAjaxRequest) {
             $this->renderPartial('index', array('model' => $model, 'paginator' => $paginator));
         } else {
@@ -65,8 +66,9 @@ class DefaultController extends Controller {
                 } else {
                     Yii::app()->request->redirect('/altadmin/user/default/edit/' . $model->id);
                 }
-            } else {
+            } else {                
                 Yii::app()->user->setFlash('error', 'Проверте поля еще раз.');
+                ALTLoger::saveLog('Добавление пользователя', 'Ошибка при добавлении пользователя. имя: ' . $model->name . ' ' . $model->surname, 0, 'add', 'user');
             }
         }
         $this->render('_form', array('model' => $model));
@@ -92,6 +94,7 @@ class DefaultController extends Controller {
                 }
             } else {
                 Yii::app()->user->setFlash('error', 'Проверте поля еще раз.');
+                ALTLoger::saveLog('Редактирование пользователя', 'Ошибка при редактировании пользователя. id: ' . $model->id . ', имя: ' . $model->name . ' ' . $model->surname .'.', 0, 'edit', 'user');
             }
         }
         $model->password = '';
@@ -107,6 +110,7 @@ class DefaultController extends Controller {
         if (ALTUser::model()->findByPk($id)->delete()) {
             echo json_encode(array('error' => 0));
         } else {
+            ALTLoger::saveLog('Удаление пользователя', 'Ошибка при удалении пользователя. id: ' . $id .'.', 0, 'add', 'user');
             echo json_encode(array('error' => 1));
         }
     }
@@ -118,9 +122,11 @@ class DefaultController extends Controller {
      */
     public function actionDeleteImage($id) {
         if (ALTUser::model()->findByPk($id)->deleteImage($id, 'image', '/images/user/list/')) {
+            ALTLoger::saveLog('Удаление изображения пользователя', 'Изображение пользователя успешно удалено. id: ' . $id . '.', 1, 'delete image', 'user');
             echo json_encode(array('error' => 0));
         } else {
             echo json_encode(array('error' => 1));
+            ALTLoger::saveLog('Удаление изображения пользователя', 'Ошибка при удалении изображения пользователя. Не удалось удалить изображение пользователя. id: ' . $id . '.', 1, 'delete image', 'user');
         }
     }
 
@@ -134,6 +140,7 @@ class DefaultController extends Controller {
             }
             echo json_encode(array('error' => 0));
         } else {
+            ALTLoger::saveLog('Массовое удаление пользователей', 'Нет данных для удаления', 0, 'mass delete', 'user');
             echo json_encode(array('error' => 1, 'message' => '<p>Нет данных для удаления!</p>'));
         }
     }

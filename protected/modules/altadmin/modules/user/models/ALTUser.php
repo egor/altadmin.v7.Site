@@ -86,6 +86,11 @@ class ALTUser extends User {
      */
     protected function afterSave() {
         parent::afterSave();
+        if ($this->isNewRecord) {
+            ALTLoger::saveLog('Добавление пользователя', 'Пользователь успешно добавлен. id: ' . $this->id . ', имя: ' . $this->name . ' ' . $this->surname .'.', 1, 'add', 'user');
+        } else {
+            ALTLoger::saveLog('Редактирование пользователя', 'Пользователь успешно отредактирован. id: ' . $this->id . ', имя: ' . $this->name . ' ' . $this->surname . '.', 1, 'edit', 'user');
+        }
         $this->image = $this->uploadImage($this->id, 'image', '/images/user/list/', Yii::app()->params['altadmin']['modules']['user']['image']['list']['width'], Yii::app()->params['altadmin']['modules']['user']['image']['list']['height'], $this->oldImage);
         return true;
     }
@@ -101,21 +106,9 @@ class ALTUser extends User {
         return true;
     }
 
-    /**
-     * Удаление записи и ее данных
-     * 
-     * @param integer $id - id записи
-     * @return boolean
-     */
-    public function deleteRecord($id) {
-        $model = ALTUser::model()->findByPk($id);
-        if ($model) {
-            if (ALTUser::deleteImage($id)) {
-                $model->delete();
-                return true;
-            }
-        }
-        return false;
+    protected function afterDelete() {
+        parent::afterDelete();
+        ALTLoger::saveLog('Удаление пользователя', 'Пользователь успешно удален. id: ' . $this->id . ', имя: ' . $this->name . ' ' . $this->surname .'.', 1, 'delete', 'user');
+        return true;
     }
-
 }

@@ -172,6 +172,10 @@ return array(
                         ),
                     ),
                 ),
+                'loger' => array(
+                    'work' => 1,
+                    'limit' => 30,
+                ),
             ),
         ),
 	),
