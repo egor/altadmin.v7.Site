@@ -74,6 +74,7 @@ if ($paginator) {
                 <td><?php echo ($value->visibility == 1 ? '<a rel="tooltip" title="Да"><i class="icon-ok-sign"></i></a>' : '<a rel="tooltip" title="Нет"><i class="icon-minus-sign"></i></a>'); ?></td>                
                 <td>
                     <nobr>
+                        <a href="/<?php echo Yii::app()->params['altadmin']['modules']['blog']['baseUrl'] . '/' . $value->url; ?>" title="Посмотреть запись на сайте" target="_blank" rel="tooltip"><i class="icon-eye-open"></i></a>&nbsp;
                         <a href="/altadmin/blog/default/edit/<?php echo $value->id; ?>" title="Редактировать" rel="tooltip"><i class="icon-pencil"></i></a>&nbsp;
                         <a href="#" onclick="myModalDeleteTrRecord(<?php echo $value->id; ?>, '<?php echo $value->menuName; ?>');return false;" title="Удалить" rel="tooltip"><i class="icon-remove"></i></a>
                     </nobr>

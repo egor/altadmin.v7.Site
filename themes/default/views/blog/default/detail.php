@@ -4,7 +4,7 @@ $this->breadcrumbs = array(
     $this->breadcrumbsTitle
 );
 ?>
-<h1><?php echo $this->pageHeader; ?></h1>
+<h1><?php echo $this->pageHeader; ?><?php $this->widget('application.widgets.AdminBtn', array('method' => 'blogRecordDetail', 'data' => array('id' => $model->id))); ?></h1>
 <span class="label label-primary"><?php echo date('d.m.Y', $model->date); ?></span> <span class="label label-default"><?php echo $model->blogSection->name; ?></span><br /><br />
 <?php
 $tags = '';
