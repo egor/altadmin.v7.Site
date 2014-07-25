@@ -29,15 +29,15 @@ class AdminBtn extends CWidget {
         }
     }
 
-    public function blogRecord() {
-        $this->render('webroot.themes.' . Yii::app()->theme->name . '.widgets.' . __CLASS__ . '.' . __FUNCTION__, array());
-    }
-
-    public function blogRecordList() {
+    public function moduleMain() {
         $this->render('webroot.themes.' . Yii::app()->theme->name . '.widgets.' . __CLASS__ . '.' . __FUNCTION__, array('data' => $this->data));
     }
-    
-    public function blogRecordDetail() {
+
+    public function moduleRecordList() {
+        $this->render('webroot.themes.' . Yii::app()->theme->name . '.widgets.' . __CLASS__ . '.' . __FUNCTION__, array('data' => $this->data));
+    }
+
+    public function moduleRecordDetail() {
         $this->render('webroot.themes.' . Yii::app()->theme->name . '.widgets.' . __CLASS__ . '.' . __FUNCTION__, array('data' => $this->data));
     }
 

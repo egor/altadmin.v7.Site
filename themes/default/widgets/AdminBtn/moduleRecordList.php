@@ -1,21 +1,21 @@
 <div class="adminBtn">
     <small>
-        <a href="/altadmin/blog/default/edit/<?php echo $data['id'] ?>" title="редактировать запись блога" alt="редактировать" target="_blank"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;
-        <a href="#" title="удалить запись блога" alt="удалить" onclick="deleteRecord(<?php echo $data['id'] ?>);
+        <a href="<?php echo $data['edit']; ?>" title="редактировать запись" alt="редактировать" target="_blank"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;
+        <a href="#" title="удалить запись" alt="удалить" onclick="deleteRecord(<?php echo $data['id'] ?>);
                 return false;"><span class="glyphicon glyphicon-remove"></span></a>
     </small>
 </div>
 <script>
     function deleteRecord(id) {
-        if (confirm("Удалить запись блога?")) {
+        if (confirm("Удалить запись?")) {
             $.ajax({
             type: "GET",
-            url: '/altadmin/blog/default/delete',
+            url: '<?php echo $data['delete']; ?>',//'/altadmin/<?php echo $this->data['moduleName'] ?>/default/delete',
             data: "id=" + id,
             success: function(data) {
                 var obj = $.parseJSON(data);
                 if (obj.error == 0) {
-                    $('#blogRecord-'+id).hide(500);
+                    $('#<?php echo $this->data['moduleCssId'] ?>'+id).hide(500);
                 } else {
                     alert('Ошибка при удалении!');
                 }

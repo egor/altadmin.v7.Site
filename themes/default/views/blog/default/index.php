@@ -3,7 +3,19 @@
     $this->breadcrumbsTitle,
 );*/
 ?>
-<h1><?php echo $this->pageHeader; ?><?php $this->widget('application.widgets.AdminBtn', array('method' => 'blogRecord')); ?></h1>
+<h1><?php echo $this->pageHeader; ?>
+    <?php $this->widget('application.widgets.AdminBtn', 
+            array('method' => 'moduleMain', 
+                'data' => array(
+                    'moduleName' => 'blog', 
+                    'add' => '/altadmin/blog/default/add', 
+                    'edit' => '/altadmin/page/edit/' . Yii::app()->params['altadmin']['systemPageId']['blog'],
+                    'list' => '/altadmin/blog/default',
+                    'settings' => '/altadmin/blog/settings'
+            )
+                )
+            ); ?>
+</h1>
 <?php
 echo $page->text;
 $this->widget('CLinkPager', array(
@@ -35,7 +47,7 @@ foreach ($model as $value) {
     ?>
     <div class="media col-md-6" id="blogRecord-<?php echo $value->id; ?>">
         <div class="media-body">
-            <h4 class="media-heading"><a href="<?php echo $url; ?>"><?php echo $value->menuName; ?></a><?php $this->widget('application.widgets.AdminBtn', array('method' => 'blogRecordList', 'data' => array('id' => $value->id))); ?></h4>
+            <h4 class="media-heading"><a href="<?php echo $url; ?>"><?php echo $value->menuName; ?></a><?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleRecordList', 'data' => array('moduleName' => 'blog', 'id' => $value->id, 'moduleCssId' => 'blogRecord-', 'edit' => '/altadmin/blog/default/edit/' . $value->id, 'delete' => '/altadmin/blog/default/delete'))); ?></h4>
             <a href="<?php echo $url; ?>" class="pull-left"><?php echo $img; ?></a>
             <span class="label label-primary"><?php echo date('d.m.Y', $value->date); ?></span> <span class="label label-default"><?php echo $value->blogSection->name; ?></span><br />
             <?php if (!empty($tags)) { ?>
