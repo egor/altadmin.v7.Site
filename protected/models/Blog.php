@@ -45,6 +45,11 @@ class Blog extends CActiveRecord {
     public function relations() {
         return array(
             'blogSection'=>array(self::BELONGS_TO, 'BlogSection', 'blogSectionId'),
+            //'tagsRelations'=>array(self::HAS_MANY, 'TagsRelations', 'recordId', 'condition' => 'type="blog"'),
+            'tagsRelationsCondition' => array(self::HAS_MANY, 'TagsRelations', 'recordId', 'condition' => 'type="blog"'),
+            'tagsRelations'=>array(self::HAS_MANY, 'TagsRelations', 'recordId'),//, 'condition' => 'type="blog"'),
+            
+            'tagsRelationsById'=>array(self::HAS_ONE, 'TagsRelations', 'recordId', 'condition' => 'type="blog"'),
         );
     }
 

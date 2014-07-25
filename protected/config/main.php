@@ -53,7 +53,12 @@ return array(
                     'connectionID' => 'db',
                 ),
                 //site
+                'news/page/<page:\d+>' => 'news/default/index',
                 'news/<url:[\w\-]+>' => 'news/default/detail',
+                'blog/page/<page:\d+>' => 'blog/default/index',
+                'blog/tags/<tagId:\d+>/page/<page:\d+>' => 'blog/default/tags',
+                'blog/tags/<tagId:\d+>' => 'blog/default/tags',
+                
                 'blog/<url:[\w\-]+>' => 'blog/default/detail',
                 
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
@@ -63,7 +68,7 @@ return array(
                 '<modules:\w+>/<controller:\w+>/<id:\d+>' => '<modules>/<controller>/view',
                 '<modules:\w+>/<controller:\w+>/<action:\w+>/<id:\d+>' => '<modules>/<controller>/<action>',
                 '<modules:\w+>/<controller:\w+>/<action:\w+>' => '<modules>/<controller>/<action>',
-                
+                                
                 'altadmin/<modules:\w+>/<controller:\w+>/<id:\d+>' => 'altadmin/<modules>/<controller>/view',
                 'altadmin/<modules:\w+>/<controller:\w+>/<action:\w+>/<id:\d+>' => 'altadmin/<modules>/<controller>/<action>',
                 'altadmin/<modules:\w+>/<controller:\w+>/<action:\w+>' => 'altadmin/<modules>/<controller>/<action>',

@@ -34,4 +34,8 @@ class Controller extends CController
     public $breadcrumbsTitle = '';
     
     public $pageAddHeader = '';
+    
+    public $metaKeywords = '';
+    
+    public $metaDescription = '';
 }

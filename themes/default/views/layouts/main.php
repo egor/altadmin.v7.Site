@@ -9,7 +9,8 @@
         <link rel="shortcut icon" href="<?php echo Yii::app()->theme->baseUrl; ?>/ico/favicon.ico">
 
         <title><?php echo $this->pageTitle; ?></title>
-
+        <meta name="keywords" content="<?php echo $this->metaKeywords; ?>" />
+        <meta name="description" content="<?php echo $this->metaDescription; ?>" />
         <!-- Bootstrap core CSS -->
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.css" rel="stylesheet">
 

@@ -42,6 +42,7 @@ class TagsRelations extends CActiveRecord {
     public function relations() {
         return array(
             'tags'=>array(self::BELONGS_TO, 'Tags', 'tagsId'),
+            'blog'=>array(self::BELONGS_TO, 'Blog', 'recordId'),
             //'tags' => array(self::HAS_MANY, 'Tags', 'tagsId'),
             //'tagsCount'=>array(self::STAT, 'Tags', 'tagsId'),
         );
