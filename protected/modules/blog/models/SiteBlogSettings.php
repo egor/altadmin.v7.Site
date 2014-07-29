@@ -9,7 +9,7 @@
  * @version 1.0
  * @copyright Copyright (c) 2014, Egor Rihnov
  */
-class SiteBlogSettings extends NewsSettings {
+class SiteBlogSettings extends BlogSettings {
 
     static function model($className = __CLASS__) {
         return parent::model($className);

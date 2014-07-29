@@ -27,6 +27,7 @@ return array(
         'altadmin.*',
         'news',
         'blog',
+        'comment',
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'test',
@@ -158,6 +159,7 @@ return array(
                             'height'    =>  200)    //высота изображения
                         ),
                     'baseUrl'       =>  'blog',
+                    'comment'       =>  1,  //вкл./выкл. комментариев
                 ),
                 'portfolio' => array(
                     'work'          =>  1,  //вкл./выкл. портфолио
@@ -195,6 +197,10 @@ return array(
                 'loger' => array(
                     'work' => 1,
                     'limit' => 30,
+                ),
+                'comment' => array(
+                    'work'      =>  1,
+                    'limit'     =>  30,
                 ),
             ),
         ),

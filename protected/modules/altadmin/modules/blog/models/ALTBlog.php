@@ -98,9 +98,15 @@ class ALTBlog extends Blog {
      * 
      * @return boolean
      */
-    protected function beforeDelete() {
+    protected function beforeDelete() {        
         parent::beforeDelete();
         $this->deleteImage($this->id, 'image', '/images/blog/list/');
+        $comment = ALTComment::model()->findAll(array('condition' => 'recordId="' . $this->id . '" AND type="blog"'));
+        if ($comment) {
+            foreach ($comment as $value) {
+                ALTComment::model()->findByPk($value->id)->delete();
+            }
+        }
         return true;
     }
     

@@ -19,3 +19,13 @@ if (!empty($tags)) {
     <br /><small><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;<?php echo substr($tags, 0, -2); ?></small>
 <?php 
 }
+if (FrontEditFields::getSettings('CommentSettings', 'workBlog') && Yii::app()->params['altadmin']['modules']['comment']['work'] && Yii::app()->params['altadmin']['modules']['blog']['comment']) {
+    ?>
+    <div id="commentList">    
+    <?php    
+    $this->widget('application.widgets.SComment', array('method' => 'printComment', 'data' => array('type' => 'blog', 'recordId' => $model->id)));
+    ?>
+    </div>
+    <?php    
+    $this->widget('application.widgets.SComment', array('method' => 'printForm', 'data' => array('pid' => 0, 'type' => 'blog', 'recordId' => $model->id)));
+}

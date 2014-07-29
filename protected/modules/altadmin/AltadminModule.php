@@ -15,8 +15,9 @@ class AltadminModule extends CWebModule
             'altadmin.modules.user.models.*',
             'altadmin.modules.loger.models.*',
             'altadmin.modules.tags.models.*',
+            'altadmin.modules.comment.models.*',
 		));
-        $this->modules=array('news', 'blog', 'portfolio', 'widget', 'user', 'loger');
+        $this->modules=array('news', 'blog', 'portfolio', 'widget', 'user', 'loger', 'comment');
 	}
 
 	public function beforeControllerAction($controller, $action)

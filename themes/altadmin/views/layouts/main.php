@@ -191,7 +191,7 @@
                                 </li>
                             </ul>
                         </li>
-
+                        <?php $this->widget('application.modules.altadmin.widgets.SComment', array('method' => 'notification')); ?>
                         <?php $this->widget('application.modules.altadmin.widgets.Feedback', array('method' => 'feedbackNotification')); ?>
                         <?php $this->widget('application.modules.altadmin.widgets.UserMenu'); ?>
                         
