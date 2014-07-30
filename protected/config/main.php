@@ -134,6 +134,9 @@ return array(
             
             //модули
             'modules' => array(
+                'page' => array(
+                    'comment'       => 1,
+                ),
                 'news' => array(
                     'work'          =>  1,  //вкл./выкл. новостей
                     'section'       =>  1,  //вкл./выкл. разделов в новостях

@@ -49,13 +49,13 @@ class Page extends CActiveRecord {
         return array(
             //array('root, lft, rgt, level, url, menuName, header, shortText, text, metaTitle, metaKeywords, metaDescription, visibility, date', 'required'),
             array('url, menuName, header, metaTitle', 'required', 'on'=>'edit'),
-            array('root, lft, rgt, level, url, menuName, header, shortText, text, metaTitle, metaKeywords, metaDescription, visibility, inMain, date, module, controller, action, system, image, imageAlt, imageTitle, showDate, addMenuName', 'safe'),
-            array('root, lft, rgt, level, visibility, inMain, date, inMenu, showDate', 'numerical', 'integerOnly' => true),
+            array('root, lft, rgt, level, url, menuName, header, shortText, text, metaTitle, metaKeywords, metaDescription, visibility, inMain, date, module, controller, action, system, image, imageAlt, imageTitle, showDate, addMenuName, comment', 'safe'),
+            array('root, lft, rgt, level, visibility, inMain, date, inMenu, showDate, comment', 'numerical', 'integerOnly' => true),
             array('url, menuName, header, metaTitle, metaKeywords, module, controller, action, system, image, imageAlt, imageTitle, addMenuName', 'length', 'max' => 255),
             array('url', 'unique'),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('id, root, lft, rgt, level, url, menuName, header, shortText, text, metaTitle, metaKeywords, metaDescription, visibility, inMain, date, module, controller, action, system, image, imageAlt, imageTitle, showDate, addMenuName', 'safe', 'on' => 'search'),
+            array('id, root, lft, rgt, level, url, menuName, header, shortText, text, metaTitle, metaKeywords, metaDescription, visibility, inMain, date, module, controller, action, system, image, imageAlt, imageTitle, showDate, addMenuName, comment', 'safe', 'on' => 'search'),
         );
     }
 
@@ -100,6 +100,7 @@ class Page extends CActiveRecord {
             'imageTitle' => 'Выводить в меню',
             'showDate' => 'Выводить дату',
             'addMenuName' => 'Текст под названием пункта меню',
+            'comment' => 'Выводить блок комментариев',
         );
     }
 
@@ -139,6 +140,7 @@ class Page extends CActiveRecord {
         $criteria->compare('imageTitle', $this->imageTitle);
         $criteria->compare('showDate', $this->showDate);
         $criteria->compare('addMenuName', $this->addMenuName);
+        $criteria->compare('comment', $this->comment);
         
         
 

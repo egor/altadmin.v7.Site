@@ -30,6 +30,9 @@ if ($model->blog) {
     $linkToPage = '<a href="/' . Yii::app()->params['altadmin']['modules']['blog']['baseUrl'] . '/' . $model->blog->url . '#comment-' . $model->id .'" target="_blnak">' . $model->blog->menuName . '</a>';
 } elseif ($model->news) {
     $linkToPage = '<a href="/' . Yii::app()->params['altadmin']['modules']['news']['baseUrl'] . '/' . $model->blog->url . '#comment-' . $model->id .'" target="_blnak">' . $model->news->menuName . '</a>';
+} elseif ($model->page) {
+    $pageUrl = Page::getUrl($model->page->id);
+    $linkToPage = '<a href="' . $pageUrl . '#comment-' . $model->id .'" target="_blnak">' . $model->page->menuName . '</a>';
 }
 ?>
 <p>Автор комментария: <?php echo $userName; ?></p>

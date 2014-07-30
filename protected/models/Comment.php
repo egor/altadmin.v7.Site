@@ -64,6 +64,7 @@ class Comment extends CActiveRecord {
             'user'=>array(self::BELONGS_TO, 'User', 'userId'),
             'blog'=>array(self::BELONGS_TO, 'Blog', 'recordId'),
             'news'=>array(self::BELONGS_TO, 'News', 'recordId'),
+            'page'=>array(self::BELONGS_TO, 'Page', 'recordId'),
         );
     }
 

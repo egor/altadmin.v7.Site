@@ -1,15 +1,16 @@
-<?php
-/*
-$this->breadcrumbs = array(
-    $breadcrumbs,
-    $model->menuName,
-);
- * 
- */
-?>
 <h1><?php echo $this->pageHeader; ?></h1>
 <?php 
 echo $model->text;
+if (Yii::app()->params['altadmin']['modules']['comment']['work'] && Yii::app()->params['altadmin']['modules']['page']['comment'] && $model->comment == 1) {
+    ?>
+    <div id="commentList">    
+    <?php    
+    $this->widget('application.widgets.SComment', array('method' => 'printComment', 'data' => array('type' => 'page', 'recordId' => $model->id)));
+    ?>
+    </div>
+    <?php    
+    $this->widget('application.widgets.SComment', array('method' => 'printForm', 'data' => array('pid' => 0, 'type' => 'page', 'recordId' => $model->id)));
+}
 foreach ($children as $value) {
     $url = $pageUrl . '/' . $value->url;    
     ?>

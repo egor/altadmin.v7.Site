@@ -20,7 +20,7 @@ class DefaultController extends Controller {
         $paginator = new CPagination($count);
         $paginator->pageSize = Yii::app()->params['altadmin']['modules']['comment']['limit'];
         $paginator->applyLimit($criteria);
-        $model = ALTComment::model()->with('user', 'blog', 'news')->findAll($criteria);
+        $model = ALTComment::model()->with('user', 'blog', 'news', 'page')->findAll($criteria);
         $this->pageHeader = $this->pageTitle = $this->breadcrumbsTitle = 'Комментарии';
         $this->pageAddHeader = 'Список комментариев';
         ALTLoger::saveLog('Просмотр списка комментариев', 'Список комментариев, страница: ' . (isset($_GET['page']) && (int) $_GET['page'] > 1 ? $_GET['page'] : 1) . '.', 1, 'list', 'comment');
