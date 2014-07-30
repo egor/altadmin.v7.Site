@@ -37,7 +37,7 @@
         <!--inline styles related to this page-->
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 
-    <?php if (Yii::app()->controller->id != 'page') { ?>
+    <?php if (Yii::app()->controller->id != 'page' && (Yii::app()->controller->module->id != 'gallery' && Yii::app()->controller->id != 'default' && Yii::app()->controller->action->id != 'edit')) { ?>
             <!--[if !IE]>-->
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
             <!--<![endif]-->
@@ -339,8 +339,7 @@
         </a>
 
         <!--basic scripts-->
-
-        <?php if (Yii::app()->controller->id != 'page') { ?>
+        <?php if (Yii::app()->controller->id != 'page' && (Yii::app()->controller->module->id != 'gallery' && Yii::app()->controller->id != 'default' && Yii::app()->controller->action->id != 'edit')) { ?>
             <!--[if !IE]>-->
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
             <!--<![endif]-->

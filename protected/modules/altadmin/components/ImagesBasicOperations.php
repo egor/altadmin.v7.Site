@@ -64,4 +64,42 @@ class ImagesBasicOperations {
             return false;
         }
     }
+    
+    /**
+     * Сохранение порядка вывода картинок
+     * 
+     * @param string $model - название класса модели
+     * @param json $array - массив с данными порядка сортировки
+     * @return json - результат выполнения
+     */
+    public function changeOrder($model, $array) {
+        $data = json_decode($array);
+        if (null == $data) {
+            return json_encode(array('status' => 0));
+        }
+        $currentModel = new $model;
+        foreach ($data as $note) {
+            $currentModel->updateByPk(substr($note->id, 5), array('position' => $note->order));
+        }
+        return json_encode(array('status' => 'OK'));
+    }
+    
+    /**
+     * Редактирование мета тегов картинки
+     * 
+     * @param string $model - название класса модели
+     * @param array $data - содержит id записи и отредактированные данные
+     * @return json - результат выполнения
+     */
+    public function editMetaImage($model, $data) {
+        $imageModel = new $model;
+        $img = $imageModel->findByPk($data['id']);
+        $img->imageAlt = $data['alt'];
+        $img->imageTitle = $data['title'];
+        if ($img->save()) {
+            return json_encode(array('error' => 0));
+        } else {
+            return json_encode(array('error' => 1));
+        }
+    }
 }

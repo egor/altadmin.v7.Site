@@ -28,6 +28,7 @@ return array(
         'news',
         'blog',
         'comment',
+        'gallery',
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'test',
@@ -205,6 +206,25 @@ return array(
                 'comment' => array(
                     'work'      =>  1,
                     'limit'     =>  30,
+                ),
+                'gallery' => array(
+                    'work'      =>  1,
+                    'limit'     =>  30,
+                    'imageSettings' => array(
+                        'small' => array(
+                            'width'     =>  '100',
+                            'height'    =>  '100',
+                            'watermark' =>  0,
+                        ),
+                        'big'   => array(
+                            'width'     =>  '400',
+                            'height'    =>  '400',
+                            'watermark' =>  0,
+                        ),
+                        'real'  =>  array(
+                            'watermark' =>  0,
+                        ),
+                    ),
                 ),
             ),
         ),
