@@ -1,6 +1,15 @@
 <h1><?php echo $this->pageHeader; ?></h1>
 <?php 
 echo $model->text;
+if (Yii::app()->params['altadmin']['modules']['gallery']['work'] && Yii::app()->params['altadmin']['modules']['page']['gallery']) {
+    ?>
+    <div id="galleryList">    
+        <?php
+        $this->widget('application.widgets.SGallery', array('method' => 'printGallery', 'data' => array('type' => 'page', 'recordId' => $model->id)));
+        ?>
+    </div>
+    <?php
+}
 if (Yii::app()->params['altadmin']['modules']['comment']['work'] && Yii::app()->params['altadmin']['modules']['page']['comment'] && $model->comment == 1) {
     ?>
     <div id="commentList">    

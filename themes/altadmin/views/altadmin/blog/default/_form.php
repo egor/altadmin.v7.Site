@@ -114,7 +114,18 @@ echo $form->dropDownList($model, 'blogSectionId', CHtml::listData(BlogSection::m
     </div>
     <?php echo $form->error($model, 'tags'); ?>
 </div>
-
+<?php
+if (Yii::app()->params['altadmin']['modules']['gallery']['work'] == 1 && Yii::app()->params['altadmin']['modules']['blog']['gallery'] == 1) {
+?>
+<div class="control-group">
+<?php echo $form->labelEx($model, 'galleryId'); ?>
+<?php
+echo $form->dropDownList($model, 'galleryId', CHtml::listData(Gallery::model()->findAll(array('order' => 'position')), 'id', 'menuName'), array('class' => 'span12', 'empty' => 'пусто')); ?>
+<?php echo $form->error($model, 'galleryId'); ?>
+</div>
+<?php
+}
+?>
 <h4>Изображение</h4>
 <?php
 if (isset($edit) && $edit == 1) {

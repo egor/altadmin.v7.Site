@@ -41,7 +41,9 @@ class DefaultController extends Controller {
         $this->breadcrumbsTitle = $this->pageHeader = $this->pageTitle = 'Добавление записи блога';
         $model = new ALTBlog;
         if (isset($_POST['ALTBlog']) && !isset($_POST['yt2'])) {
-            $model->attributes = $_POST['ALTBlog'];                                    
+            $model->attributes = $_POST['ALTBlog'];
+            $model->tags = $_POST['ALTBlog']['tags'];
+            $model->galleryId = $_POST['ALTBlog']['galleryId'];
             if ($model->validate()) {
                 $model->save();
                 Yii::app()->user->setFlash('success', 'Запись блога успешно добавлена.');
@@ -67,6 +69,7 @@ class DefaultController extends Controller {
         if (isset($_POST['ALTBlog']) && !isset($_POST['yt2'])) {
             $model->attributes = $_POST['ALTBlog'];
             $model->tags = $_POST['ALTBlog']['tags'];
+            $model->galleryId = $_POST['ALTBlog']['galleryId'];
             if ($model->validate()) {                
                 $model->save();
                 Yii::app()->user->setFlash('success', 'Запись блога успешно отредактирована.');

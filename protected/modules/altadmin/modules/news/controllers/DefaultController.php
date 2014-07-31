@@ -41,7 +41,8 @@ class DefaultController extends Controller {
         $this->breadcrumbsTitle = $this->pageHeader = $this->pageTitle = 'Добавление новости';
         $model = new ALTNews;
         if (isset($_POST['ALTNews']) && !isset($_POST['yt2'])) {
-            $model->attributes = $_POST['ALTNews'];                                    
+            $model->attributes = $_POST['ALTNews']; 
+            $model->galleryId = $_POST['ALTNews']['galleryId'];
             if ($model->validate()) {
                 $model->save();
                 Yii::app()->user->setFlash('success', 'Новость успешно добавлена.');
@@ -66,6 +67,7 @@ class DefaultController extends Controller {
         $this->pageAddHeader = $model->menuName;
         if (isset($_POST['ALTNews']) && !isset($_POST['yt2'])) {
             $model->attributes = $_POST['ALTNews'];
+            $model->galleryId = $_POST['ALTNews']['galleryId'];
             if ($model->validate()) {                
                 $model->save();
                 Yii::app()->user->setFlash('success', 'Новость успешно отредактирована.');

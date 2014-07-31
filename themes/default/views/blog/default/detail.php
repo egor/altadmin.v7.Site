@@ -14,6 +14,17 @@ if ($model->tagsRelations) {
     }
 }
 echo $model->text;
+
+if (Yii::app()->params['altadmin']['modules']['gallery']['work'] && Yii::app()->params['altadmin']['modules']['blog']['gallery']) {
+    ?>
+    <div id="galleryList">    
+    <?php    
+    $this->widget('application.widgets.SGallery', array('method' => 'printGallery', 'data' => array('type' => 'blog', 'recordId' => $model->id)));
+    ?>
+    </div>
+    <?php    
+}
+
 if (!empty($tags)) {
     ?>
     <br /><small><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;<?php echo substr($tags, 0, -2); ?></small>

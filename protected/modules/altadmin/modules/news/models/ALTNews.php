@@ -18,6 +18,20 @@ class ALTNews extends News {
      */
     public $oldListImage = '';
 
+    /**
+     * ID галереи
+     * 
+     * @var integer
+     */
+    public $galleryId = 0;
+    
+    /**
+     * Тип записи
+     * 
+     * @var string
+     */
+    public $recordType = 'news';
+    
     static function model($className = __CLASS__) {
         return parent::model($className);
     }
@@ -81,6 +95,7 @@ class ALTNews extends News {
         } else {
             ALTLoger::saveLog('Редактирование новости', 'Новость успешно отредактирована. id: ' . $this->id . ', заголовок: ' . $this->menuName .'.', 1, 'edit', 'news');
         }
+        ALTGalleryRelations::saveRelationsRecord($this->galleryId, $this->id, $this->recordType);
         return true;
     }
 
@@ -118,4 +133,13 @@ class ALTNews extends News {
         return false;
     }
 
+    public function attributeLabels() {
+        return array_merge(parent::attributeLabels(), array('tags' => 'Теги', 'galleryId' => 'Вывести галерею'));
+    }
+    
+    public function afterFind() {
+        parent::afterFind();
+        $this->galleryId = ALTGalleryRelations::getGalleryId($this->id, $this->recordType);
+        return true;
+    }
 }
