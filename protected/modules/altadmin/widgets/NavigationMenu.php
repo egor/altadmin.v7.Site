@@ -91,6 +91,16 @@ class NavigationMenu extends CWidget {
             );
             $menu = array_merge($menu, $commentMenu);
         }
+        if (Yii::app()->params['altadmin']['modules']['gallery']['work']) {
+            $galleryMenu = array(1 => array('ico' => 'icon-picture', 'title' => 'Галерея', 'url' => 'gallery', 'class' => ( Yii::app()->controller->module->id == 'altadmin/gallery' ? 'active open' : ''),
+                    'subMenu' => array(
+                        0 => array('ico' => 'icon-double-angle-right', 'title' => 'Список', 'url' => 'default', 'class' => ( Yii::app()->controller->id == 'default' && Yii::app()->controller->action->id == 'index' ? 'active' : '')),
+                        //1 => array('ico' => 'icon-double-angle-right', 'title' => 'Настройка', 'url' => 'settings', 'class' => ( Yii::app()->controller->id == 'settings' && Yii::app()->controller->action->id == 'index' ? 'active' : '')),
+                    ),
+                ),
+            );
+            $menu = array_merge($menu, $galleryMenu);
+        }
 
         return $menu;
     }
