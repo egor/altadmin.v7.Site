@@ -47,7 +47,7 @@ class NavigationMenu extends CWidget {
             $menu = array_merge($menu, $portfolioMenu);
         }
         if (Yii::app()->params['altadmin']['modules']['widget']['work']) {
-            $widgetMenu = array(1 => array('ico' => 'icon-th', 'title' => 'Виджеты', 'url' => 'widget', 'class' => ( Yii::app()->controller->module->id == 'altadmin/widget' ? 'active open' : ''),
+            $widgetMenu = array(1 => array('ico' => 'icon-list-alt', 'title' => 'Виджеты', 'url' => 'widget', 'class' => ( Yii::app()->controller->module->id == 'altadmin/widget' ? 'active open' : ''),
                     'subMenu' => array(
                         0 => array('ico' => 'icon-double-angle-right', 'title' => 'ФОС', 'url' => 'feedback', 'class' => ( Yii::app()->controller->id == 'feedback' ? 'active open' : ''),
                             'subMenu' => array(
@@ -70,19 +70,9 @@ class NavigationMenu extends CWidget {
                 ),
             );
             $menu = array_merge($menu, $userMenu);
-        }
-        if (Yii::app()->params['altadmin']['modules']['loger']['work']) {
-            $logerMenu = array(1 => array('ico' => 'icon-rocket', 'title' => 'Лог', 'url' => 'loger', 'class' => ( Yii::app()->controller->module->id == 'altadmin/loger' ? 'active open' : ''),
-                //'subMenu' => array(
-                //    0 => array('ico' => 'icon-double-angle-right', 'title' => 'Список', 'url' => 'default', 'class' => ( Yii::app()->controller->id == 'default' && Yii::app()->controller->action->id == 'index' ? 'active' : '')),
-                //    1 => array('ico' => 'icon-double-angle-right', 'title' => 'Разделы', 'url' => 'section', 'class' => ( Yii::app()->controller->id == 'section' && Yii::app()->controller->action->id == 'index' ? 'active' : '')),
-                //),
-                ),
-            );
-            $menu = array_merge($menu, $logerMenu);
-        }
+        }        
         if (Yii::app()->params['altadmin']['modules']['comment']['work']) {
-            $commentMenu = array(1 => array('ico' => 'icon-comment', 'title' => 'Комментарии', 'url' => 'comment', 'class' => ( Yii::app()->controller->module->id == 'altadmin/comment' ? 'active open' : ''),
+            $commentMenu = array(1 => array('ico' => 'icon-comments', 'title' => 'Комментарии', 'url' => 'comment', 'class' => ( Yii::app()->controller->module->id == 'altadmin/comment' ? 'active open' : ''),
                     'subMenu' => array(
                         0 => array('ico' => 'icon-double-angle-right', 'title' => 'Список', 'url' => 'default', 'class' => ( Yii::app()->controller->id == 'default' && Yii::app()->controller->action->id == 'index' ? 'active' : '')),
                         1 => array('ico' => 'icon-double-angle-right', 'title' => 'Настройка', 'url' => 'settings', 'class' => ( Yii::app()->controller->id == 'settings' && Yii::app()->controller->action->id == 'index' ? 'active' : '')),
@@ -101,7 +91,16 @@ class NavigationMenu extends CWidget {
             );
             $menu = array_merge($menu, $galleryMenu);
         }
-
+        if (Yii::app()->params['altadmin']['modules']['loger']['work']) {
+            $logerMenu = array(1 => array('ico' => 'icon-rocket', 'title' => 'Лог', 'url' => 'loger', 'class' => ( Yii::app()->controller->module->id == 'altadmin/loger' ? 'active open' : ''),
+                //'subMenu' => array(
+                //    0 => array('ico' => 'icon-double-angle-right', 'title' => 'Список', 'url' => 'default', 'class' => ( Yii::app()->controller->id == 'default' && Yii::app()->controller->action->id == 'index' ? 'active' : '')),
+                //    1 => array('ico' => 'icon-double-angle-right', 'title' => 'Разделы', 'url' => 'section', 'class' => ( Yii::app()->controller->id == 'section' && Yii::app()->controller->action->id == 'index' ? 'active' : '')),
+                //),
+                ),
+            );
+            $menu = array_merge($menu, $logerMenu);
+        }
         return $menu;
     }
 
