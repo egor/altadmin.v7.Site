@@ -53,6 +53,23 @@ $form = $this->beginWidget('CActiveForm', array(
         </div>
     </div>
 <?php } ?>
+<?php if (Yii::app()->params['altadmin']['modules']['page']['comment'] == 1 && Yii::app()->params['altadmin']['modules']['comment']['work']) { ?>
+    <div class="control-group">    
+        <div class="controls">
+            <div class="row-fluid">
+                <div class="span4">
+                    <label>
+                        <?php
+                        echo $form->checkBox($model, 'comment', array('class' => 'ace-switch'));
+                        ?>
+                        <span class="lbl"><?php echo $form->label($model, 'comment', array('style' => 'float:left; margin-left:10px;')); ?></span>
+                    </label>
+                </div>        
+            </div>
+        </div>
+    </div>
+<?php } ?>
+
 <div class="control-group">
     <?php echo $form->labelEx($model, 'menuName'); ?>
     <?php echo $form->textField($model, 'menuName', array('class' => 'span12')); ?>
@@ -100,6 +117,17 @@ $form = $this->beginWidget('CActiveForm', array(
     <?php echo $form->textArea($model, 'text', array('class' => 'span12', 'rows' => 7, 'id' => 'editor-text')); ?>
     <?php echo $form->error($model, 'text'); ?>
 </div>
+<?php
+if (Yii::app()->params['altadmin']['modules']['gallery']['work'] == 1 && Yii::app()->params['altadmin']['modules']['page']['gallery'] == 1) {
+    ?>
+    <div class="control-group">
+        <?php echo $form->labelEx($model, 'galleryId'); ?>
+        <?php echo $form->dropDownList($model, 'galleryId', CHtml::listData(Gallery::model()->findAll(array('order' => 'position')), 'id', 'menuName'), array('class' => 'span12', 'empty' => 'пусто')); ?>
+        <?php echo $form->error($model, 'galleryId'); ?>
+    </div>
+    <?php
+}
+?>
 <div class="form-actions" style="text-align: right;">
     <button type="submit" name="yt0" class="btn btn-info">
         <i class="icon-ok bigger-110"></i>

@@ -35,13 +35,13 @@ class DefaultSettingsOperations extends CWidget
     }
     
     public function table() {
-        $model = new $this->data[modelName];
+        $model = new $this->data['modelName'];
         $data = $model->findAll(array('order' => 'position'));        
         $this->render('webroot.themes.'.Yii::app()->theme->name.'.widgets.DefaultSettingsOperations.table', array('data' => $data, 'linkToEdit' => $this->data['linkToEdit']));
     }
     
     public function editForm() {
-        $model = new $this->data[modelName];
+        $model = new $this->data['modelName'];
         $data = $model->findByPk($this->data[editId]);        
         $this->render('webroot.themes.'.Yii::app()->theme->name.'.widgets.DefaultSettingsOperations.editForm', array('data' => $data));
     }

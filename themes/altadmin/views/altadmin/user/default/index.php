@@ -1,5 +1,5 @@
 <?php
-/* @var $this NewsController */
+/* @var $this /protected/modules/altadmin/modules/user/controllers/DefaultController */
 $this->breadcrumbs = array(
     $this->breadcrumbsTitle
 );
@@ -75,8 +75,8 @@ if ($paginator) {
                 <td><?php echo $value->role; ?></td>                
                 <td>
                     <nobr>
-                        <a href="/altadmin/news/default/edit/<?php echo $value->id; ?>" title="Редактировать" rel="tooltip"><i class="icon-pencil"></i></a>&nbsp;                                                
-                        <a href="#" onclick="myModalDeleteTrRecord(<?php echo $value->id; ?>, '<?php echo $value->name; ?>');return false;" title="Удалить" rel="tooltip"><i class="icon-remove"></i></a>                                               
+                        <a href="/altadmin/user/default/edit/<?php echo $value->id; ?>" title="Редактировать" rel="tooltip"><i class="icon-pencil"></i></a>&nbsp;
+                        <a href="#" onclick="myModalDeleteTrRecord(<?php echo $value->id; ?>, '<?php echo $value->name; ?>');return false;" title="Удалить" rel="tooltip"><i class="icon-remove"></i></a>
                     </nobr>
                 </td>
             </tr>   
@@ -111,5 +111,5 @@ if ($paginator) {
 ?>
 </div>
 <?php
-$this->widget('application.modules.altadmin.widgets.DeleteOperations', array('method' => 'deleteTrRecord', 'data'=>array('url'=>'/altadmin/news/default/delete', 'body'=>'<p>Вы уверены что хотите удалить новость <b>"<span id="recordName"></span>"</b>?</p>', 'td' => 6)));
-$this->widget('application.modules.altadmin.widgets.DeleteOperations', array('method' => 'deleteMassRecord', 'data'=>array('url'=>'/altadmin/news/default/deleteMass', 'body'=>'<p>Вы уверены что хотите удалить выбранные записи?</p>', 'reload' => '/altadmin/news')));
+$this->widget('application.modules.altadmin.widgets.DeleteOperations', array('method' => 'deleteTrRecord', 'data'=>array('url'=>'/altadmin/user/default/delete', 'body'=>'<p>Вы уверены что хотите удалить пользователя <b>"<span id="recordName"></span>"</b>?</p>', 'td' => 6)));
+$this->widget('application.modules.altadmin.widgets.DeleteOperations', array('method' => 'deleteMassRecord', 'data'=>array('url'=>'/altadmin/user/default/deleteMass', 'body'=>'<p>Вы уверены что хотите удалить выбранные записи?</p>', 'reload' => '/altadmin/user')));

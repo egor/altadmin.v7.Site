@@ -37,7 +37,7 @@
         <!--inline styles related to this page-->
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 
-    <?php if (Yii::app()->controller->id != 'page') { ?>
+    <?php if (Yii::app()->controller->id != 'page' && (Yii::app()->controller->module->id != 'gallery' && Yii::app()->controller->id != 'default' && Yii::app()->controller->action->id != 'edit')) { ?>
             <!--[if !IE]>-->
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
             <!--<![endif]-->
@@ -49,8 +49,8 @@
                 <div class="container-fluid">
                     <a href="#" class="brand">
                         <small>
-                            <i class="icon-leaf"></i>
-                            Ace Admin
+                            <i class="icon-star"></i>
+                            Alt Admin
                         </small>
                     </a><!--/.brand-->
 
@@ -191,115 +191,10 @@
                                 </li>
                             </ul>
                         </li>
-
-                        <li class="green">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                <i class="icon-envelope icon-animated-vertical"></i>
-                                <span class="badge badge-success">5</span>
-                            </a>
-
-                            <ul class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-closer">
-                                <li class="nav-header">
-                                    <i class="icon-envelope-alt"></i>
-                                    5 Messages
-                                </li>
-
-                                <li>
-                                    <a href="#">
-                                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
-                                        <span class="msg-body">
-                                            <span class="msg-title">
-                                                <span class="blue">Alex:</span>
-                                                Ciao sociis natoque penatibus et auctor ...
-                                            </span>
-
-                                            <span class="msg-time">
-                                                <i class="icon-time"></i>
-                                                <span>a moment ago</span>
-                                            </span>
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#">
-                                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
-                                        <span class="msg-body">
-                                            <span class="msg-title">
-                                                <span class="blue">Susan:</span>
-                                                Vestibulum id ligula porta felis euismod ...
-                                            </span>
-
-                                            <span class="msg-time">
-                                                <i class="icon-time"></i>
-                                                <span>20 minutes ago</span>
-                                            </span>
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#">
-                                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
-                                        <span class="msg-body">
-                                            <span class="msg-title">
-                                                <span class="blue">Bob:</span>
-                                                Nullam quis risus eget urna mollis ornare ...
-                                            </span>
-
-                                            <span class="msg-time">
-                                                <i class="icon-time"></i>
-                                                <span>3:15 pm</span>
-                                            </span>
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#">
-                                        See all messages
-                                        <i class="icon-arrow-right"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="light-blue">
-                            <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                                <img class="nav-user-photo" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/avatars/user.jpg" alt="Jason's Photo" />
-                                <span class="user-info">
-                                    <small>Welcome,</small>
-                                    Jason
-                                </span>
-
-                                <i class="icon-caret-down"></i>
-                            </a>
-
-                            <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
-                                <li>
-                                    <a href="#">
-                                        <i class="icon-cog"></i>
-                                        Settings
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#">
-                                        <i class="icon-user"></i>
-                                        Profile
-                                    </a>
-                                </li>
-
-                                <li class="divider"></li>
-
-                                <li>
-                                    <a href="#">
-                                        <i class="icon-off"></i>
-                                        Logout
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                        <?php $this->widget('application.modules.altadmin.widgets.SComment', array('method' => 'notification')); ?>
+                        <?php $this->widget('application.modules.altadmin.widgets.Feedback', array('method' => 'feedbackNotification')); ?>
+                        <?php $this->widget('application.modules.altadmin.widgets.UserMenu'); ?>
+                        
                     </ul><!--/.ace-nav-->
                 </div><!--/.container-fluid-->
             </div><!--/.navbar-inner-->
@@ -350,25 +245,21 @@
 
             <div class="main-content">
                 <div class="breadcrumbs" id="breadcrumbs">
-                    <ul class="breadcrumb">
-                        <li>
-                            <i class="icon-home home-icon"></i>
-                            <a href="#">Home</a>
-
-                            <span class="divider">
-                                <i class="icon-angle-right arrow-icon"></i>
-                            </span>
-                        </li>
-
-                        <li>
-                            <a href="#">Other Pages</a>
-
-                            <span class="divider">
-                                <i class="icon-angle-right arrow-icon"></i>
-                            </span>
-                        </li>
-                        <li class="active">Blank Page</li>
-                    </ul><!--.breadcrumb-->
+                    <?php
+                    if ($this->breadcrumbs) {
+                        $this->widget('zii.widgets.CBreadcrumbs', array(
+                            'htmlOptions' => array('class' => 'breadcrumb'),
+                            'separator' => '<span class="divider">
+								<i class="icon-angle-right arrow-icon"></i>
+							</span>',
+                            'tagName' => 'ul',
+                            'activeLinkTemplate' => '<li><a href="{url}">{label}</a></li>',
+                            'inactiveLinkTemplate' => '<li class="active">{label}</li>',
+                            'homeLink' => '<li><i class="icon-home home-icon"></i><a href="' . Yii::app()->createUrl('altadmin') . '">Alt Admin</a></li>',
+                            'links' => $this->breadcrumbs
+                        ));
+                    }
+                    ?>
 
                     <div class="nav-search" id="nav-search">
                         <form class="form-search" />
@@ -448,8 +339,7 @@
         </a>
 
         <!--basic scripts-->
-
-        <?php if (Yii::app()->controller->id != 'page') { ?>
+        <?php if (Yii::app()->controller->id != 'page' && (Yii::app()->controller->module->id != 'gallery' && Yii::app()->controller->id != 'default' && Yii::app()->controller->action->id != 'edit')) { ?>
             <!--[if !IE]>-->
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
             <!--<![endif]-->
@@ -494,6 +384,8 @@
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/ace/flot/jquery.flot.pie.min.js"></script>
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/ace/flot/jquery.flot.resize.min.js"></script>-->
 
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/ace/bootstrap-tag.min.js"></script>
+        
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/ace/date-time/bootstrap-datepicker.min.js"></script>
 
         <!--ace scripts-->
@@ -507,6 +399,25 @@
                 $('.date-picker').datepicker().next().on(ace.click_event, function() {
                     $(this).prev().focus();
                 });
+                //we could just set the data-provide="tag" of the element inside HTML, but IE8 fails!
+				var tag_input = $('#form-field-tags');
+				if(! ( /msie\s*(8|7|6)/.test(navigator.userAgent.toLowerCase())) ) 
+					tag_input.tag({placeholder:tag_input.attr('placeholder')});
+				else {
+					//display a textarea for old IE, because it doesn't support this plugin or another one I tried!
+					tag_input.after('<textarea id="'+tag_input.attr('id')+'" name="'+tag_input.attr('name')+'" rows="3">'+tag_input.val()+'</textarea>').remove();
+					//$('#form-field-tags').autosize({append: "\n"});
+				}
+                
+                //we could just set the data-provide="tag" of the element inside HTML, but IE8 fails!
+				var tag_input = $('#ALTBlog_tags');
+				if(! ( /msie\s*(8|7|6)/.test(navigator.userAgent.toLowerCase())) ) 
+					tag_input.tag({placeholder:tag_input.attr('placeholder')});
+				else {
+					//display a textarea for old IE, because it doesn't support this plugin or another one I tried!
+					tag_input.after('<textarea id="'+tag_input.attr('id')+'" name="'+tag_input.attr('name')+'" rows="3">'+tag_input.val()+'</textarea>').remove();
+					//$('#form-field-tags').autosize({append: "\n"});
+				}
             });
         </script>
         <!--inline scripts related to this page-->

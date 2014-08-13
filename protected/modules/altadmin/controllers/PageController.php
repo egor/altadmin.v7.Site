@@ -432,6 +432,7 @@ class PageController extends Controller {
         if (isset($_POST['Page']) && !isset($_POST['yt2'])) {
             $model->attributes = $_POST['Page'];
             $model->date = DateOperations::dateToUnixTime($model->date);
+            $model->galleryId = $_POST['Page']['galleryId'];
             if ($model->date == 0) {
                 $model->date = time();
             }
@@ -444,6 +445,7 @@ class PageController extends Controller {
                 }
             } else {
                 Yii::app()->user->setFlash('error', 'Проверте поля еще раз.');
+                ALTLoger::saveLog('Редактирование страницы', 'Ошибка при редактировании страницы. id: ' . $model->id . ', заголовок: ' . $model->menuName .'.', 0, 'edit', 'page');
             }
         }
         $model->date = date('d.m.Y', $model->date);

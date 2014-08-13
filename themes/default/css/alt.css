@@ -1,0 +1,19 @@
+/* 
+    Document   : alt
+    Created on : 03.05.2014, 11:23:38
+    Author     : Администратор
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+.horizontal-menu-hr {
+  margin: 80px 0; /* Space out the Bootstrap <hr> more */
+  background: none;
+  border: none;
+  background-color: none;
+}
+
+.alt-right {
+    float: right;
+}

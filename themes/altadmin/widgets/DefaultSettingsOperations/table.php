@@ -18,7 +18,7 @@ if ($data) {
             <tr id="tr-<?php echo $value->id; ?>">
                 <td><small><a href="<?php echo $linkToEdit.$value->id; ?>" title="Редактировать" rel="tooltip"><?php echo $value->key; ?></a></small></td>
                 <td><?php echo $value->name; ?></td>
-                <td><?php echo $value->value; ?></td>
+                <td><?php echo ($value->fieldType == 'checkbox' ? ($value->value == 1 ? 'Да' : 'Нет') : $value->value); ?></td>
                 <td>
                     <nobr>
                         <a href="<?php echo $linkToEdit.$value->id; ?>" title="Редактировать" rel="tooltip"><i class="icon-pencil"></i></a>&nbsp;

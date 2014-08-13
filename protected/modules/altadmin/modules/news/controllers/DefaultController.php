@@ -26,6 +26,7 @@ class DefaultController extends Controller {
         $model = ALTNews::model()->with('newsSection')->findAll($criteria);
         $this->pageHeader = $this->pageTitle = $this->breadcrumbsTitle = 'Новости';
         $this->pageAddHeader = 'Список новостей';
+        ALTLoger::saveLog('Просмотр списка новостей', 'Список новостей, страница: ' . (isset($_GET['page']) && (int)$_GET['page'] > 1 ? $_GET['page'] : 1) . '.', 1, 'list', 'news');
         if (Yii::app()->request->isAjaxRequest) {
             $this->renderPartial('index', array('model' => $model, 'paginator' => $paginator));
         } else {
@@ -40,48 +41,15 @@ class DefaultController extends Controller {
         $this->breadcrumbsTitle = $this->pageHeader = $this->pageTitle = 'Добавление новости';
         $model = new ALTNews;
         if (isset($_POST['ALTNews']) && !isset($_POST['yt2'])) {
-            $model->attributes = $_POST['ALTNews'];
-            if (empty($model->url)) {
-                //если пустой урл, то транслитим из краткого заголовка
-                $model->url = Transliteration::ruToLat($model->menuName);
-            } else {
-                //если урл не пустой, то транслитим для исключения кириллицы
-                $model->url = Transliteration::ruToLat($model->url);
-            }
-            if (empty($model->date)) {
-                //если дата пустая, то устанавливаем текущюю
-                $model->date = DateOperations::dateToUnixTime(date('d.m.Y'));
-            } else {
-                //если не пустая, то переводим в unix время
-                $model->date = DateOperations::dateToUnixTime($model->date);
-            }
-            if (!Yii::app()->params['altadmin']['modules']['news']['section']) {
-                //Если разделы новостей выключены, то родителем устанавливаем основной раздел
-                $model->newsSectionId = 1;
-            }
-            if (Yii::app()->params['altadmin']['modules']['news']['tags']) {
-                //если включены теги, то обрабатываем их
-                //todo сохранение тегов
-            }
+            $model->attributes = $_POST['ALTNews']; 
+            $model->galleryId = $_POST['ALTNews']['galleryId'];
             if ($model->validate()) {
                 $model->save();
-                $model->image = ImagesBasicOperations::upload(
-                        $model->id, 
-                        '/images/news/list/', 
-                        'ALTNews', 
-                        'image', 
-                        Yii::app()->params['altadmin']['modules']['news']['image']['list']['width'], 
-                        Yii::app()->params['altadmin']['modules']['news']['image']['list']['height']
-                        );
-                $model->save();
                 Yii::app()->user->setFlash('success', 'Новость успешно добавлена.');
-                if (isset($_POST['yt1'])) {
-                    Yii::app()->request->redirect('/altadmin/news');
-                } else {
-                    Yii::app()->request->redirect('/altadmin/news/default/edit/' . $model->id);
-                }
+                Yii::app()->request->redirect((isset($_POST['yt1']) ? '/altadmin/news' : '/altadmin/news/default/edit/' . $model->id));
             } else {
                 Yii::app()->user->setFlash('error', 'Проверте поля еще раз.');
+                ALTLoger::saveLog('Добавление новости', 'Ошибка при добавлении новости. заголовок: ' . $model->menuName .'.', 0, 'add', 'news');
             }
         }
         $this->render('_form', array('model' => $model));
@@ -94,29 +62,19 @@ class DefaultController extends Controller {
      */
     public function actionEdit($id) {
         $model = ALTNews::model()->findByPk($id);
-        $oldImg = $model->image;
+        $model->oldListImage = $model->image;
         $this->breadcrumbsTitle = $this->pageHeader = $this->pageTitle = 'Редактирование новости';
         $this->pageAddHeader = $model->menuName;
         if (isset($_POST['ALTNews']) && !isset($_POST['yt2'])) {
             $model->attributes = $_POST['ALTNews'];
-            $model->date = DateOperations::dateToUnixTime($model->date);
-            if ($model->validate()) {
-                $model->image = ImagesBasicOperations::upload(
-                        $model->id, 
-                        '/images/news/list/', 
-                        'ALTNews', 
-                        'image', 
-                        Yii::app()->params['altadmin']['modules']['news']['image']['list']['width'], 
-                        Yii::app()->params['altadmin']['modules']['news']['image']['list']['height'],
-                        $oldImg
-                        );
+            $model->galleryId = $_POST['ALTNews']['galleryId'];
+            if ($model->validate()) {                
                 $model->save();
                 Yii::app()->user->setFlash('success', 'Новость успешно отредактирована.');
-                if (isset($_POST['yt1'])) {
-                    Yii::app()->request->redirect('/altadmin/news');
-                }
+                Yii::app()->request->redirect((isset($_POST['yt1']) ? '/altadmin/news' : '/altadmin/news/default/edit/' . $model->id));
             } else {
                 Yii::app()->user->setFlash('error', '<strong>Ошибка!</strong> Проверте поля еще раз.');
+                ALTLoger::saveLog('Редактирование новости', 'Ошибка при редактировании новости. id: ' . $model->id . ', заголовок: ' . $model->menuName .'.', 0, 'edit', 'news');
             }
         }
         $model->date = date('d.m.Y', $model->date);
@@ -129,10 +87,11 @@ class DefaultController extends Controller {
      * @param int $id - id новости
      */
     public function actionDelete($id) {
-        if (ALTNews::deleteRecord($id)) {
+        if (ALTNews::model()->findByPk($id)->delete()) {
             echo json_encode(array('error' => 0));
         } else {
-            echo json_encode(array('error' => 1, 'message' => 'Ошибка при удалении новости!'));
+            ALTLoger::saveLog('Удаление новости', 'Ошибка при удалении новости. id: ' . $id .'.', 0, 'delete', 'news');
+            echo json_encode(array('error' => 1));
         }        
     }    
     
@@ -152,21 +111,27 @@ class DefaultController extends Controller {
      * @param int $id - id новости
      */
     public function actionDeleteImage($id) {
-        if (ALTNews::deleteImage($id)) {
+        if (ALTNews::model()->findByPk($id)->deleteImage($id, 'image', '/images/news/list/')) {
+            ALTLoger::saveLog('Удаление изображения новости', 'Изображение новости успешно удалено. id: ' . $id . '.', 1, 'delete image', 'news');
             echo json_encode(array('error' => 0));
         } else {
-            echo json_encode(array('error' => 1, 'message' => '<p>Файл не найден!</p>'));
+            ALTLoger::saveLog('Удаление изображения новости', 'Ошибка при удалении изображения новости. Не удалось удалить изображение. id: ' . $id .'.', 0, 'delete image', 'news');
+            echo json_encode(array('error' => 1));
         }
     }
 
+    /**
+     * Массовое удаление новостей
+     */
     public function actionDeleteMass() {
         if ($_POST) {
             foreach ($_POST as $key => $value) {
-                ALTNews::deleteRecord((int)$key);
+                ALTNews::model()->findByPk((int)$key)->delete();
             }
             echo json_encode(array('error' => 0));
         } else {
             echo json_encode(array('error' => 1, 'message' => '<p>Нет данных для удаления!</p>'));
+            ALTLoger::saveLog('Массовое удаление новостей', 'Нет данных для удаления', 0, 'mass delete', 'news');
         }        
     }
 }

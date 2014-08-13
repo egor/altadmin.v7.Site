@@ -22,22 +22,18 @@ $form = $this->beginWidget('CActiveForm', array(
         //'errorMessageCssClass' => 'error-txt',
         ));
 ?>  
-<div class="control-group">
-    <?php echo $form->labelEx($model, 'email'); ?>
-    <?php echo $form->textField($model, 'email', array('class' => 'span12')); ?>
-    <?php echo $form->error($model, 'email'); ?>
-</div>
 <div class="control-group" style="overflow: hidden;">
     <div style="float: left; width: 50%;">
-        <?php echo $form->labelEx($model, 'password'); ?>
-        <?php echo $form->passwordField($model, 'password', array('class' => 'span11')); ?>
-        <?php echo $form->error($model, 'password'); ?>
+        <?php echo $form->labelEx($model, 'email'); ?>
+        <?php echo $form->textField($model, 'email', array('class' => 'span11')); ?>
+        <?php echo $form->error($model, 'email'); ?>
     </div>
     <div style="float: left; width: 50%;">
-        <?php echo $form->labelEx($model, 'password2'); ?>
-        <?php echo $form->passwordField($model, 'password2', array('class' => 'span12')); ?>
-        <?php echo $form->error($model, 'password2'); ?>
-    </div>
+        <?php echo $form->labelEx($model, 'password'); ?>
+        <?php echo $form->passwordField($model, 'password', array('class' => 'span12')); ?>
+        <?php echo $form->error($model, 'password'); ?>
+        <small>Если не нужно изменять пароль, оставьте поле пустым</small>
+    </div>    
 </div>
 <div class="control-group" style="overflow: hidden;">
     <div style="float: left; width: 50%;">
