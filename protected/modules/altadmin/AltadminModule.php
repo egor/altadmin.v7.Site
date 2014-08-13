@@ -12,14 +12,22 @@ class AltadminModule extends CWebModule
 		$this->setImport(array(
 			'altadmin.models.*',            
 			'altadmin.components.*',
+            'altadmin.modules.user.models.*',
+            'altadmin.modules.loger.models.*',
+            'altadmin.modules.tags.models.*',
+            'altadmin.modules.comment.models.*',
+            'altadmin.modules.gallery.models.*',
 		));
-        $this->modules=array('news', 'portfolio', 'widget', 'user');
+        $this->modules=array('news', 'blog', 'portfolio', 'widget', 'user', 'loger', 'comment', 'gallery');
 	}
 
 	public function beforeControllerAction($controller, $action)
 	{
 		if(parent::beforeControllerAction($controller, $action))
 		{
+            if (Yii::app()->controller->id == 'uploadify') {
+                return true;
+            }
             //Если гость или не имеет роль админа то на главную CMS
             if ((Yii::app()->user->isGuest || (Yii::app()->user->role != 'admin')) && Yii::app()->controller->id != 'default') {
                 Yii::app()->request->redirect('/altadmin');

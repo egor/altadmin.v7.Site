@@ -52,4 +52,25 @@ class ImageDataBehavior extends CActiveRecordBehavior {
     public function deleteImage($id, $fieldName, $folder) {
         return ImagesBasicOperations::delete($id, $folder, $this->modelName, $fieldName);
     }
+    
+    public function deleteGalleryImage($folder, $file) {
+
+        //$model = new $modelName;
+        //$fileName = $model->findByPk($id);
+        //$model->updateByPk($id, array($fieldName => ''));
+        
+        //if (!empty($this->image) && file_exists(Yii::getPathOfAlias('webroot') . $folder . $this->image)) {
+        //    unlink(Yii::getPathOfAlias('webroot') . $folder . $this->image);
+        //}
+        if (file_exists(Yii::getPathOfAlias('webroot') . $folder . 'small/' . $file)) {
+            unlink(Yii::getPathOfAlias('webroot') . $folder . 'small/' . $file);
+        }
+        if (file_exists(Yii::getPathOfAlias('webroot') . $folder . 'big/' . $file)) {
+            unlink(Yii::getPathOfAlias('webroot') . $folder . 'big/' . $file);
+        }
+        if (file_exists(Yii::getPathOfAlias('webroot') . $folder . 'real/' .$file)) {
+            unlink(Yii::getPathOfAlias('webroot') . $folder . 'real/' . $file);
+        }
+        return true;
+    }
 }

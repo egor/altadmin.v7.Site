@@ -9,7 +9,8 @@
         <link rel="shortcut icon" href="<?php echo Yii::app()->theme->baseUrl; ?>/ico/favicon.ico">
 
         <title><?php echo $this->pageTitle; ?></title>
-
+        <meta name="keywords" content="<?php echo $this->metaKeywords; ?>" />
+        <meta name="description" content="<?php echo $this->metaDescription; ?>" />
         <!-- Bootstrap core CSS -->
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.css" rel="stylesheet">
 
@@ -42,14 +43,14 @@
                 'htmlOptions' => array('class' => 'breadcrumb'),
             ));
             ?>
-            <?php echo $content; ?>
+            <div class="row"><?php echo $content; ?></div>
             <hr class="featurette-divider">
             <footer>
                 <p class="pull-right"><a href="#">Back to top</a></p>
                 <p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
             </footer>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script>
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/docs.min.js"></script>
     </body>

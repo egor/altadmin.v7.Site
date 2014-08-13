@@ -12,6 +12,23 @@
 class DefaultController extends Controller {
 
     /**
+     * Действие перед экшенами
+     * 
+     * @param string $action
+     * @return boolean
+     * @throws CHttpException
+     */
+    protected function beforeAction($action) {
+        parent::beforeAction($action);
+        if (Yii::app()->user->role == 'admin' && Yii::app()->params['altadmin']['modules']['portfolio']['work']) {
+            return true;
+        } else {
+            throw new CHttpException(403, 'Доступ запрещен!');
+            return false;
+        }
+    }
+
+    /**
      * Список пользователей
      */
     public function actionIndex() {
@@ -26,6 +43,7 @@ class DefaultController extends Controller {
         $model = ALTUser::model()->findAll($criteria);
         $this->pageHeader = $this->pageTitle = $this->breadcrumbsTitle = 'Пользователи';
         $this->pageAddHeader = 'Список пользователей';
+        ALTLoger::saveLog('Просмотр списка пользователей', 'Список пользователей, страница: ' . (isset($_GET['page']) && (int)$_GET['page'] > 1 ? $_GET['page'] : 1) . '.', 1, 'list', 'user');
         if (Yii::app()->request->isAjaxRequest) {
             $this->renderPartial('index', array('model' => $model, 'paginator' => $paginator));
         } else {
@@ -40,123 +58,91 @@ class DefaultController extends Controller {
         $this->breadcrumbsTitle = $this->pageHeader = $this->pageTitle = 'Добавление пользователя';
         $model = new ALTUser;
         if (isset($_POST['ALTUser']) && !isset($_POST['yt2'])) {
-            $model->attributes = $_POST['ALTUser'];                                              
-            if ($model->validate()) {
-                $model->password = md5($model->password);
-                $model->date = time();
-                $model->save();
-                $model->image = ImagesBasicOperations::upload(
-                        $model->id, 
-                        '/images/user/list/', 
-                        'ALTUser', 
-                        'image', 
-                        Yii::app()->params['altadmin']['modules']['user']['image']['list']['width'], 
-                        Yii::app()->params['altadmin']['modules']['user']['image']['list']['height']
-                        );                
-                $model->save();
+            $model->attributes = $_POST['ALTUser'];
+            if ($model->save()) {
                 Yii::app()->user->setFlash('success', 'Пользователь успешно добавлен.');
                 if (isset($_POST['yt1'])) {
                     Yii::app()->request->redirect('/altadmin/user');
                 } else {
                     Yii::app()->request->redirect('/altadmin/user/default/edit/' . $model->id);
                 }
-            } else {
+            } else {                
                 Yii::app()->user->setFlash('error', 'Проверте поля еще раз.');
+                ALTLoger::saveLog('Добавление пользователя', 'Ошибка при добавлении пользователя. имя: ' . $model->name . ' ' . $model->surname, 0, 'add', 'user');
             }
         }
         $this->render('_form', array('model' => $model));
     }
 
     /**
-     * Редактирование работы
+     * Редактирование пользователя
      * 
-     * @param int $id - id новости
+     * @param integer $id - id записи
      */
     public function actionEdit($id) {
-        $model = ALTPortfolio::model()->findByPk($id);
-        $oldImg = $model->image;
-        $oldImgDetail = $model->imageDetail;
-        $this->breadcrumbsTitle = $this->pageHeader = $this->pageTitle = 'Редактирование работы';
-        $this->pageAddHeader = $model->menuName;
-        if (isset($_POST['ALTPortfolio']) && !isset($_POST['yt2'])) {
-            $model->attributes = $_POST['ALTPortfolio'];
-            $model->date = DateOperations::dateToUnixTime($model->date);
-            if ($model->validate()) {
-                $model->image = ImagesBasicOperations::upload(
-                        $model->id, 
-                        '/images/portfolio/list/', 
-                        'ALTPortfolio', 
-                        'image', 
-                        Yii::app()->params['altadmin']['modules']['portfolio']['image']['list']['width'], 
-                        Yii::app()->params['altadmin']['modules']['portfolio']['image']['list']['height'],
-                        $oldImg
-                        );
-                $model->imageDetail = ImagesBasicOperations::upload(
-                        $model->id, 
-                        '/images/portfolio/detail/', 
-                        'ALTPortfolio', 
-                        'imageDetail', 
-                        Yii::app()->params['altadmin']['modules']['portfolio']['image']['detail']['width'], 
-                        Yii::app()->params['altadmin']['modules']['portfolio']['image']['detail']['height'],
-                        $oldImgDetail
-                        );
-                $model->save();
-                Yii::app()->user->setFlash('success', 'Работа успешно отредактирована.');
+        $model = ALTUser::model()->findByPk($id);
+        $model->oldImage = $model->image;
+        $model->oldPassword = $model->password;
+        $this->breadcrumbsTitle = $this->pageHeader = $this->pageTitle = 'Редактирование пользователя';
+        $this->pageAddHeader = $model->name . ' ' . $model->surname;
+        if (isset($_POST['ALTUser']) && !isset($_POST['yt2'])) {
+            $model->attributes = $_POST['ALTUser'];
+            if ($model->save()) {
+                Yii::app()->user->setFlash('success', 'Пользователь успешно отредактирован.');
                 if (isset($_POST['yt1'])) {
-                    Yii::app()->request->redirect('/altadmin/portfolio');
+                    Yii::app()->request->redirect('/altadmin/user');
                 }
             } else {
-                Yii::app()->user->setFlash('error', '<strong>Ошибка!</strong> Проверте поля еще раз.');
+                Yii::app()->user->setFlash('error', 'Проверте поля еще раз.');
+                ALTLoger::saveLog('Редактирование пользователя', 'Ошибка при редактировании пользователя. id: ' . $model->id . ', имя: ' . $model->name . ' ' . $model->surname .'.', 0, 'edit', 'user');
             }
         }
-        $model->date = date('d.m.Y', $model->date);
+        $model->password = '';
         $this->render('_form', array('model' => $model, 'edit' => 1));
     }
 
     /**
-     * Удаление работы
+     * Удаление пользователя
      * 
-     * @param int $id - id работы
+     * @param int $id - id записи
      */
     public function actionDelete($id) {
-        if (ALTPortfolio::deleteRecord($id)) {
+        if (ALTUser::model()->findByPk($id)->delete()) {
             echo json_encode(array('error' => 0));
         } else {
-            echo json_encode(array('error' => 1, 'message' => 'Ошибка при удалении новости!'));
-        }        
-    }    
-    
-    protected function beforeAction($action) {
-        parent::beforeAction($action);
-        if (Yii::app()->user->role == 'admin' && Yii::app()->params['altadmin']['modules']['portfolio']['work']) {
-            return true;
-        } else {
-            throw new CHttpException(403, 'Доступ запрещен!');
-            return false;
-        }
-    }    
-
-    /**
-     * Удаление изображения новости
-     * 
-     * @param int $id - id новости
-     */
-    public function actionDeleteImage($id) {
-        if (ALTPortfolio::deleteImage($id)) {
-            echo json_encode(array('error' => 0));
-        } else {
-            echo json_encode(array('error' => 1, 'message' => '<p>Файл не найден!</p>'));
+            ALTLoger::saveLog('Удаление пользователя', 'Ошибка при удалении пользователя. id: ' . $id .'.', 0, 'add', 'user');
+            echo json_encode(array('error' => 1));
         }
     }
 
+    /**
+     * Удаление изображения пользователя
+     * 
+     * @param integer $id - id записи
+     */
+    public function actionDeleteImage($id) {
+        if (ALTUser::model()->findByPk($id)->deleteImage($id, 'image', '/images/user/list/')) {
+            ALTLoger::saveLog('Удаление изображения пользователя', 'Изображение пользователя успешно удалено. id: ' . $id . '.', 1, 'delete image', 'user');
+            echo json_encode(array('error' => 0));
+        } else {
+            echo json_encode(array('error' => 1));
+            ALTLoger::saveLog('Удаление изображения пользователя', 'Ошибка при удалении изображения пользователя. Не удалось удалить изображение пользователя. id: ' . $id . '.', 1, 'delete image', 'user');
+        }
+    }
+
+    /**
+     * Массовое удаление пользователей
+     */
     public function actionDeleteMass() {
         if ($_POST) {
             foreach ($_POST as $key => $value) {
-                ALTPortfolio::deleteRecord((int)$key);
+                ALTUser::model()->findByPk((int) $key)->delete();
             }
             echo json_encode(array('error' => 0));
         } else {
+            ALTLoger::saveLog('Массовое удаление пользователей', 'Нет данных для удаления', 0, 'mass delete', 'user');
             echo json_encode(array('error' => 1, 'message' => '<p>Нет данных для удаления!</p>'));
-        }        
+        }
     }
+
 }

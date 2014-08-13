@@ -49,9 +49,9 @@ $form = $this->beginWidget('CActiveForm', array(
 <div class="control-group"
 <?php echo $form->labelEx($model, 'newsSectionId'); ?>
 <?php
-echo $form->dropDownList($model, 'newsSectionId', CHtml::listData(NewsSection::model()->findAll(array('order' => 'position')), 'id', 'name'), array('class' => 'span12', 'disabled'=>(!Yii::app()->params['altadmin']['modules']['news']['section'] ? 'disabled' : '')));
+echo $form->dropDownList($model, 'newsSectionId', CHtml::listData(NewsSection::model()->findAll(array('order' => 'position')), 'id', 'name'), array('class' => 'span12', 'disabled' => (!Yii::app()->params['altadmin']['modules']['news']['section'] ? 'disabled' : '')));
 ?>
-     <?php echo $form->error($model, 'newsSectionId'); ?>
+<?php echo $form->error($model, 'newsSectionId'); ?>
 </div>
 <div class="control-group">
     <?php echo $form->labelEx($model, 'menuName'); ?>
@@ -109,6 +109,18 @@ echo $form->dropDownList($model, 'newsSectionId', CHtml::listData(NewsSection::m
     <?php echo $form->textArea($model, 'text', array('class' => 'span12', 'rows' => 20, 'id' => 'editor-text')); ?>
     <?php echo $form->error($model, 'text'); ?>
 </div>
+
+<?php
+if (Yii::app()->params['altadmin']['modules']['gallery']['work'] == 1 && Yii::app()->params['altadmin']['modules']['news']['gallery'] == 1) {
+    ?>
+    <div class="control-group">
+        <?php echo $form->labelEx($model, 'galleryId'); ?>
+        <?php echo $form->dropDownList($model, 'galleryId', CHtml::listData(Gallery::model()->findAll(array('order' => 'position')), 'id', 'menuName'), array('class' => 'span12', 'empty' => 'пусто')); ?>
+        <?php echo $form->error($model, 'galleryId'); ?>
+    </div>
+    <?php
+}
+?>
 
 <h4>Изображение</h4>
 <?php
@@ -188,5 +200,5 @@ if (isset($edit) && $edit == 1) {
 <?php
 $this->endWidget();
 if (isset($edit)) {
-    $this->widget('application.modules.altadmin.widgets.DeleteOperations', array('method' => 'deleteImage', 'data'=>array('id'=>$model->id, 'url'=>'/altadmin/news/default/deleteImage', 'body'=>'<p>Вы уверены что хотите удалить изображение списка?</p>', 'pathToImage' => '/images/news/list/'.$model->image)));
+    $this->widget('application.modules.altadmin.widgets.DeleteOperations', array('method' => 'deleteImage', 'data' => array('id' => $model->id, 'url' => '/altadmin/news/default/deleteImage', 'body' => '<p>Вы уверены что хотите удалить изображение списка?</p>', 'pathToImage' => '/images/news/list/' . $model->image)));
 }

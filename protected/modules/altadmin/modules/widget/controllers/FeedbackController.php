@@ -18,7 +18,7 @@ class FeedbackController extends Controller {
         $condition = 't.trash=0';
         $criteria = new CDbCriteria();
         $criteria->condition = $condition;
-        $criteria->order = 't.date DESC, t.id DESC';
+        $criteria->order = 't.new DESC, t.date DESC, t.id DESC';
         $count = ALTFeedbackStorage::model()->count($criteria);
         $paginator = new CPagination($count);
         $paginator->pageSize = Yii::app()->params['altadmin']['modules']['widget']['feedback']['limit'];

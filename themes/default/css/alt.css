@@ -13,3 +13,7 @@
   border: none;
   background-color: none;
 }
+
+.alt-right {
+    float: right;
+}

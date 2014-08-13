@@ -14,6 +14,22 @@ $form = $this->beginWidget('CActiveForm', array(
     ),
         //'errorMessageCssClass' => 'error-txt',
         ));
+if ($data->fieldType == 'checkbox') {
+?>
+<div class="control-group">    
+    <div class="controls">
+        <div class="row-fluid">
+            <div class="span3">
+                <label>
+                    <?php echo $form->checkBox($data, 'value', array('class' => 'ace-switch')); ?>
+                    <span class="lbl"><?php echo $form->label($data, 'value', array('style' => 'float:left; margin-left:10px;')); ?></span>
+                </label>
+            </div>        
+        </div>
+    </div>
+</div>   
+<?php
+} else {
 ?>
    
 <div class="control-group">
@@ -21,6 +37,9 @@ $form = $this->beginWidget('CActiveForm', array(
     <?php echo $form->textField($data, 'value', array('class' => 'span12')); ?>
     <?php echo $form->error($data, 'value'); ?>
 </div>
+<?php
+}
+?>
 <div class="form-actions" style="text-align: right;">
     <button type="submit" name="yt0" class="btn btn-info">
         <i class="icon-ok bigger-110"></i>

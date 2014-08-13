@@ -1,67 +1,69 @@
 <?php
 
 /**
- * This is the model class for table "user".
- *
- * The followings are the available columns in table 'user':
- * @property integer $id
- * @property string $email
- * @property string $password
- * @property string $name
- * @property string $surname
- * @property string $phone
- * @property integer $date
- * @property integer $status
- * @property string $role
- * @property string $sex
+ * User. Модель для работы с таблицей "user"
+ * 
+ * @package Front
+ * @category User
+ * @author Egor Rihnov <egor.developer@gmail.com>
+ * @version 1.0
+ * @copyright Copyright (c) 2014, Egor Rihnov
  */
 class User extends CActiveRecord {
 
-    public $password2;
-    
     /**
-     * @return string the associated database table name
+     * Повторение пароля
+     * 
+     * @var string
+     */
+    public $password2;
+
+    /**
+     * Имя текущей таблицы
+     * 
+     * @return строка соответствующим именем таблицы базы данных
      */
     public function tableName() {
         return 'user';
     }
 
     /**
-     * @return array validation rules for model attributes.
+     * Правила валидации
+     * 
+     * @return array правила проверки для атрибутов модели
      */
     public function rules() {
-        // NOTE: you should only define rules for those attributes that
-        // will receive user inputs.
         return array(
             //array('email, password, name, surname, phone, date, status, role, sex, image', 'required'),
-            array('email, password, password2, name, surname, role', 'required'),
+            array('email, password, name, surname, role', 'required'),
+            array('email, password, password2, name, surname, role', 'required', 'on' => 'registration'),
             array('email, password, name, surname, phone, date, status, role, sex, image', 'safe'),
             array('date, status', 'numerical', 'integerOnly' => true),
             array('email, password, name, surname, phone, image', 'length', 'max' => 255),
             array('email', 'unique'),
             array('email', 'email'),
             array('password', 'length', 'min' => '5'),
-            array('password2', 'compare', 'compareAttribute' => 'password'),
+            array('password2', 'compare', 'compareAttribute' => 'password', 'on' => 'registration'),
             array('role', 'length', 'max' => 30),
             array('sex', 'length', 'max' => 20),
-            // The following rule is used by search().
-            // @todo Please remove those attributes that should not be searched.
             array('id, email, password, name, surname, phone, date, status, role, sex, image', 'safe', 'on' => 'search'),
         );
     }
 
     /**
-     * @return array relational rules.
+     * Связи таблицы
+     * 
+     * @return array связи таблицы
      */
     public function relations() {
-        // NOTE: you may need to adjust the relation name and the related
-        // class name for the relations automatically generated below.
         return array(
         );
     }
 
     /**
-     * @return array customized attribute labels (name=>label)
+     * Метки атрибутов
+     * 
+     * @return array индивидуальные метки атрибутов (name=>label)
      */
     public function attributeLabels() {
         return array(
@@ -115,13 +117,28 @@ class User extends CActiveRecord {
     }
 
     /**
-     * Returns the static model of the specified AR class.
-     * Please note that you should have this exact method in all your CActiveRecord descendants!
-     * @param string $className active record class name.
-     * @return User the static model class
+     * Возвращает статическую модель указанного класса AR
+     * 
+     * @param string $className active record имя класса
+     * @return User статическая модель класса
      */
     public static function model($className = __CLASS__) {
         return parent::model($className);
+    }
+
+    /**
+     * Проверка существования email в БД
+     * 
+     * @param string $email - email
+     * @return boolean
+     */
+    public static function issetEmail($email) {
+        $model = User::model()->find(array('condition' => '`email`="' . $email . '"'));
+        if ($model) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

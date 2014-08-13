@@ -22,7 +22,21 @@
  */
 class Page extends CActiveRecord {
 
-    const ADMIN_TREE_CONTAINER_ID = 'categorydemo_admin_tree';
+    const ADMIN_TREE_CONTAINER_ID = 'categorydemo_admin_tree';    
+
+    /**
+     * ID галереи
+     * 
+     * @var integer
+     */
+    public $galleryId = 0;
+
+    /**
+     * Тип записи
+     * 
+     * @var string
+     */
+    public $recordType = 'page';
 
     /**
      * Returns the static model of the specified AR class.
@@ -48,14 +62,14 @@ class Page extends CActiveRecord {
         // will receive user inputs.
         return array(
             //array('root, lft, rgt, level, url, menuName, header, shortText, text, metaTitle, metaKeywords, metaDescription, visibility, date', 'required'),
-            array('url, menuName, header, metaTitle', 'required', 'on'=>'edit'),
-            array('root, lft, rgt, level, url, menuName, header, shortText, text, metaTitle, metaKeywords, metaDescription, visibility, inMain, date, module, controller, action, system, image, imageAlt, imageTitle, showDate, addMenuName', 'safe'),
-            array('root, lft, rgt, level, visibility, inMain, date, inMenu, showDate', 'numerical', 'integerOnly' => true),
+            array('url, menuName, header, metaTitle', 'required', 'on' => 'edit'),
+            array('root, lft, rgt, level, url, menuName, header, shortText, text, metaTitle, metaKeywords, metaDescription, visibility, inMain, date, module, controller, action, system, image, imageAlt, imageTitle, showDate, addMenuName, comment', 'safe'),
+            array('root, lft, rgt, level, visibility, inMain, date, inMenu, showDate, comment', 'numerical', 'integerOnly' => true),
             array('url, menuName, header, metaTitle, metaKeywords, module, controller, action, system, image, imageAlt, imageTitle, addMenuName', 'length', 'max' => 255),
             array('url', 'unique'),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('id, root, lft, rgt, level, url, menuName, header, shortText, text, metaTitle, metaKeywords, metaDescription, visibility, inMain, date, module, controller, action, system, image, imageAlt, imageTitle, showDate, addMenuName', 'safe', 'on' => 'search'),
+            array('id, root, lft, rgt, level, url, menuName, header, shortText, text, metaTitle, metaKeywords, metaDescription, visibility, inMain, date, module, controller, action, system, image, imageAlt, imageTitle, showDate, addMenuName, comment', 'safe', 'on' => 'search'),
         );
     }
 
@@ -90,9 +104,9 @@ class Page extends CActiveRecord {
             'visibility' => 'Выводить',
             'inMain' => 'Выводить в меню',
             'date' => 'Дата',
-            'module' => '', 
-            'controller' => '', 
-            'action'=> '', 
+            'module' => '',
+            'controller' => '',
+            'action' => '',
             'system' => '',
             'inMenu' => 'Выводить в меню',
             'image' => 'Выводить в меню',
@@ -100,6 +114,8 @@ class Page extends CActiveRecord {
             'imageTitle' => 'Выводить в меню',
             'showDate' => 'Выводить дату',
             'addMenuName' => 'Текст под названием пункта меню',
+            'comment' => 'Выводить блок комментариев',
+            'galleryId' => 'Вывести галерею',
         );
     }
 
@@ -139,8 +155,9 @@ class Page extends CActiveRecord {
         $criteria->compare('imageTitle', $this->imageTitle);
         $criteria->compare('showDate', $this->showDate);
         $criteria->compare('addMenuName', $this->addMenuName);
-        
-        
+        $criteria->compare('comment', $this->comment);
+
+
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
@@ -181,57 +198,57 @@ class Page extends CActiveRecord {
             echo CHtml::openTag('li', array('id' => 'node_' . $page->id, 'rel' => $page->menuName));
             //echo '<div id="vakata-contextmenu" style="visibility: visible; display: block; left: 407.5px; top: 194px;" class="jstree-default-context"><ul><li class=""><ins>&nbsp;</ins><a rel="create" href="#">Создать</a></li><li class=""><ins>&nbsp;</ins><a rel="rename" href="#">Переименовать</a></li><li class=""><ins>&nbsp;</ins><a rel="remove" href="#">Удалить</a></li><li class=""><ins>&nbsp;</ins><a rel="edit_page" href="#">Редактировать</a></li></ul></div>';
             //if (in_array($page->url, Yii::app()->params['altadmin']['rootPageUrl'])) {//$page->url != 'horizontal_menu') {
-                echo CHtml::openTag('a', array('href' => '#', 'ondblclick' => 'window.location=\'/altadmin/page/edit/' . $page->id . '\''));
+            echo CHtml::openTag('a', array('href' => '#', 'ondblclick' => 'window.location=\'/altadmin/page/edit/' . $page->id . '\''));
             //} else {
             //    echo CHtml::openTag('a', array('href' => '#'));
             //}
             //echo CHtml::tag('small', array("class"=>"", 'title' => 'Редактировать страницу'), '('.$page->pages_id.')');                
             //echo CHtml::encode(' ');
             echo CHtml::encode($page->menuName);
-            
+
             //echo CHtml::encode(' '.$page->menuName);
             //echo $page->url.'|'.Yii::app()->params['altadmin']['systemPageUrl']['root']; die;
             //echo in_array($page->url, Yii::app()->params['altadmin']['systemPageUrl']['root']); die;
             //if (!in_array($page->url, Yii::app()->params['altadmin']['systemPageUrl'])) {
             if (!in_array($page->id, Yii::app()->params['altadmin']['systemPageId'])) {
-            echo CHtml::openTag('span', array('class'=>'', 'style'=>'float:right;'));
-            echo CHtml::tag('i', array("class"=>"icon-pencil icon-pointer", 'onclick' => 'window.location=\'/altadmin/page/edit/' . $page->id . '\'', 'title' => 'Редактировать страницу'));
-            echo CHtml::encode(' ');
-            if ($page->system == 1) {
-                echo CHtml::tag('i', array("class"=>"icon-minus-sign", 'title'=>'Нельзя удалить системную страницу'));
+                echo CHtml::openTag('span', array('class' => '', 'style' => 'float:right;'));
+                echo CHtml::tag('i', array("class" => "icon-pencil icon-pointer", 'onclick' => 'window.location=\'/altadmin/page/edit/' . $page->id . '\'', 'title' => 'Редактировать страницу'));
+                echo CHtml::encode(' ');
+                if ($page->system == 1) {
+                    echo CHtml::tag('i', array("class" => "icon-minus-sign", 'title' => 'Нельзя удалить системную страницу'));
+                } else {
+                    echo CHtml::tag('i', array("class" => "icon-remove icon-pointer", 'onclick' => 'modalConfirmedDeletePage(\'' . $page->id . '\', \'' . $page->menuName . '\')', 'rel' => 'remove', 'title' => 'Удалить страницу'));
+                }
+                echo CHtml::encode(' ');
+                if ($page->visibility == 1) {
+                    echo CHtml::tag('i', array("class" => "icon-eye-open icon-pointer", 'onclick' => 'window.location=\'/altadmin/page/edit/' . $page->id . '\'', 'title' => 'Выводить страницу на сайте'));
+                } else {
+                    echo CHtml::tag('i', array("class" => "icon-eye-close icon-pointer", 'onclick' => 'window.location=\'/altadmin/page/edit/' . $page->id . '\'', 'title' => 'Не выводить страницу на сайте'));
+                }
+
+                echo CHtml::encode(' ');
+                echo CHtml::tag('i', array("class" => "icon-info-sign icon-pointer", 'title' => 'ID раздела: ' . $page->id));
+                if ($page->level == 3) {
+                    if ($page->inMain == 1) {
+                        echo CHtml::tag('i', array("class" => "icon-eye-open icon-pointer", 'onclick' => 'window.location=\'/altadmin/page/edit/' . $page->id . '\'', 'title' => 'Выводить страницу на сайте'));
+                    } else {
+                        echo CHtml::tag('i', array("class" => "icon-eye-close icon-pointer", 'onclick' => 'window.location=\'/altadmin/page/edit/' . $page->id . '\'', 'title' => 'Не выводить страницу на сайте'));
+                    }
+                } else {
+                    echo CHtml::tag('i', array("class" => "icon-pointer"));
+                }
+
+                echo CHtml::encode(' ');
+                if ($page->system == 1) {
+                    echo CHtml::tag('i', array("class" => "icon-cog icon-pointer", 'onclick' => 'window.location=\'/altadmin/page/edit/' . $page->id . '\'', 'title' => 'Настроить модуль'));
+                } else {
+                    echo CHtml::tag('i', array("class" => "icon-pointer"));
+                }
+
+                echo CHtml::closeTag('span');
             } else {
-                echo CHtml::tag('i', array("class"=>"icon-remove icon-pointer", 'onclick'=>'modalConfirmedDeletePage(\''.$page->id.'\', \''.$page->menuName.'\')', 'rel'=>'remove', 'title'=>'Удалить страницу'));
-            }
-            echo CHtml::encode(' ');
-            if ($page->visibility == 1) {
-                echo CHtml::tag('i', array("class"=>"icon-eye-open icon-pointer", 'onclick' => 'window.location=\'/altadmin/page/edit/' . $page->id . '\'', 'title' => 'Выводить страницу на сайте'));
-            } else {
-                echo CHtml::tag('i', array("class"=>"icon-eye-close icon-pointer", 'onclick' => 'window.location=\'/altadmin/page/edit/' . $page->id . '\'', 'title' => 'Не выводить страницу на сайте'));
-            }
-            
-            echo CHtml::encode(' ');
-            echo CHtml::tag('i', array("class"=>"icon-info-sign icon-pointer", 'title' => 'ID раздела: '.$page->id));
-            if($page->level == 3) {
-            if ($page->inMain == 1) {
-                echo CHtml::tag('i', array("class"=>"icon-eye-open icon-pointer", 'onclick' => 'window.location=\'/altadmin/page/edit/' . $page->id . '\'', 'title' => 'Выводить страницу на сайте'));
-            } else {
-                echo CHtml::tag('i', array("class"=>"icon-eye-close icon-pointer", 'onclick' => 'window.location=\'/altadmin/page/edit/' . $page->id . '\'', 'title' => 'Не выводить страницу на сайте'));
-            }
-            } else {
-                echo CHtml::tag('i', array("class"=>"icon-pointer"));
-            }
-            
-            echo CHtml::encode(' ');
-            if ($page->system == 1) {
-                echo CHtml::tag('i', array("class"=>"icon-cog icon-pointer", 'onclick' => 'window.location=\'/altadmin/page/edit/' . $page->id . '\'', 'title' => 'Настроить модуль'));
-            } else {
-                echo CHtml::tag('i', array("class"=>"icon-pointer"));
-            }
-                        
-            echo CHtml::closeTag('span');
-            } else {
-                echo CHtml::openTag('span', array('class'=>'', 'style'=>'float:right;'));
-                echo CHtml::tag('i', array("class"=>"icon-cog icon-pointer", 'onclick' => 'window.location=\'/altadmin/page/edit/' . $page->id . '\'', 'title' => 'Настроить модуль'));
+                echo CHtml::openTag('span', array('class' => '', 'style' => 'float:right;'));
+                echo CHtml::tag('i', array("class" => "icon-cog icon-pointer", 'onclick' => 'window.location=\'/altadmin/page/edit/' . $page->id . '\'', 'title' => 'Настроить модуль'));
                 echo CHtml::closeTag('span');
             }
             echo CHtml::closeTag('a');
@@ -244,9 +261,8 @@ class Page extends CActiveRecord {
         }
     }
 
-    
     public static function printSiteULTree() {
-        $pages = Page::model()->findAll(array('condition'=>'level>"2" AND visibility=1', 'order' => 'root,lft'));
+        $pages = Page::model()->findAll(array('condition' => 'level>"2" AND visibility=1', 'order' => 'root,lft'));
         $level = 0;
         foreach ($pages as $n => $page) {
             $url[$page->level] = $page->url;
@@ -263,22 +279,22 @@ class Page extends CActiveRecord {
                 }
             }
             $urlToPage = '';
-            for ($i=3; $i<$page->level; $i++) {
-                $urlToPage .= '/'.$url[$i];
+            for ($i = 3; $i < $page->level; $i++) {
+                $urlToPage .= '/' . $url[$i];
             }
-            $urlToPage = $urlToPage.'/'.$page->url;
+            $urlToPage = $urlToPage . '/' . $page->url;
             if ($page->id == Yii::app()->params['global']['MPID']) {
                 $urlToPage = '/';
             }
             echo CHtml::openTag('li', array('id' => 'node_' . $page->id, 'rel' => $page->menuName));
-                echo CHtml::openTag('a', array('href' => $urlToPage));
+            echo CHtml::openTag('a', array('href' => $urlToPage));
             echo CHtml::encode($page->menuName);
             echo CHtml::closeTag('a');
-            
+
             if ($page->id == Yii::app()->params['global']['NPID']) {
                 News::printSiteMap();
             }
-            
+
             $level = $page->level;
         }
 
@@ -287,8 +303,7 @@ class Page extends CActiveRecord {
             echo CHtml::closeTag('ul') . "\n";
         }
     }
-    
-    
+
     public static function printULTree_noAnchors() {
         $categories = Page::model()->findAll(array('order' => 'lft'));
         $level = 0;
@@ -316,6 +331,54 @@ class Page extends CActiveRecord {
             echo CHtml::closeTag('li') . "\n";
             echo CHtml::closeTag('ul') . "\n";
         }
+    }
+
+    public function getUrl($id) {
+        $url = '';
+        $model = Page::model()->findByPk($id);
+        $children = $model->ancestors()->findAll(array('condition' => 'visibility = "1"'));
+        foreach ($children as $value) {
+            $url .= $value->url . '/';
+        }
+        return '/' . $url . $model->url;
+    }
+
+    public function getBreadcrumbs($id, $prefixUrl = '') {
+        $breadcrumbs = '';
+        $model = Page::model()->findByPk($id);
+        $children = $model->ancestors()->findAll(array('condition' => 'visibility = "1"'));
+        foreach ($children as $value) {
+            $url .= $value->url;
+            $breadcrumbs[$value->menuName] = '/' . $url;
+            $url .= '/';
+        }
+        if (is_array($breadcrumbs)) {
+            return $breadcrumbs;
+        } else {
+            return array();
+        }
+    }
+    
+    /**
+     * Действия после сохранения записи
+     * 
+     * @return boolean
+     */
+    protected function afterSave() {
+        parent::afterSave();
+        if ($this->isNewRecord) {
+            ALTLoger::saveLog('Добавление страницы', 'Страинца успешно добавлена. id: ' . $this->id . ', заголовок: ' . $this->menuName .'.', 1, 'add', $this->recordType);
+        } else {
+            ALTLoger::saveLog('Редактирование страницы', 'Страница успешно отредактирована. id: ' . $this->id . ', заголовок: ' . $this->menuName .'.', 1, 'edit', $this->recordType);
+        }
+        //ALTTagsRelations::saveRecordTags($this->id, $this->recordType, explode(',', $this->tags));
+        ALTGalleryRelations::saveRelationsRecord($this->galleryId, $this->id, $this->recordType);
+        return true;
+    }
+    
+    public function afterFind() {
+        parent::afterFind();
+        $this->galleryId = GalleryRelations::getGalleryId($this->id, $this->recordType);
     }
 
 }

@@ -26,7 +26,9 @@ return array(
         'altadmin',
         'altadmin.*',
         'news',
-        
+        'blog',
+        'comment',
+        'gallery',
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'test',
@@ -47,9 +49,19 @@ return array(
 		'urlManager'=>array(
 			'urlFormat'=>'path',
             'showScriptName' => false,
-			'rules'=>array(
+			'rules'=>array(                                
+                array(
+                    'class' => 'application.components.UrlManager',
+                    'connectionID' => 'db',
+                ),
                 //site
+                'news/page/<page:\d+>' => 'news/default/index',
                 'news/<url:[\w\-]+>' => 'news/default/detail',
+                'blog/page/<page:\d+>' => 'blog/default/index',
+                'blog/tags/<tagId:\d+>/page/<page:\d+>' => 'blog/default/tags',
+                'blog/tags/<tagId:\d+>' => 'blog/default/tags',
+                
+                'blog/<url:[\w\-]+>' => 'blog/default/detail',
                 
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
@@ -58,11 +70,11 @@ return array(
                 '<modules:\w+>/<controller:\w+>/<id:\d+>' => '<modules>/<controller>/view',
                 '<modules:\w+>/<controller:\w+>/<action:\w+>/<id:\d+>' => '<modules>/<controller>/<action>',
                 '<modules:\w+>/<controller:\w+>/<action:\w+>' => '<modules>/<controller>/<action>',
-                
+                                
                 'altadmin/<modules:\w+>/<controller:\w+>/<id:\d+>' => 'altadmin/<modules>/<controller>/view',
                 'altadmin/<modules:\w+>/<controller:\w+>/<action:\w+>/<id:\d+>' => 'altadmin/<modules>/<controller>/<action>',
                 'altadmin/<modules:\w+>/<controller:\w+>/<action:\w+>' => 'altadmin/<modules>/<controller>/<action>',
-                                
+                                                
 			),
 		),
 		
@@ -123,21 +135,42 @@ return array(
             
             //модули
             'modules' => array(
+                'page' => array(
+                    'comment'       =>  1,  //вкл./выкл. комментариев
+                    'gallery'       =>  1,  //вкл./выкл. галереи
+                ),
                 'news' => array(
                     'work'          =>  1,  //вкл./выкл. новостей
                     'section'       =>  1,  //вкл./выкл. разделов в новостях
                     'tags'          =>  0,  //вкл./выкл. тегов в новостеях
-                    'limit'         =>  10,  //количества записей на страницу в админке
+                    'limit'         =>  20,  //количества записей на страницу в админке
                     'sectionLimit'  =>  10,  //количества разделов на страницу в админке
                     'image'     =>  array ( //настройки изображений
                         'list'  =>   array( //список изображений
                             'width'     =>  100,    //ширина изображения
                             'height'    =>  100)    //высота изображения
                         ),
-                    'baseUrl'       =>  'news',
+                    'baseUrl'       =>  'news', //базовый url модуля
+                    'comment'       =>  1,  //вкл./выкл. комментариев
+                    'gallery'       =>  1,  //вкл./выкл. галереи
+                ),
+                'blog' => array(
+                    'work'          =>  1,  //вкл./выкл. блога
+                    'section'       =>  1,  //вкл./выкл. разделов блога
+                    'tags'          =>  0,  //вкл./выкл. тегов в блоге
+                    'limit'         =>  20,  //количества записей на страницу в админке
+                    'sectionLimit'  =>  10,  //количества разделов на страницу в админке
+                    'image'     =>  array ( //настройки изображений
+                        'list'  =>   array( //список изображений
+                            'width'     =>  600,    //ширина изображения
+                            'height'    =>  200)    //высота изображения
+                        ),
+                    'baseUrl'       =>  'blog',
+                    'comment'       =>  1,  //вкл./выкл. комментариев
+                    'gallery'       =>  1,  //вкл./выкл. галереи
                 ),
                 'portfolio' => array(
-                    'work'          =>  1,  //вкл./выкл. портфолио
+                    'work'          =>  0,  //вкл./выкл. портфолио
                     'section'       =>  1,  //вкл./выкл. разделов в портфолио
                     'limit'         =>  10,  //количества записей на страницу в админке
                     'sectionLimit'  =>  10,  //количества разделов на страницу в админке
@@ -166,6 +199,33 @@ return array(
                         'list'  =>  array(
                             'width'     =>  100,
                             'height'    =>  100,
+                        ),
+                    ),
+                ),
+                'loger' => array(
+                    'work' => 1,
+                    'limit' => 30,
+                ),
+                'comment' => array(
+                    'work'      =>  1,
+                    'limit'     =>  30,
+                ),
+                'gallery' => array(
+                    'work'      =>  1,
+                    'limit'     =>  30,
+                    'imageSettings' => array(
+                        'small' => array(
+                            'width'     =>  '100',
+                            'height'    =>  '100',
+                            'watermark' =>  0,
+                        ),
+                        'big'   => array(
+                            'width'     =>  '400',
+                            'height'    =>  '400',
+                            'watermark' =>  0,
+                        ),
+                        'real'  =>  array(
+                            'watermark' =>  0,
                         ),
                     ),
                 ),
