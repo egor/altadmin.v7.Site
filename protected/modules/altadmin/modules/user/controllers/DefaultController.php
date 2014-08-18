@@ -20,7 +20,7 @@ class DefaultController extends Controller {
      */
     protected function beforeAction($action) {
         parent::beforeAction($action);
-        if (Yii::app()->user->role == 'admin' && Yii::app()->params['altadmin']['modules']['portfolio']['work']) {
+        if (Yii::app()->user->role == 'admin' && Yii::app()->params['altadmin']['modules']['user']['work']) {
             return true;
         } else {
             throw new CHttpException(403, 'Доступ запрещен!');
@@ -145,4 +145,19 @@ class DefaultController extends Controller {
         }
     }
 
+    /**
+     * Установка значений вида cms
+     * 
+     * Срабатывает по обращению через AJAX, возвращает json ответ
+     * 
+     * @param string $key - ключ
+     * @param string $value - значение
+     */
+    public function actionSetCmsViewSetting($key, $value) {
+        if ($this->cmsViewSettings->setSetting($key, $value)) {
+            echo json_encode(array('error' => 0));
+        } else {
+            echo json_encode(array('error' => 1));
+        }
+    }
 }

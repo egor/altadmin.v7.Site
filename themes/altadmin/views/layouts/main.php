@@ -38,10 +38,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 
     <?php if (Yii::app()->controller->id != 'page' && (Yii::app()->controller->module->id != 'gallery' && Yii::app()->controller->id != 'default' && Yii::app()->controller->action->id != 'edit')) { ?>
-            <!--[if !IE]>-->
-            <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-            <!--<![endif]-->
-        <?php } ?>
+        <!--[if !IE]>-->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <!--<![endif]-->
+    <?php } ?>
     <body>
 
         <div class="navbar">
@@ -194,7 +194,7 @@
                         <?php $this->widget('application.modules.altadmin.widgets.SComment', array('method' => 'notification')); ?>
                         <?php $this->widget('application.modules.altadmin.widgets.Feedback', array('method' => 'feedbackNotification')); ?>
                         <?php $this->widget('application.modules.altadmin.widgets.UserMenu'); ?>
-                        
+
                     </ul><!--/.ace-nav-->
                 </div><!--/.container-fluid-->
             </div><!--/.navbar-inner-->
@@ -204,7 +204,6 @@
             <a class="menu-toggler" id="menu-toggler" href="#">
                 <span class="menu-text"></span>
             </a>
-
             <div class="sidebar" id="sidebar">
                 <div class="sidebar-shortcuts" id="sidebar-shortcuts">
                     <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
@@ -299,12 +298,12 @@
 
                     <div class="ace-settings-box" id="ace-settings-box">
                         <div>
-                            <div class="pull-left">
+                            <div class="pull-left">                                
                                 <select id="skin-colorpicker" class="hide">
-                                    <option data-class="default" value="#438EB9" />#438EB9
-                                    <option data-class="skin-1" value="#222A2D" />#222A2D
-                                    <option data-class="skin-2" value="#C6487E" />#C6487E
-                                    <option data-class="skin-3" value="#D0D0D0" />#D0D0D0
+                                    <option data-class="default" <?php echo ($this->cmsViewSettings->getSetting('skin') == 'default' ? 'selected="selected"' : '') ?> value="#438EB9" />#438EB9
+                                    <option data-class="skin-1" <?php echo ($this->cmsViewSettings->getSetting('skin') == 'skin-1' ? 'selected="selected"' : '') ?> value="#222A2D" />#222A2D
+                                    <option data-class="skin-2" <?php echo ($this->cmsViewSettings->getSetting('skin') == 'skin-2' ? 'selected="selected"' : '') ?> value="#C6487E" />#C6487E
+                                    <option data-class="skin-3" <?php echo ($this->cmsViewSettings->getSetting('skin') == 'skin-3' ? 'selected="selected"' : '') ?> value="#D0D0D0" />#D0D0D0
                                 </select>
                             </div>
                             <span>&nbsp; Choose Skin</span>
@@ -385,7 +384,7 @@
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/ace/flot/jquery.flot.resize.min.js"></script>-->
 
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/ace/bootstrap-tag.min.js"></script>
-        
+
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/ace/date-time/bootstrap-datepicker.min.js"></script>
 
         <!--ace scripts-->
@@ -400,25 +399,90 @@
                     $(this).prev().focus();
                 });
                 //we could just set the data-provide="tag" of the element inside HTML, but IE8 fails!
-				var tag_input = $('#form-field-tags');
-				if(! ( /msie\s*(8|7|6)/.test(navigator.userAgent.toLowerCase())) ) 
-					tag_input.tag({placeholder:tag_input.attr('placeholder')});
-				else {
-					//display a textarea for old IE, because it doesn't support this plugin or another one I tried!
-					tag_input.after('<textarea id="'+tag_input.attr('id')+'" name="'+tag_input.attr('name')+'" rows="3">'+tag_input.val()+'</textarea>').remove();
-					//$('#form-field-tags').autosize({append: "\n"});
-				}
-                
+                var tag_input = $('#form-field-tags');
+                if (!(/msie\s*(8|7|6)/.test(navigator.userAgent.toLowerCase())))
+                    tag_input.tag({placeholder: tag_input.attr('placeholder')});
+                else {
+                    //display a textarea for old IE, because it doesn't support this plugin or another one I tried!
+                    tag_input.after('<textarea id="' + tag_input.attr('id') + '" name="' + tag_input.attr('name') + '" rows="3">' + tag_input.val() + '</textarea>').remove();
+                    //$('#form-field-tags').autosize({append: "\n"});
+                }
+
                 //we could just set the data-provide="tag" of the element inside HTML, but IE8 fails!
-				var tag_input = $('#ALTBlog_tags');
-				if(! ( /msie\s*(8|7|6)/.test(navigator.userAgent.toLowerCase())) ) 
-					tag_input.tag({placeholder:tag_input.attr('placeholder')});
-				else {
-					//display a textarea for old IE, because it doesn't support this plugin or another one I tried!
-					tag_input.after('<textarea id="'+tag_input.attr('id')+'" name="'+tag_input.attr('name')+'" rows="3">'+tag_input.val()+'</textarea>').remove();
-					//$('#form-field-tags').autosize({append: "\n"});
-				}
+                var tag_input = $('#ALTBlog_tags');
+                if (!(/msie\s*(8|7|6)/.test(navigator.userAgent.toLowerCase())))
+                    tag_input.tag({placeholder: tag_input.attr('placeholder')});
+                else {
+                    //display a textarea for old IE, because it doesn't support this plugin or another one I tried!
+                    tag_input.after('<textarea id="' + tag_input.attr('id') + '" name="' + tag_input.attr('name') + '" rows="3">' + tag_input.val() + '</textarea>').remove();
+                    //$('#form-field-tags').autosize({append: "\n"});
+                }
+
+<?php
+////////////////////////////////////////////////////////////////////////////////
+if ($this->cmsViewSettings->getSetting('leftMenuCollapse') == 1) {
+    ?>
+                    $("#sidebar").toggleClass("menu-min");
+                    $(this).find('[class*="icon-"]:eq(0)').toggleClass("icon-double-angle-right");
+                    b = $("#sidebar").hasClass("menu-min");
+                    if (b) {
+                        $(".open > .submenu").removeClass("open");
+                        //$(".sidebar-collapse i").removeClass("icon-double-angle-left");
+                        $(".sidebar-collapse i").addClass("icon-double-angle-right");
+                    }
+
+    <?php
+}
+if ($this->cmsViewSettings->getSetting('headerFixed') == 1) {
+    ?>
+                    $("#ace-settings-header").click();
+    <?php
+}
+if ($this->cmsViewSettings->getSetting('leftMenuFixed') == 1) {
+    ?>
+                    $("#ace-settings-sidebar").click();
+    <?php
+}
+if ($this->cmsViewSettings->getSetting('breadcrumbsFixed') == 1) {
+    ?>
+                    $("#ace-settings-breadcrumbs").click();
+    <?php
+}
+
+if ($this->cmsViewSettings->getSetting('rtl') == 1) {
+    ?>
+                    $("#ace-settings-rtl").click();
+    <?php
+}
+?>
+                var b = '<?php echo $this->cmsViewSettings->getSetting('skin'); ?>';
+                var a = $(document.body);
+                a.removeClass("skin-1 skin-2 skin-3");
+                if (b != "default") {
+                    a.addClass(b)
+                }
+                if (b == "skin-1") {
+                    $(".ace-nav > li.grey").addClass("dark")
+                } else {
+                    $(".ace-nav > li.grey").removeClass("dark")
+                }
+                if (b == "skin-2") {
+                    $(".ace-nav > li").addClass("no-border margin-1");
+                    $(".ace-nav > li:not(:last-child)").addClass("light-pink").find('> a > [class*="icon-"]').addClass("pink").end().eq(0).find(".badge").addClass("badge-warning")
+                } else {
+                    $(".ace-nav > li").removeClass("no-border margin-1");
+                    $(".ace-nav > li:not(:last-child)").removeClass("light-pink").find('> a > [class*="icon-"]').removeClass("pink").end().eq(0).find(".badge").removeClass("badge-warning")
+                }
+                if (b == "skin-3") {
+                    $(".ace-nav > li.grey").addClass("red").find(".badge").addClass("badge-yellow")
+                } else {
+                    $(".ace-nav > li.grey").removeClass("red").find(".badge").removeClass("badge-yellow")
+                }
+                ///////////////////////////////////////////////////////////////////
+<?php $this->widget('application.modules.altadmin.widgets.ViewSettings', array('method' => 'saveDataScript')); ?>
             });
+
+
         </script>
         <!--inline scripts related to this page-->
     </body>
