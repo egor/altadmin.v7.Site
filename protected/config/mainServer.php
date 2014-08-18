@@ -11,7 +11,7 @@ return CMap::mergeArray(
                 ),
             ),
             'params' => array(
-                
+                'devInfo' => true,
             ),
                 )
 );

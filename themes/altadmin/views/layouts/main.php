@@ -485,5 +485,6 @@ if ($this->cmsViewSettings->getSetting('rtl') == 1) {
 
         </script>
         <!--inline scripts related to this page-->
+        <!-- <?php $this->widget('application.widgets.DevInfo'); ?> -->
     </body>
 </html>

@@ -8,9 +8,11 @@ return CMap::mergeArray(
                     'username' => 'root',
                     'password' => '',
                     'charset' => 'utf8',
+                    'enableProfiling' => true,
                 ),
             ),
             'params' => array(
+                'devInfo' => true,
             ),
                 )
 );

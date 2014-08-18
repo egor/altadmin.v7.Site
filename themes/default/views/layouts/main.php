@@ -53,5 +53,6 @@
         <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script>
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/docs.min.js"></script>
+        <!-- <?php $this->widget('application.widgets.DevInfo'); ?> -->
     </body>
 </html>
