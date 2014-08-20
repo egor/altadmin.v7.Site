@@ -26,9 +26,7 @@
 <!-- Navbar
     ================================================== -->
 <div class="jumbotron masthead">
-  <div class="splash"> <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/home-banner-bg.jpg" alt="Banner" /> </div>
-  <div class="splash"> <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/home-banner-bg2.jpg" alt="Banner" /> </div>
-  <div class="splash"> <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/home-banner-bg3.jpg" alt="Banner" /> </div>
+  
   <div class="nav-agency">
     <div class="navbar navbar-static-top"> 
       <!-- navbar-fixed-top -->
@@ -39,43 +37,8 @@
       </div>
     </div>
   </div>
-  <div class="container show-case-item">
-    <h1> ENGAGE & INNOVATE, OR DIE<br />
-      (555) 111-0000 </h1>
-    <p> Gone are the days of building simple websites. Clients are demanding more functionality
-      and better results from their websites and we create unforgettable brand experiences.
-      Our passion is helping design and build solutions that strike the perfect balance
-      between users, business, and technology.</p>
-    <a href="work.html" class="bigbtn">View Our Work</a>
-    <div class="clearfix"> </div>
-  </div>
-  <div class="container show-case-item">
-    <h1> SIMPLICITY IS A GOOD THING<br />
-      ADOPT! </h1>
-    <p> Gone are the days of building simple websites. Clients are demanding more functionality
-      and better results from their websites and we create unforgettable brand experiences.
-      Our passion is helping design and build solutions that strike the perfect balance
-      between users, business, and technology.</p>
-    <a href="work.html" class="bigbtn">View Our Work</a>
-    <div class="clearfix"> </div>
-  </div>
-  <div class="container show-case-item">
-    <h1> PLAN, BUILD, LAUNCH<br />
-      & GROW! </h1>
-    <p> Gone are the days of building simple websites. Clients are demanding more functionality
-      and better results from their websites and we create unforgettable brand experiences.
-      Our passion is helping design and build solutions that strike the perfect balance
-      between users, business, and technology.</p>
-    <a href="work.html" class="bigbtn">View Our Work</a>
-    <div class="clearfix"> </div>
-  </div>
-  <div id="banner-pagination">
-    <ul>
-      <li><a href="#" class="active" rel="0"> <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/slidedot-active.png" alt="" /></a></li>
-      <li><a href="#" rel="1"> <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/slidedot.png" alt="" /></a></li>
-      <li><a href="#" rel="2"> <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/slidedot.png" alt="" /></a></li>
-    </ul>
-  </div>
+  <?php $this->widget('application.widgets.MainPage', array('method' => 'slider')); ?>
+  
 </div>
 <div class="container">
   <div class="marketing">
