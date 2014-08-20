@@ -14,7 +14,8 @@ class MainPage extends CWidget
     }
     
     protected function slider() {
-        $this->render('webroot.themes.'.Yii::app()->theme->name.'.widgets.MainPage.slider');
+        $model = SliderMainPage::model()->findAll(array('condition' => 'visibility=1', 'order'=>'position'));
+        $this->render('webroot.themes.'.Yii::app()->theme->name.'.widgets.MainPage.slider', array('model' => $model));
     }
     
     protected function portfolio() {
