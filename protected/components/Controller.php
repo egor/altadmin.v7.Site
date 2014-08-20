@@ -78,6 +78,14 @@ class Controller extends CController {
         if (!Yii::app()->user->isGuest) {
             $this->cmsViewSettings = new CmsViewSettings();
         }
+        if (isset($_GET['theme'])) {
+            $_SESSION['uTheme'] = $_GET['theme'];
+        }
+        if (!empty($_SESSION['uTheme'])) {            
+            if (!substr_count(Yii::app()->controller->module->id, 'altadmin')) {
+                Yii::app()->theme = $_SESSION['uTheme'];
+            }
+        }
         return true;
     }
 

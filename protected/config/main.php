@@ -10,6 +10,8 @@ return array(
 	'name'=>'My Web Application',
     'language' => 'ru',
     'theme' => 'default',
+    //'theme' => 'bbc',
+    //'theme' => 'agency',
 	// preloading 'log' component
 	'preload'=>array('log'),
 
@@ -162,8 +164,8 @@ return array(
                     'sectionLimit'  =>  10,  //количества разделов на страницу в админке
                     'image'     =>  array ( //настройки изображений
                         'list'  =>   array( //список изображений
-                            'width'     =>  600,    //ширина изображения
-                            'height'    =>  200)    //высота изображения
+                            'width'     =>  1200,    //ширина изображения
+                            'height'    =>  400)    //высота изображения
                         ),
                     'baseUrl'       =>  'blog',
                     'comment'       =>  1,  //вкл./выкл. комментариев
