@@ -28,6 +28,16 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/alt.css" rel="stylesheet">
+        <?php
+        if (Yii::app()->params['altadmin']['modules']['gallery']['work']) {            
+        ?>
+        <!-- standart gallery -->
+        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/lightbox.css" rel="stylesheet">
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/lightbox.js"></script>
+        <?php
+        }
+        ?>
 
     </head>
 

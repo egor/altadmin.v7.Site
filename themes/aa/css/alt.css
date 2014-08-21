@@ -56,3 +56,11 @@ ul.pagination li.active {
 .media-body p {
     padding-left: 0px;
 }
+.row div.col-xs-6.col-md-3 {
+    width: 200px;
+    float: left;
+    margin: 3px;
+}
+.gallery-block{
+    margin: 15px;
+}

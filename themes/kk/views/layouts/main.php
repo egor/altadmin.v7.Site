@@ -50,6 +50,16 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
       <![endif]-->
+        <?php
+        if (Yii::app()->params['altadmin']['modules']['gallery']['work']) {
+            ?>
+            <!-- standart gallery -->
+            <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/lightbox.css" rel="stylesheet">
+            <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/lightbox.js"></script>
+            <?php
+        }
+        ?>
+
     </head>
 
     <body>
@@ -78,7 +88,7 @@
                         <article class="span12">
                             <?php echo $content; ?>                              
                         </article>
-                        
+
                     </div>
                 </div>
             </div>

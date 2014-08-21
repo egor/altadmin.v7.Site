@@ -31,7 +31,15 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo Yii::app()->theme->baseUrl; ?>/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo Yii::app()->theme->baseUrl; ?>/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="<?php echo Yii::app()->theme->baseUrl; ?>/ico/apple-touch-icon-57-precomposed.png">
-
+        <?php
+        if (Yii::app()->params['altadmin']['modules']['gallery']['work']) {
+            ?>
+            <!-- standart gallery -->
+            <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/lightbox.css" rel="stylesheet">
+            <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/lightbox.js"></script>
+            <?php
+        }
+        ?>
     </head>
 
     <body>
