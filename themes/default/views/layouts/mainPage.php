@@ -4,7 +4,9 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
+        <meta name="keywords" content="<?php echo $this->metaKeywords; ?>" />
+        <meta name="description" content="<?php echo $this->metaDescription; ?>" />
+
         <meta name="author" content="">
         <link rel="shortcut icon" href="<?php echo Yii::app()->theme->baseUrl; ?>/ico/favicon.ico">
 

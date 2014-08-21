@@ -5,9 +5,9 @@
         <meta charset="utf-8">
         <link rel="icon" href="<?php echo Yii::app()->theme->baseUrl; ?>/ico/favicon.ico" type="image/x-icon">
         <link rel="shortcut icon" href="<?php echo Yii::app()->theme->baseUrl; ?>/ico/favicon.ico" type="image/x-icon" />
-        <meta name="description" content="Your description">
-        <meta name="keywords" content="Your keywords">
-        <meta name="author" content="Your name">
+        <meta name="keywords" content="<?php echo $this->metaKeywords; ?>" />
+        <meta name="description" content="<?php echo $this->metaDescription; ?>" />
+        <meta name="author" content="">
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.css" type="text/css" media="screen">
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/responsive.css" type="text/css" media="screen">
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css" type="text/css" media="screen">

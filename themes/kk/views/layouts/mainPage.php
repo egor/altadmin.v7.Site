@@ -5,8 +5,8 @@
         <meta charset="utf-8">
         <link rel="icon" href="<?php echo Yii::app()->theme->baseUrl; ?>/ico/favicon.ico" type="image/x-icon">
         <link rel="shortcut icon" href="<?php echo Yii::app()->theme->baseUrl; ?>/ico/favicon.ico" type="image/x-icon" />
-        <meta name="description" content="<?php echo $this->metaDescription; ?>">
-        <meta name="keywords" content="">
+        <meta name="keywords" content="<?php echo $this->metaKeywords; ?>" />
+        <meta name="description" content="<?php echo $this->metaDescription; ?>" />
         <meta name="author" content="">
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.css" type="text/css" media="screen">
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/responsive.css" type="text/css" media="screen">
@@ -64,7 +64,7 @@
                             <div class="container">
                                 <h1 class="brand brand_"><img alt="" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/logo.gif"> </h1>
                                 <a class="btn btn-navbar btn-navbar_" data-toggle="collapse" data-target=".nav-collapse_">Menu <span class="icon-bar"></span> </a>
-<?php $this->widget('application.widgets.Menu', array('method' => 'horizontalMenu')); ?>
+                                <?php $this->widget('application.widgets.Menu', array('method' => 'horizontalMenu')); ?>
 
                             </div>
                         </div>
