@@ -67,7 +67,9 @@
                         <h2 class="brand-before">
                             &nbsp;
                         </h2>
-                        <h1 class="brand-name"><?php echo $this->pageHeader; ?></h1>
+                        <h1 class="brand-name"><?php echo $this->pageHeader; ?>
+                        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'menu', 'edit' => '/altadmin/page/edit/' . Yii::app()->params['altadmin']['systemPageId']['main']))); ?>
+                        </h1>
                         <hr class="tagline-divider">
 
                     </div>

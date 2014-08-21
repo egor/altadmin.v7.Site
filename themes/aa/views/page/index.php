@@ -2,7 +2,22 @@
     <div class="container">
         <div class="row">
             <div class="span12">                        
-                <h1><?php echo $this->pageHeader; ?></h1>
+                <h1>
+                    <?php echo $this->pageHeader; ?>
+                    <?php
+                    $this->widget('application.widgets.AdminBtn', array(
+                        'method' => 'modulePageDetail',
+                        'data' => array(
+                            'moduleName' => 'page',
+                            'id' => $model->id,
+                            'edit' => '/altadmin/page/edit/' . $model->id,
+                            'delete' => '/altadmin/page/remove',
+                            'afterDelete' => $pageUrl,
+                        )
+                            )
+                    );
+                    ?>
+                </h1>
             </div>
         </div>
     </div>
@@ -34,10 +49,24 @@
             foreach ($children as $value) {
                 $url = $pageUrl . '/' . $value->url;
                 ?>
-                <div class="media">
+                <div class="media" id="pageRecord-<?php echo $value->id; ?>">
                     <div class="media-body">
-                        <h4 class="media-heading"><a href="<?php echo $url; ?>"><?php echo $value->menuName; ?></a></h4>
-                            <?php echo $value->shortText; ?>
+                        <h4 class="media-heading"><a href="<?php echo $url; ?>"><?php echo $value->menuName; ?></a>
+                            <?php
+                            $this->widget('application.widgets.AdminBtn', array(
+                                'method' => 'modulePageList',
+                                'data' => array(
+                                    'moduleName' => 'page',
+                                    'id' => $value->id,
+                                    'edit' => '/altadmin/page/edit/' . $value->id,
+                                    'delete' => '/altadmin/page/remove',
+                                    'moduleCssId' => 'pageRecord-',
+                                )
+                                    )
+                            );
+                            ?>
+                        </h4>
+                        <?php echo $value->shortText; ?>
                     </div>
                 </div>
                 <?php

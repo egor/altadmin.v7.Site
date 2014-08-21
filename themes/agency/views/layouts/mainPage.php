@@ -44,7 +44,7 @@
         </div>
         <div class="container">
             <div class="marketing">
-                <h1><?php echo $this->pageHeader; ?></h1>
+                <h1><?php echo $this->pageHeader; ?><?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'menu', 'edit' => '/altadmin/page/edit/' . Yii::app()->params['altadmin']['systemPageId']['main']))); ?></h1>
                 <hr class="soften">
                 <div class="row textleft"><?php echo $content; ?></div>
 

@@ -92,4 +92,8 @@ ul.nav.pull-right li div.adminBtn small a{
 }
 .footer-links li div.adminBtn{
     float: right;    
+    margin-right: 30px;
+}
+ul.footer-links li{
+    margin: 1px!important;
 }

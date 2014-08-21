@@ -27,7 +27,7 @@
     padding: 0;
 }
 .footer-nav ul li{
-    list-style: none;
+    list-style: none;    
 }
 ul.nav.navbar-nav li.active div.adminBtn{
     float: left;

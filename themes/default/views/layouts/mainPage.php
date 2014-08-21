@@ -43,7 +43,7 @@
                 'htmlOptions' => array('class' => 'breadcrumb'),
             ));
             ?>
-            <h1><?php echo $this->pageHeader; ?></h1>
+            <h1><?php echo $this->pageHeader; ?><?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'menu', 'edit' => '/altadmin/page/edit/' . Yii::app()->params['altadmin']['systemPageId']['main']))); ?></h1>
             <?php echo $content; ?>
             
             <hr class="featurette-divider">

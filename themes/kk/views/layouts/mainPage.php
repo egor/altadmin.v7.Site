@@ -139,7 +139,7 @@
                 <div class="container">
                     <div class="row">
                         <article class="span12">
-                            <h3><?php echo $this->pageHeader; ?></h3>
+                            <h3><?php echo $this->pageHeader; ?><?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'menu', 'edit' => '/altadmin/page/edit/' . Yii::app()->params['altadmin']['systemPageId']['main']))); ?></h3>
                             <?php echo $content; ?>
                         </article>
                     </div>

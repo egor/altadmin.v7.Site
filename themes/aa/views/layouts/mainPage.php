@@ -111,7 +111,7 @@
         <!-- Testimonials -->
         <div class="testimonials container">
 
-            <h1><?php echo $this->pageHeader; ?></h1>
+            <h1><?php echo $this->pageHeader; ?><?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'menu', 'edit' => '/altadmin/page/edit/' . Yii::app()->params['altadmin']['systemPageId']['main']))); ?></h1>
 
             <div class="row">
                 <div class="testimonial-list span12">
