@@ -64,3 +64,32 @@ ul.pagination li.active {
 .gallery-block{
     margin: 15px;
 }
+.span3 ul.footer-links{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.span3 ul.footer-links li{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+ul.nav.pull-right li.current-page div.adminBtn{
+    background: none!important;
+    
+}   
+ul.nav.pull-right li.current-page div.adminBtn small a{
+    border: none;
+    float: right;
+}
+ul.nav.pull-right li div.adminBtn{
+    background: none!important;
+    
+}   
+ul.nav.pull-right li div.adminBtn small a{
+    border: none;
+    float: right;
+}
+.footer-links li div.adminBtn{
+    float: right;    
+}

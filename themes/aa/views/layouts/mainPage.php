@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/flexslider.css">
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/font-awesome.css">
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css">
+        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/alt.css">
 
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
@@ -119,46 +120,41 @@
             </div>
         </div>
 
-        <!-- Footer -->
         <footer>
             <div class="container">
                 <div class="row">
                     <div class="widget span3">
-                        <h4>About Us</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.</p>
-                        <p><a href="">Read more...</a></p>
+                        <?php $this->widget('application.widgets.Menu', array('method' => 'footerMenu')); ?>
                     </div>
                     <div class="widget span3">
-                        <h4>Latest Tweets</h4>
-                        <div class="show-tweets"></div>
+                        <?php echo FrontEditFields::getSettings('FooterSettings', 'addBlock1'); ?>
+                        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'AddBlock1') ))); ?>
                     </div>
                     <div class="widget span3">
-                        <h4>Flickr Photos</h4>
-                        <ul class="flickr-feed"></ul>
+                        <?php echo FrontEditFields::getSettings('FooterSettings', 'addBlock2'); ?>
+                        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'AddBlock2') ))); ?>
                     </div>
                     <div class="widget span3">
-                        <h4>Contact Us</h4>
-                        <p><i class="icon-map-marker"></i> Address: Via Principe Amedeo 9, 10100, Torino, TO, Italy</p>
-                        <p><i class="icon-phone"></i> Phone: 0039 333 12 68 347</p>
-                        <p><i class="icon-user"></i> Skype: Andia_Agency</p>
-                        <p><i class="icon-envelope-alt"></i> Email: <a href="">contact@andia.co.uk</a></p>
+                        <?php echo FrontEditFields::getSettings('FooterSettings', 'addBlock3'); ?>
+                        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'AddBlock3') ))); ?>
                     </div>
                 </div>
                 <div class="footer-border"></div>
                 <div class="row">
                     <div class="copyright span4">
-                        <p>Copyright 2012 Andia - All rights reserved. Template by <a href="http://azmind.com">Azmind</a>.</p>
+                        <p><?php echo FrontEditFields::getSettings('FooterSettings', 'copy'); ?><?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'copy') ))); ?></p>
                     </div>
                     <div class="social span8">
-                        <a class="facebook" href=""></a>
+                        Разработка сайта: студия <a href="http://alt.dp.ua" target="_blank">ALT</a>
+                        <!--<a class="facebook" href=""></a>
                         <a class="dribbble" href=""></a>
                         <a class="twitter" href=""></a>
-                        <a class="pinterest" href=""></a>
+                        <a class="pinterest" href=""></a>-->
                     </div>
                 </div>
             </div>
         </footer>
-
+        
         <!-- Javascript -->
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery-1.8.2.min.js"></script>
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script>

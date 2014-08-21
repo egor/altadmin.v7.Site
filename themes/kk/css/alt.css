@@ -58,3 +58,41 @@ ul.pagination li.active {
     float: left;
     margin: 3px;
 }
+.fmenuc{
+    overflow: hidden;
+    float: left;
+    width: 25%;
+}
+.fmenuc{
+    font-size: 14px;
+    font-weight: 0;
+}
+.fmenuc h4 {
+    color: #000;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+.footer-nav ul {
+    list-style: none;
+    margin: 0;
+}
+.footer-nav ul li {
+    list-style: none;
+}
+.fmenuc a{
+    font-family: 'Open Sans',sans-serif!important;
+    font-weight: 0;
+    font-size: 14px;
+}
+.fmenuc a:hover{
+    color:#000!important;
+}
+footer div.container div.fmenuc nav.footer-nav ul li div.adminBtn{
+    float: right;
+    margin-right: 50px;
+    
+}
+footer div.container div.fmenuc nav.footer-nav ul li{    
+    margin: 1px;
+}

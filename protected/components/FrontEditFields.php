@@ -27,5 +27,15 @@ class FrontEditFields {
             return '';
         }
     }
+    
+    public function getIdSettings($modelName, $key) {
+        $model = new $modelName;
+        $model = $model->find('`key` = "' . $key . '"');
+        if ($model) {
+            return $model->id;
+        } else {
+            return '';
+        }
+    }    
 
 }

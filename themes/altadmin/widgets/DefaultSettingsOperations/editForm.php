@@ -29,6 +29,15 @@ if ($data->fieldType == 'checkbox') {
     </div>
 </div>   
 <?php
+} else if ($data->fieldType == 'textarea') {
+    ?>
+<div class="control-group">
+    <?php echo $form->labelEx($data, 'value'); ?>
+    <?php echo $form->textArea($data, 'value', array('class' => 'span12', 'rows' => 10)); ?>
+    <?php echo $form->error($data, 'value'); ?>
+</div>
+
+<?php
 } else {
 ?>
    

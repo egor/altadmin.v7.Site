@@ -11,6 +11,7 @@
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.css" rel="stylesheet">
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap-responsive.css" rel="stylesheet">
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/docs.css" rel="stylesheet">
+        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/alt.css" rel="stylesheet">
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/js/google-code-prettify/prettify.css" rel="stylesheet">
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
@@ -51,51 +52,30 @@
 
             </div>
         </div>
-        <!-- Footer
-            ================================================== -->
+        <!-- ========================= Footer ========================= -->
         <footer class="footer">
             <div class="container">        
                 <div class="row-fluid">
-                    <div class="span3">
-                        <h4>Navigation</h4>
-                        <ul class="footer-links">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Work</a></li>
-                            <li><a href="#">Elements</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Blog</a></li>
-                        </ul>
+                    <div class="span3 MT70">
+                        <?php $this->widget('application.widgets.Menu', array('method' => 'footerMenu')); ?>
                     </div>
                     <div class="span3 MT70">
-                        <h4>Useful Links</h4>
-                        <ul class="footer-links">
-                            <li><a href="#">eGrappler.com</a></li>
-                            <li><a href="#">Greepit.com</a></li>
-                            <li><a href="#">WordPress.com</a></li>
-                            <li><a href="#">ThemeForest.net</a></li>
-                            <li><a href="#">Free Vector Icons</a></li>
-                        </ul>
+                        <?php echo FrontEditFields::getSettings('FooterSettings', 'addBlock1'); ?>
+                        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'addBlock1') ))); ?>
                     </div>
                     <div class="span3 MT70">
-                        <h4>Something from Flickr</h4>
-                        <div id="flickr-wrapper"> 
-                            <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=8&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=10133335@N08"></script> 
-                        </div>
+                        <?php echo FrontEditFields::getSettings('FooterSettings', 'addBlock2'); ?>
+                        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'addBlock2') ))); ?>
                     </div>
                     <div class="span3 MT70">
-                        <h4>Who We Are</h4>
-                        <p>We are a creative production studio specialising in all things digital. Find us, connect & collaborate.</p>
-                        <ul class="footer_social clearfix">
-                            <li><a href="#" class="footer_facebook">Facebook</a></li>
-                            <li><a href="#" class="footer_twitter">Twitter</a></li>
-                            <li><a href="#" class="footer_googleplus">Google+</a></li>
-                            <li><a href="#" class="footer_rss">RSS</a></li>
-                        </ul>
+                        <?php echo FrontEditFields::getSettings('FooterSettings', 'addBlock3'); ?>
+                        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'addBlock3') ))); ?>
                     </div>
                 </div>
                 <hr class="soften1 copyhr">
                 <div class="row-fluid copyright">
-                    <div class="span12">Copyright &copy; 2012. Greepit.com</div>
+                    <div class="span8"><?php echo FrontEditFields::getSettings('FooterSettings', 'copy'); ?><?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'copy') ))); ?></div>
+                    <div class="span4" style="text-align: right;">Разработка сайта: студия <a href="http://alt.dp.ua" target="_blank">ALT</a></div>
                 </div>
             </div>
         </footer>

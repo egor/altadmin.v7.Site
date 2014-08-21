@@ -25,3 +25,12 @@
 .gallery-block{
     
 }
+.collapse ul.nav.sf-js-enabled.sf-shadow li.active div.adminBtn{
+    background-color: #fff;
+}
+.collapse ul.nav.sf-js-enabled.sf-shadow li div.adminBtn{
+    background-color: #fff;
+}
+.span3.MT70 ul.footer-links li div.adminBtn {
+    float: right;
+}

@@ -44,4 +44,13 @@ class AdminBtn extends CWidget {
     public function modeleCommentList() {
         $this->render('webroot.themes.' . Yii::app()->theme->name . '.widgets.' . __CLASS__ . '.' . __FUNCTION__, array('data' => $this->data));
     }
+    
+    public function moduleEditField() {
+        $this->render('webroot.themes.' . Yii::app()->theme->name . '.widgets.' . __CLASS__ . '.' . __FUNCTION__, array('data' => $this->data));
+    }
+    
+    public function moduleEditLi() {
+        $this->render('webroot.themes.' . Yii::app()->theme->name . '.widgets.' . __CLASS__ . '.' . __FUNCTION__, array('data' => $this->data));
+    }
+    
 }

@@ -96,16 +96,29 @@
 
         <!--============================== footer =================================-->
         <footer>
-            <div class="container clearfix">
-                <ul class="list-social pull-right">
-                    <li><a class="icon-1" href="#"></a></li>
-                    <li><a class="icon-2" href="#"></a></li>
-                    <li><a class="icon-3" href="#"></a></li>
-                    <li><a class="icon-4" href="#"></a></li>
-                </ul>
-                <div class="privacy pull-left">Website Template designed by <a href="http://www.templatemonster.com/" target="_blank" rel="nofollow">TemplateMonster.com</a> </div>
+            <div class="container">
+                <div class="fmenuc">
+                    <?php $this->widget('application.widgets.Menu', array('method' => 'footerMenu')); ?>
+                </div>
+                <div class="fmenuc">
+                    <?php echo FrontEditFields::getSettings('FooterSettings', 'addBlock1'); ?>
+                    <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'addBlock1') ))); ?>
+                </div>
+                <div class="fmenuc">
+                    <?php echo FrontEditFields::getSettings('FooterSettings', 'addBlock2'); ?>
+                    <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'addBlock2') ))); ?>
+                </div>
+                <div class="fmenuc">
+                    <?php echo FrontEditFields::getSettings('FooterSettings', 'addBlock3'); ?>
+                    <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'addBlock3') ))); ?>
+                </div>
+                <br clear="all" />
+                <div class="privacy" style="width: 100%; overflow: hidden; margin-top: 30px; font-size: 13px;">
+                    <div style="text-align: left; width: 60%; float: left;"><?php echo FrontEditFields::getSettings('FooterSettings', 'copy'); ?><?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'copy') ))); ?></div>
+                    <div style="text-align: right; width: 40%; float: left;">Разработка сайта: студия <a href="http://alt.dp.ua" target="_blank">ALT</a></div>
+                </div>
             </div>
         </footer>
-        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.js"></script>
     </body>
 </html>

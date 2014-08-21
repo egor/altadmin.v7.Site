@@ -55,6 +55,8 @@ class NavigationMenu extends CWidget {
                                 1 => array('ico' => 'icon-cog', 'title' => 'Настройка', 'url' => 'settings', 'class' => ( Yii::app()->controller->id == 'feedback' && Yii::app()->controller->action->id == 'settings' ? 'active' : '')),
                             )
                         ),
+                        1 => array('ico' => 'icon-double-angle-right', 'title' => 'Подвал', 'url' => 'footer', 'class' => ( Yii::app()->controller->id == 'footer' ? 'active open' : ''),
+                        ),
                     ),
                 ),
             );

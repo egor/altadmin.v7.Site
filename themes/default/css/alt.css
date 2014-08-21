@@ -17,3 +17,22 @@
 .alt-right {
     float: right;
 }
+.fmenuc{
+    overflow: hidden;
+    float: left;
+    width: 25%;
+}
+.footer-nav ul{
+    margin: 0;
+    padding: 0;
+}
+.footer-nav ul li{
+    list-style: none;
+}
+ul.nav.navbar-nav li.active div.adminBtn{
+    float: left;
+}
+.fmenuc nav.footer-nav ul li div.adminBtn{
+    float: right;
+    margin-right: 50px;
+}

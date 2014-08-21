@@ -77,9 +77,26 @@
 
         <footer>
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <p>Copyright &copy; Your Website 2014</p>
+                <div class="fmenuc">
+                    <?php $this->widget('application.widgets.Menu', array('method' => 'footerMenu')); ?>
+                </div>
+                <div class="fmenuc">
+                    <?php echo FrontEditFields::getSettings('FooterSettings', 'addBlock1'); ?>
+                    <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'addBlock1') ))); ?>
+                </div>
+                <div class="fmenuc">
+                    <?php echo FrontEditFields::getSettings('FooterSettings', 'addBlock2'); ?>
+                    <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'addBlock2') ))); ?>
+                </div>
+                <div class="fmenuc">
+                    <?php echo FrontEditFields::getSettings('FooterSettings', 'addBlock3'); ?>
+                    <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'addBlock3') ))); ?>
+                </div>
+                <div class="row">                    
+                    <div class="col-lg-12 text-center" style="margin-top: 20px; margin-bottom: 20px;">
+                        <hr>
+                        <div class="span8" style="text-align: left; width: 60%; float: left;"><?php echo FrontEditFields::getSettings('FooterSettings', 'copy'); ?><?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'copy') ))); ?></div>
+                        <div class="span4" style="text-align: right; width: 40%; float: left;">Разработка сайта: студия <a href="http://alt.dp.ua" target="_blank">ALT</a></div>
                     </div>
                 </div>
             </div>
