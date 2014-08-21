@@ -47,7 +47,7 @@
                                 <span class="icon-bar"></span>
                             </a>
                             <h1>
-                                <a class="brand" href="index.html">Andia - a super cool design agency...</a>
+                                <a class="brand" href="/"> &nbsp; </a>
                             </h1>
                             <?php $this->widget('application.widgets.Menu', array('method' => 'horizontalMenu')); ?>
                         </div>

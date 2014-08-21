@@ -46,7 +46,7 @@
                                 <span class="icon-bar"></span>
                             </a>
                             <h1>
-                                <a class="brand" href="index.html"> </a>
+                                <a class="brand" href="/"> </a>
                             </h1>
                             <?php $this->widget('application.widgets.Menu', array('method' => 'horizontalMenu')); ?>
                             
