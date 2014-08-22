@@ -39,10 +39,20 @@ class SiteController extends Controller {
      */
     public function actionError() {
         if ($error = Yii::app()->errorHandler->error) {
-            if (Yii::app()->request->isAjaxRequest)
+            if (Yii::app()->request->isAjaxRequest) {
                 echo $error['message'];
-            else
-                $this->render('error', $error);
+            } else {
+                if ($error['code'] == '404') {
+                    $model = Page::model()->findByPk(Yii::app()->params['altadmin']['systemPageId']['404']);
+                    $this->metaKeywords = $model->metaKeywords;
+                    $this->metaDescription = $model->metaDescription;
+                    $this->pageHeader = $model->header;
+                    $this->pageTitle = $model->metaTitle;
+                    $this->render('404', array('model' => $model));
+                } else {
+                    $this->render('error', $error);
+                }
+            }
         }
     }
 
