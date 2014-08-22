@@ -70,6 +70,21 @@ $form = $this->beginWidget('CActiveForm', array(
     </div>
 <?php } ?>
 
+<div class="control-group">    
+    <div class="controls">
+        <div class="row-fluid">
+            <div class="span4">
+                <label>
+                    <?php
+                    echo $form->checkBox($model, 'inMain', array('class' => 'ace-switch'));
+                    ?>
+                    <span class="lbl"><?php echo $form->label($model, 'inMain', array('style' => 'float:left; margin-left:10px;')); ?></span>
+                </label>
+            </div>        
+        </div>
+    </div>
+</div>
+
 <div class="control-group">
     <?php echo $form->labelEx($model, 'menuName'); ?>
     <?php echo $form->textField($model, 'menuName', array('class' => 'span12')); ?>

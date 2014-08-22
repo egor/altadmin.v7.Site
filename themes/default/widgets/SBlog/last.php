@@ -1,3 +1,4 @@
+<hr>
 <div class="row lastBlog">    
     <div style="overflow: hidden; padding:0 20px;"><h3 style="float:left;">
 <?php

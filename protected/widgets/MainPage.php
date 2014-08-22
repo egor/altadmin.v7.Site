@@ -23,4 +23,11 @@ class MainPage extends CWidget
         $portfolio = Portfolio::model()->with('portfolioSection')->findAll(array('condition' => 't.visibility="1"', 'order'=>'t.date DESC, t.menuName DESC'));
         $this->render('webroot.themes.'.Yii::app()->theme->name.'.widgets.MainPage.portfolio', array('section' => $section, 'portfolio' => $portfolio));
     }
+    
+    protected function bestPage() {
+        $model = Page::model()->findAll(array('condition' => 'visibility=1 AND inMain=1', 'order'=>'lft'));
+        if (!empty($model)) {
+            $this->render('webroot.themes.'.Yii::app()->theme->name.'.widgets.MainPage.bestPage', array('model' => $model));
+        }
+    }    
 }

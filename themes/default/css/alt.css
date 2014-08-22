@@ -66,3 +66,9 @@ ul.nav.navbar-nav li.active div.adminBtn{
 .map h3 div.adminBtn{
     float: left;
 }
+.bestPage h3 div.adminBtn{
+    float: left;
+}
+.bestPage .span12 div.span12 div.adminBtn{
+    float: right;
+}
