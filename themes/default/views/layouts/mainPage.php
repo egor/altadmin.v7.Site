@@ -43,6 +43,7 @@
                 'htmlOptions' => array('class' => 'breadcrumb'),
             ));
             ?>
+            <?php $this->widget('application.widgets.SNews', array('method' => 'last')); ?>
             <h1><?php echo $this->pageHeader; ?><?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'menu', 'edit' => '/altadmin/page/edit/' . Yii::app()->params['altadmin']['systemPageId']['main']))); ?></h1>
             <?php echo $content; ?>
             
