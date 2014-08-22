@@ -36,3 +36,19 @@ ul.nav.navbar-nav li.active div.adminBtn{
     float: right;
     margin-right: 50px;
 }
+.lastNews div div.adminBtn{
+    float: left;
+    width: 20px;
+}
+.lastNews .col-sm-6.col-md-4 div.thumbnail div.caption h3 div.adminBtn{    
+    float: right;
+    width: 50px;
+}
+.lastBlog div div.adminBtn{
+    float: left;
+    width: 20px;
+}
+.lastBlog .col-sm-6.col-md-4 div.thumbnail div.caption h3 div.adminBtn{    
+    float: right;
+    width: 50px;
+}

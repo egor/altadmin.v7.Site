@@ -43,8 +43,14 @@
                 'htmlOptions' => array('class' => 'breadcrumb'),
             ));
             ?>
+            <?php $this->widget('application.widgets.SNews', array('method' => 'last')); ?>
+            <hr>
             <h1><?php echo $this->pageHeader; ?><?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'menu', 'edit' => '/altadmin/page/edit/' . Yii::app()->params['altadmin']['systemPageId']['main']))); ?></h1>
             <?php echo $content; ?>
+            
+            <hr>
+            
+            <?php $this->widget('application.widgets.SBlog', array('method' => 'last')); ?>
             
             <hr class="featurette-divider">
             <p class="pull-right"><a href="#">Наверх</a></p>
