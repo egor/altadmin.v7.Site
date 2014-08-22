@@ -4,4 +4,5 @@
 </h1>
 <?php
 echo $model->text;
+$this->widget('application.widgets.SContact', array('method' => 'map'));
 $this->widget('application.widgets.Feedback');
