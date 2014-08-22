@@ -61,4 +61,13 @@ class AdminBtn extends CWidget {
         $this->render('webroot.themes.' . Yii::app()->theme->name . '.widgets.' . __CLASS__ . '.' . __FUNCTION__, array('data' => $this->data));
     }
     
+    public function moduleSettingsField() {
+        $this->render('webroot.themes.' . Yii::app()->theme->name . '.widgets.' . __CLASS__ . '.' . __FUNCTION__, array('data' => $this->data));
+    }
+    
+    public function moduleSettingsLi() {
+        $this->render('webroot.themes.' . Yii::app()->theme->name . '.widgets.' . __CLASS__ . '.' . __FUNCTION__, array('data' => $this->data));
+    }
+    
+    
 }
