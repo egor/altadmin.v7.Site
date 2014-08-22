@@ -58,7 +58,8 @@ class NavigationMenu extends CWidget {
                             )
                         ),
                         1 => array('ico' => 'icon-double-angle-right', 'title' => 'Подвал', 'url' => 'footer', 'class' => ( Yii::app()->controller->id == 'footer' ? 'active open' : '')),
-                        2 => array('ico' => 'icon-double-angle-right', 'title' => 'Карта проезда', 'url' => 'mapSettings', 'class' => ( Yii::app()->controller->id == 'footer' ? 'active open' : ''),
+                        2 => array('ico' => 'icon-double-angle-right', 'title' => 'Карта проезда', 'url' => 'mapSettings', 'class' => ( Yii::app()->controller->id == 'mapSettings' ? 'active open' : '')),
+                        3 => array('ico' => 'icon-double-angle-right', 'title' => 'Редактируемые поля', 'url' => 'editFieldSettings', 'class' => ( Yii::app()->controller->id == 'editFieldSettings' ? 'active open' : ''),
                         ),
                     ),
                 ),

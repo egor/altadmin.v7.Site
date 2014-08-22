@@ -43,15 +43,22 @@
                 'htmlOptions' => array('class' => 'breadcrumb'),
             ));
             ?>
+            <?php
+            $slogan = FrontEditFields::getSettings('EditFieldSettings', 'mainPageSlogan');
+            if (!empty($slogan)) {
+                echo $slogan;
+                $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'menu', 'edit' => '/altadmin/widget/editFieldSettings/edit/1')));
+                ?>
+                <hr>
+                <?php
+            }
+            ?>
             <?php $this->widget('application.widgets.SNews', array('method' => 'last')); ?>
             <hr>
             <h1><?php echo $this->pageHeader; ?><?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'menu', 'edit' => '/altadmin/page/edit/' . Yii::app()->params['altadmin']['systemPageId']['main']))); ?></h1>
             <?php echo $content; ?>
-            
             <hr>
-            
             <?php $this->widget('application.widgets.SBlog', array('method' => 'last')); ?>
-            
             <hr class="featurette-divider">
             <p class="pull-right"><a href="#">Наверх</a></p>
             <br clear="all"/>
@@ -62,19 +69,19 @@
                     </div>
                     <div class="fmenuc">
                         <?php echo FrontEditFields::getSettings('FooterSettings', 'addBlock1'); ?>
-                        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'addBlock1') ))); ?>
+                        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'addBlock1')))); ?>
                     </div>
                     <div class="fmenuc">
                         <?php echo FrontEditFields::getSettings('FooterSettings', 'addBlock2'); ?>                        
-                        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'addBlock2') ))); ?>
+                        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'addBlock2')))); ?>
                     </div>
                     <div class="fmenuc">
                         <?php echo FrontEditFields::getSettings('FooterSettings', 'addBlock3'); ?>
-                        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'addBlock3') ))); ?>
+                        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'addBlock3')))); ?>
                     </div>
                     <br clear="all" />
                     <div class="privacy" style="width: 100%; overflow: hidden; margin-top: 30px; font-size: 13px;">
-                        <div style="text-align: left; width: 60%; float: left;"><?php echo FrontEditFields::getSettings('FooterSettings', 'copy'); ?><?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'copy') ))); ?></div>
+                        <div style="text-align: left; width: 60%; float: left;"><?php echo FrontEditFields::getSettings('FooterSettings', 'copy'); ?><?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'copy')))); ?></div>
                         <div style="text-align: right; width: 40%; float: left;">Разработка сайта: студия <a href="http://alt.dp.ua" target="_blank">ALT</a></div>
                     </div>
                 </div>
