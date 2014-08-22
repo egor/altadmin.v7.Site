@@ -52,3 +52,14 @@ ul.nav.navbar-nav li.active div.adminBtn{
     float: right;
     width: 50px;
 }
+.contact-form h3 div.adminBtn{
+    float: left;
+}
+.container div.carousel-caption div.adminBtn {
+    background-color: #fff;
+    width: 100px;
+    margin: 0 auto;
+}
+.footer-nav h4 div.adminBtn{
+    float: left;
+}

@@ -8,7 +8,7 @@ $form = $this->beginWidget('CActiveForm', array(
     'htmlOptions' => array('class' => 'contact-form', 'role' => 'form'),
         ));
 ?>
-<h3>Форма обратной связи</h3>
+<h3>Форма обратной связи<?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleSettingsField', 'data' => array('moduleName' => 'menu', 'edit' => '/altadmin/widget/feedback/settings', 'title' => 'настроить ФОС', 'alt' => 'настроить ФОС'))); ?></h3>
 <div class="row col-md-12"><?php echo Yii::app()->user->getFlash('contact'); ?></div>
 <div class="row col-md-6">
     <div class="form-group">
