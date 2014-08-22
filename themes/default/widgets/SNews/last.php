@@ -1,13 +1,13 @@
-<div class="row lastNews">    
+<div class="row lastNews">
     <div style="overflow: hidden; padding:0 20px;"><h3 style="float:left;">
 <?php
 echo FrontEditFields::getSettings('NewsSettings', 'mainLastNewsTitle');
-$this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'news', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('NewsSettings', 'mainLastNewsTitle') )));
+$this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'news', 'edit' => '/altadmin/news/settings/edit/' . FrontEditFields::getIdSettings('NewsSettings', 'mainLastNewsTitle') )));
 ?>
 </h3>
 <small style="float:right; margin-top:30px;">
     <a href="/<?php echo Yii::app()->params['altadmin']['modules']['news']['baseUrl']; ?>"><?php echo FrontEditFields::getSettings('NewsSettings', 'mainAllNewsText'); ?></a>
-<?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'news', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('NewsSettings', 'mainAllNewsText') ))); ?>
+<?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'news', 'edit' => '/altadmin/news/settings/edit/' . FrontEditFields::getIdSettings('NewsSettings', 'mainAllNewsText') ))); ?>
 </small></div>
 <?php
 foreach ($model as $value) {
