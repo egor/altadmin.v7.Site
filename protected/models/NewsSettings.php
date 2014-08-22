@@ -27,7 +27,8 @@ class NewsSettings extends CActiveRecord {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('key, name, value, position, fieldType', 'required'),
+            //array('key, name, value, position, fieldType', 'required'),
+            array('key, name, value, position, fieldType', 'safe'),
             array('key, name, value, fieldType', 'length', 'max' => 255),
             array('position', 'length', 'max' => 10),
             // The following rule is used by search().
@@ -54,7 +55,7 @@ class NewsSettings extends CActiveRecord {
             'id' => 'ID',
             'key' => 'Key',
             'name' => 'Name',
-            'value' => 'Value',
+            'value' => 'Значение',
             'position' => 'Position',
             'fieldType' => 'Field Type',
         );

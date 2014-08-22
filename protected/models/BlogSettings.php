@@ -27,7 +27,8 @@ class BlogSettings extends CActiveRecord {
      */
     public function rules() {
         return array(
-            array('key, name, value, position, fieldType', 'required'),
+            //array('key, name, value, position, fieldType', 'required'),
+            array('key, name, value, position, fieldType', 'safe'),
             array('key, name, value, fieldType', 'length', 'max' => 255),
             array('position', 'length', 'max' => 10),
             array('id, key, name, value, position, fieldType', 'safe', 'on' => 'search'),

@@ -20,7 +20,8 @@ class NavigationMenu extends CWidget {
             $newsMenu = array(1 => array('ico' => 'icon-calendar', 'title' => 'Новости', 'url' => 'news', 'class' => ( Yii::app()->controller->module->id == 'altadmin/news' ? 'active open' : ''),
                     'subMenu' => array(
                         0 => array('ico' => 'icon-double-angle-right', 'title' => 'Список', 'url' => 'default', 'class' => ( Yii::app()->controller->id == 'default' && Yii::app()->controller->action->id == 'index' ? 'active' : '')),
-                        1 => array('ico' => 'icon-double-angle-right', 'title' => 'Разделы', 'url' => 'section', 'class' => ( Yii::app()->controller->id == 'section' && Yii::app()->controller->action->id == 'index' ? 'active' : '')),
+                        1 => array('ico' => 'icon-double-angle-right', 'title' => 'Настройка', 'url' => 'settings', 'class' => ( Yii::app()->controller->id == 'settings' && Yii::app()->controller->action->id == 'index' ? 'active' : '')),
+                        2 => array('ico' => 'icon-double-angle-right', 'title' => 'Разделы', 'url' => 'section', 'class' => ( Yii::app()->controller->id == 'section' && Yii::app()->controller->action->id == 'index' ? 'active' : '')),                        
                     ),
                 ),
             );
@@ -30,7 +31,8 @@ class NavigationMenu extends CWidget {
             $blogMenu = array(1 => array('ico' => 'icon-comment', 'title' => 'Блог', 'url' => 'blog', 'class' => ( Yii::app()->controller->module->id == 'altadmin/blog' ? 'active open' : ''),
                     'subMenu' => array(
                         0 => array('ico' => 'icon-double-angle-right', 'title' => 'Список', 'url' => 'default', 'class' => ( Yii::app()->controller->id == 'default' && Yii::app()->controller->action->id == 'index' ? 'active' : '')),
-                        1 => array('ico' => 'icon-double-angle-right', 'title' => 'Разделы', 'url' => 'section', 'class' => ( Yii::app()->controller->id == 'section' && Yii::app()->controller->action->id == 'index' ? 'active' : '')),
+                        1 => array('ico' => 'icon-double-angle-right', 'title' => 'Настройка', 'url' => 'settings', 'class' => ( Yii::app()->controller->id == 'settings' && Yii::app()->controller->action->id == 'index' ? 'active' : '')),
+                        2 => array('ico' => 'icon-double-angle-right', 'title' => 'Разделы', 'url' => 'section', 'class' => ( Yii::app()->controller->id == 'section' && Yii::app()->controller->action->id == 'index' ? 'active' : '')),
                     ),
                 ),
             );

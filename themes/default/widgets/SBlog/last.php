@@ -2,7 +2,7 @@
     <div style="overflow: hidden; padding:0 20px;"><h3 style="float:left;">
 <?php
 echo FrontEditFields::getSettings('BlogSettings', 'mainLastBlogTitle');
-$this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'blog', 'edit' => '/altadmin/widget/blog/settings/edit/' . FrontEditFields::getIdSettings('BlogSettings', 'mainLastBlogTitle') )));
+$this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'blog', 'edit' => '/altadmin/blog/settings/edit/' . FrontEditFields::getIdSettings('BlogSettings', 'mainLastBlogTitle') )));
 ?>
 </h3>
 <small style="float:right; margin-top:30px;">
