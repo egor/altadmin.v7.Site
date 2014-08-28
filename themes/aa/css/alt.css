@@ -97,3 +97,61 @@ ul.nav.pull-right li div.adminBtn small a{
 ul.footer-links li{
     margin: 1px!important;
 }
+.lastNews .work.span4 h4 div.adminBtn{
+    float: right;
+    margin-right: 20px;
+}
+.lastNews div.span12 h3 div.adminBtn{
+    float: right;
+    margin-left: 5px;
+}
+.lastNews div.span12 small div.adminBtn{
+    float: right;
+    margin-left: 5px;
+}
+.lastBlog .work.span4 h4 div.adminBtn{
+    float: right;
+    margin-right: 20px;
+}
+.lastBlog div.span12 h3 div.adminBtn{
+    float: right;
+    margin-left: 5px;
+}
+.lastBlog div.span12 small div.adminBtn{
+    float: right;
+    margin-left: 5px;
+}
+.bestPage .span12{
+    text-align: left;
+}
+.bestPage div.span12 h3 div.adminBtn {
+    float: right;
+    margin-left: 5px;
+}
+.bestPage .span12 h4 div.adminBtn{
+    float: right;
+}
+.bestPage .span12 div.span12 div.adminBtn{
+    float: right;
+}
+.container h1 div.adminBtn{
+    float: right;
+}
+.widget.span3 h4 div.adminBtn{
+    float: left;
+    margin-right: 5px;
+}
+.flex-viewport ul.slides li div.adminBtn {
+    background-color: #000;
+    overflow: hidden;
+    float: right;
+    padding: 3px 10px;
+}
+.contact-form.span7 h3 div.adminBtn{
+    float: left;
+    margin-right: 5px;
+}
+.alt-map h3 div.adminBtn {
+    float: left;
+    margin-right: 5px;
+}

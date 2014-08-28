@@ -62,52 +62,24 @@
 
 
 
-
-        <!-- Latest Work -->
-        <div class="portfolio container">
-            <div class="portfolio-title">
-                <h3>Our Latest Work</h3>
+        <?php
+        $slogan = FrontEditFields::getSettings('EditFieldSettings', 'mainPageSlogan');
+        if (!empty($slogan)) {
+            ?>
+            <div class="container">
+            <hr>    
+            <?php
+            echo $slogan;
+            $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'menu', 'edit' => '/altadmin/widget/editFieldSettings/edit/1')));
+            ?>
+            <hr>
             </div>
-            <div class="row">
-                <div class="work span3">
-                    <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/portfolio/work1.jpg" alt="">
-                    <h4>Lorem Website</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...</p>
-                    <div class="icon-awesome">
-                        <a href="<?php echo Yii::app()->theme->baseUrl; ?>/images/portfolio/work1.jpg" rel="prettyPhoto"><i class="icon-search"></i></a>
-                        <a href="portfolio.html"><i class="icon-link"></i></a>
-                    </div>
-                </div>
-                <div class="work span3">
-                    <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/portfolio/work2.jpg" alt="">
-                    <h4>Ipsum Logo</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...</p>
-                    <div class="icon-awesome">
-                        <a href="<?php echo Yii::app()->theme->baseUrl; ?>/images/portfolio/work2.jpg" rel="prettyPhoto"><i class="icon-search"></i></a>
-                        <a href="portfolio.html"><i class="icon-link"></i></a>
-                    </div>
-                </div>
-                <div class="work span3">
-                    <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/portfolio/work3.jpg" alt="">
-                    <h4>Dolor Prints</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...</p>
-                    <div class="icon-awesome">
-                        <a href="<?php echo Yii::app()->theme->baseUrl; ?>/images/portfolio/work3.jpg" rel="prettyPhoto"><i class="icon-search"></i></a>
-                        <a href="portfolio.html"><i class="icon-link"></i></a>
-                    </div>
-                </div>
-                <div class="work span3">
-                    <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/portfolio/work4.jpg" alt="">
-                    <h4>Sit Amet Website</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...</p>
-                    <div class="icon-awesome">
-                        <a href="<?php echo Yii::app()->theme->baseUrl; ?>/images/portfolio/work4.jpg" rel="prettyPhoto"><i class="icon-search"></i></a>
-                        <a href="portfolio.html"><i class="icon-link"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+            <?php
+        }
+        ?>
+        <?php $this->widget('application.widgets.SNews', array('method' => 'last')); ?>
+        <?php $this->widget('application.widgets.SBlog', array('method' => 'last')); ?>
+        <?php $this->widget('application.widgets.MainPage', array('method' => 'bestPage')); ?>
         <!-- Testimonials -->
         <div class="testimonials container">
 
@@ -128,21 +100,21 @@
                     </div>
                     <div class="widget span3">
                         <?php echo FrontEditFields::getSettings('FooterSettings', 'addBlock1'); ?>
-                        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'AddBlock1') ))); ?>
+                        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'AddBlock1')))); ?>
                     </div>
                     <div class="widget span3">
                         <?php echo FrontEditFields::getSettings('FooterSettings', 'addBlock2'); ?>
-                        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'AddBlock2') ))); ?>
+                        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'AddBlock2')))); ?>
                     </div>
                     <div class="widget span3">
                         <?php echo FrontEditFields::getSettings('FooterSettings', 'addBlock3'); ?>
-                        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'AddBlock3') ))); ?>
+                        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'AddBlock3')))); ?>
                     </div>
                 </div>
                 <div class="footer-border"></div>
                 <div class="row">
                     <div class="copyright span4">
-                        <p><?php echo FrontEditFields::getSettings('FooterSettings', 'copy'); ?><?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'copy') ))); ?></p>
+                        <p><?php echo FrontEditFields::getSettings('FooterSettings', 'copy'); ?><?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'copy')))); ?></p>
                     </div>
                     <div class="social span8">
                         Разработка сайта: студия <a href="http://alt.dp.ua" target="_blank">ALT</a>
@@ -154,7 +126,7 @@
                 </div>
             </div>
         </footer>
-        
+
         <!-- Javascript -->
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery-1.8.2.min.js"></script>
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script>
