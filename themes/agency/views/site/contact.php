@@ -16,8 +16,9 @@
     <div class="span12">
     <?php echo $model->text; ?>
     </div>
+    <?php $this->widget('application.widgets.SContact', array('method' => 'map')); ?>
     <div class="span12">
-        <div class="wpcf7" id="wpcf7-f75-t1-o1">
+        <div class="wpcf7" id="wpcf7-f75-t1-o1">            
             <?php $this->widget('application.widgets.Feedback'); ?>
         </div>
     </div>

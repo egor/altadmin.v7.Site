@@ -42,14 +42,31 @@
             <?php $this->widget('application.widgets.MainPage', array('method' => 'slider')); ?>
 
         </div>
+
         <div class="container">
+            <?php
+            $slogan = FrontEditFields::getSettings('EditFieldSettings', 'mainPageSlogan');
+            if (!empty($slogan)) {
+                ?>
+                <div class="slogan1">
+                    <?php
+                    echo $slogan;
+                    $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'menu', 'edit' => '/altadmin/widget/editFieldSettings/edit/1')));
+                    ?>
+                </div>
+                <hr class="soften">
+                <?php
+            }
+            ?>
+            <?php $this->widget('application.widgets.SNews', array('method' => 'last')); ?>
             <div class="marketing">
+
                 <h1><?php echo $this->pageHeader; ?><?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'menu', 'edit' => '/altadmin/page/edit/' . Yii::app()->params['altadmin']['systemPageId']['main']))); ?></h1>
                 <hr class="soften">
                 <div class="row textleft"><?php echo $content; ?></div>
-
-                <hr class="soften">
-
+                
+                <?php $this->widget('application.widgets.MainPage', array('method' => 'bestPage')); ?>            
+                <?php $this->widget('application.widgets.SBlog', array('method' => 'last')); ?>
             </div>
         </div>
         <!-- ========================= Footer ========================= -->
@@ -61,20 +78,20 @@
                     </div>
                     <div class="span3 MT70">
                         <?php echo FrontEditFields::getSettings('FooterSettings', 'addBlock1'); ?>
-                        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'addBlock1') ))); ?>
+                        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'addBlock1')))); ?>
                     </div>
                     <div class="span3 MT70">
                         <?php echo FrontEditFields::getSettings('FooterSettings', 'addBlock2'); ?>
-                        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'addBlock2') ))); ?>
+                        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'addBlock2')))); ?>
                     </div>
                     <div class="span3 MT70">
                         <?php echo FrontEditFields::getSettings('FooterSettings', 'addBlock3'); ?>
-                        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'addBlock3') ))); ?>
+                        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'addBlock3')))); ?>
                     </div>
                 </div>
                 <hr class="soften1 copyhr">
                 <div class="row-fluid copyright">
-                    <div class="span8"><?php echo FrontEditFields::getSettings('FooterSettings', 'copy'); ?><?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'copy') ))); ?></div>
+                    <div class="span8"><?php echo FrontEditFields::getSettings('FooterSettings', 'copy'); ?><?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'footer', 'edit' => '/altadmin/widget/footer/edit/' . FrontEditFields::getIdSettings('FooterSettings', 'copy')))); ?></div>
                     <div class="span4" style="text-align: right;">Разработка сайта: студия <a href="http://alt.dp.ua" target="_blank">ALT</a></div>
                 </div>
             </div>

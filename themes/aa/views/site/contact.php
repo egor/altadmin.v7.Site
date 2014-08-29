@@ -19,6 +19,8 @@
             ?>
             <?php
             $this->widget('application.widgets.Feedback');
+            
+            $this->widget('application.widgets.SContact', array('method' => 'map'));
             ?>
 
         </div>

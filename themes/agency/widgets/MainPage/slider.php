@@ -17,6 +17,7 @@ foreach ($model as $value) {
                 )
         );
         ?>
+        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleSettingsField', 'data' => array('moduleName' => 'menu', 'edit' => '/altadmin/widget/sliderMainPage', 'title' => 'редактировать слайдер', 'alt' => 'редактировать слайдер'))); ?>
         <p><?php echo $value->text; ?></p>
         <a href="<?php echo $value->link; ?>" class="bigbtn"><?php echo $value->btnText; ?></a>
 

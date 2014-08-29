@@ -34,3 +34,71 @@
 .span3.MT70 ul.footer-links li div.adminBtn {
     float: right;
 }
+.slogan1{
+    margin-top: 30px;
+    text-align: center;
+}
+.lastNews div.span12 h3 div.adminBtn{
+    float: right;
+    margin-left: 5px;
+}
+.lastNews div.span12 small div.adminBtn {
+    float: right;
+    margin-left: 5px;
+}
+.lastBlog {
+    text-align: left;
+    font-size: 12px;
+}
+.lastBlog .span4 div.thumbnail div.caption p{
+    font-size: 14px;
+}
+.lastBlog .span4 div.thumbnail div.caption h3 div.adminBtn {
+    float: right;
+}
+.lastBlog .span4 div.thumbnail div.caption small {
+    font-size: 12px;
+}
+.lastBlog div.span12 h3 div.adminBtn{
+    float: right;
+    margin-left: 5px;
+}
+.lastBlog div.span12 small div.adminBtn{
+    float: right;
+    margin-left: 5px;
+}
+.lastNews .span4 div.thumbnail div.caption h3 div.adminBtn {
+    float: right;
+    margin-left: 5px;    
+}
+.bestPage{
+    text-align: left;
+    margin:0;
+    font-size: 12px;
+}
+.bestPage.span12 h3 div.adminBtn{
+    float: left;
+    margin-right: 5px;
+}
+.bestPage.span12 h4 div.adminBtn{
+    float: right;
+}
+.bestPage.span12 div.span12 div.adminBtn{
+    float: right;
+}
+.jumbotron.masthead .container.show-case-item div.adminBtn{
+    background-color: #fff;
+    float: right;
+    padding: 5px;
+}
+.map{
+    margin: 0px!important;
+}
+.row-fluid.contact div.span12.map h3 div.adminBtn{
+    float: left;
+    margin-right: 5px;
+}
+.contact-form h3 div.adminBtn{
+    float: left;
+    margin-right: 5px;
+}

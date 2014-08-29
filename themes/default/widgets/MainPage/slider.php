@@ -34,6 +34,7 @@
                                 )
                             )
                         ); ?>
+                    <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleSettingsField', 'data' => array('moduleName' => 'menu', 'edit' => '/altadmin/widget/sliderMainPage', 'title' => 'редактировать слайдер', 'alt' => 'редактировать слайдер'))); ?>  
                 </div>
             </div>
         </div>

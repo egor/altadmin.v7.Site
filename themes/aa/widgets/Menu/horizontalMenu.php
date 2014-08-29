@@ -9,7 +9,7 @@
             echo '</li>';
         }
         ?>
-        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditLi', 'data' => array('moduleName' => 'menu', 'edit' => '/altadmin/page/index', 'title' => 'редактировать меню', 'alt' => 'редактировать меню'))); ?>
+        <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleSettingsLi', 'data' => array('moduleName' => 'menu', 'edit' => '/altadmin/page/index', 'title' => 'редактировать меню', 'alt' => 'редактировать меню'))); ?>
     </ul>
     
 </div>

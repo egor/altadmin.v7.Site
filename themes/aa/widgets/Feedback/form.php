@@ -1,7 +1,7 @@
 <div class="contact-us container">
     <div class="row">
         <div class="contact-form span7">
-            <h3 style="margin-left: -30px;">Форма обратной связи</h3>
+            <h3 style="margin-left: -30px;">Форма обратной связи<?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleSettingsField', 'data' => array('moduleName' => 'menu', 'edit' => '/altadmin/widget/feedback/settings', 'title' => 'настроить ФОС', 'alt' => 'настроить ФОС'))); ?></h3>
             <div class="inner-1">
                 <?php
                 $form = $this->beginWidget('CActiveForm', array(
