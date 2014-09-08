@@ -32,12 +32,12 @@ class Feedback extends CWidget {
                 $adminEmail = FeedbackSettings::getAdminEmail();
                 if ($adminEmail && $adminEmail != '') {
                     SendSiteMail::sendSimpleMail($body, 'Сообщение формы обратной связи с сайта ' . $_SERVER['HTTP_HOST'], $adminEmail);
+                    Yii::app()->user->setFlash('contactSendSuccess', FrontEditFields::getSettings('FeedbackSettings', 'sendSuccess'));
+                    Yii::app()->controller->refresh();
+                    //Yii::app()->end();
                 }
-                Yii::app()->user->setFlash('contact', FrontEditFields::getSettings('FeedbackSettings', 'sendSuccess'));
-                unset($_POST['ContactForm']);
-                 Yii::app()->controller->refresh();
             } else {
-                //Yii::app()->user->setFlash('contact', FrontEditFields::getSettings('FeedbackSettings', 'sendError'));
+                Yii::app()->user->setFlash('contactSendError', FrontEditFields::getSettings('FeedbackSettings', 'sendError'));
             }
         }
         $this->render('webroot.themes.' . Yii::app()->theme->name . '.widgets.Feedback.form', array('model' => $model));

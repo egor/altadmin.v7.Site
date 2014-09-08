@@ -72,3 +72,37 @@ ul.nav.navbar-nav li.active div.adminBtn{
 .bestPage .span12 div.span12 div.adminBtn{
     float: right;
 }
+.contact-form .errorMessage{
+    color: red;
+    font-size: 12px;
+}
+.errorMessage{
+    color: #b94a48;
+    font-size: 12px;
+    margin-top: 5px;
+}
+.error input.form-control{
+    border-color: #a94442;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+.error input.form-control:focus {
+  border-color: #843534;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+}
+
+.error textarea.form-control{
+    border-color: #a94442;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    
+}
+.error textarea.form-control:focus{
+  border-color: #843534;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+}
+.error label{
+    color: #b94a48;
+}

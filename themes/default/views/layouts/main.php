@@ -26,6 +26,7 @@
         <!-- Custom styles for this template -->
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/carousel.css" rel="stylesheet">
         <link href="<?php echo Yii::app()->theme->baseUrl; ?>/css/alt.css" rel="stylesheet">
+        <link href="<?php echo Yii::app()->theme->baseUrl; ?>/admin/css/altadmin.css" rel="stylesheet">
         <?php
         if (Yii::app()->params['altadmin']['modules']['gallery']['work']) {            
         ?>
@@ -81,7 +82,7 @@
                 </div>
             </footer>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script>
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/docs.min.js"></script>
         <!-- <?php $this->widget('application.widgets.DevInfo'); ?> -->

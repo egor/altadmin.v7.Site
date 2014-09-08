@@ -1,5 +1,5 @@
-<div class="span12 map">
-    <h3>
+<div class="row col-md-6 map" style="float: right;">
+    <h3 style="margin-bottom: 35px;">
         <?php echo FrontEditFields::getSettings('MapSettings', 'mapTitle'); ?>
         <?php $this->widget('application.widgets.AdminBtn', 
                 array('method' => 'moduleSettingsField', 'data' => 

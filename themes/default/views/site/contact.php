@@ -1,3 +1,8 @@
+<?php
+$this->breadcrumbs = array(
+    $model->menuName,
+);
+?>
 <h1>
     <?php echo $this->pageHeader; ?>
     <?php $this->widget('application.widgets.AdminBtn', array('method' => 'moduleEditField', 'data' => array('moduleName' => 'menu', 'edit' => '/altadmin/page/edit/' . Yii::app()->params['altadmin']['systemPageId']['contact']))); ?>
