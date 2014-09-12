@@ -47,7 +47,7 @@
         <div class="navbar">
             <div class="navbar-inner">
                 <div class="container-fluid">
-                    <a href="#" class="brand">
+                    <a href="/altadmin" class="brand">
                         <small>
                             <i class="icon-star"></i>
                             Alt Admin
