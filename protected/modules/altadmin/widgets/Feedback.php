@@ -18,6 +18,13 @@ class Feedback extends CWidget {
     public $method = '';
 
     /**
+     * Максимальное количество новых комментариев в уведомлениях
+     * 
+     * @var integer
+     */
+    public $notificationLimitMessage = 5;
+
+    /**
      * Инициализация виджета
      */
     public function init() {
@@ -30,8 +37,9 @@ class Feedback extends CWidget {
      */
     private function feedbackNotification() {
         if (FrontEditFields::getSettings('FeedbackSettings', 'notification')) {
-            $model = FeedbackStorage::model()->findAll(array('condition' => '`new`="1" AND `trash`="0"', 'order' => 'date DESC'));
-            $this->render('webroot.themes.'.Yii::app()->theme->name.'.widgets.' . __CLASS__ . '.' . __FUNCTION__, array('model' => $model));
+            $model = FeedbackStorage::model()->findAll(array('condition' => '`new`="1" AND `trash`="0"', 'order' => 'date DESC', 'limit' => $this->notificationLimitMessage));
+            $count = FeedbackStorage::model()->count(array('condition' => '`new`="1"'));
+            $this->render('webroot.themes.'.Yii::app()->theme->name.'.widgets.' . __CLASS__ . '.' . __FUNCTION__, array('model' => $model, 'count' => $count, 'limit' => $this->notificationLimitMessage));
         }
     }
 }

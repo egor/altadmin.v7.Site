@@ -1,4 +1,3 @@
-<?php $count = count($model); ?>
 <li class="green">
     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
         <i class="icon-envelope icon-animated-vertical"></i>
@@ -34,7 +33,7 @@
         ?>
         <li>
             <a href="/altadmin/widget/feedback/index">
-                Все сообщения
+                Все сообщения <?php echo ($count > $limit ? '(+' . ($count - $limit) . ')' : ''); ?>
                 <i class="icon-arrow-right"></i>
             </a>
         </li>

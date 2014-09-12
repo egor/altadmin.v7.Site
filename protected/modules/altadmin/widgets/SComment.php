@@ -23,6 +23,7 @@ class SComment extends CWidget {
      * @var integer
      */
     public $notificationLimitMessage = 5;
+    
     /**
      * Инициализация виджета
      */
