@@ -1,4 +1,3 @@
-<?php $count = count($model); ?>
 <li class="green">
     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
         <i class="icon-comment <?php echo ($count > 0 ? 'icon-animated-vertical' : ''); ?>"></i>
@@ -40,7 +39,7 @@
         ?>
         <li>
             <a href="/altadmin/comment/default/index">
-                Все комментарии
+                Все комментарии <?php echo ($count > $limit ? '(+' . ($count - $limit) . ')' : ''); ?>
                 <i class="icon-arrow-right"></i>
             </a>
         </li>
