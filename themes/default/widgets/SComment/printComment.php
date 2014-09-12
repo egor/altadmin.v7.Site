@@ -2,11 +2,11 @@
 <?php
 if ($model) {
     foreach ($model as $value) {
-        $img = '<img src="/images/user/default.jpg" class="media-object" style="width:100px;">';
+        $img = '<img src="/images/user/default.jpg" class="media-object img-circle" style="width:60px;">';
         if ($value->user) {
             $userName = $value->user->name . ' ' . $value->user->surname;
             if ($value->user->image && file_exists(Yii::getPathOfAlias('webroot') . '/images/user/list/' . $value->user->image)) {
-                $img = '<img src="/images/user/list/' . $value->user->image . '" class="media-object">';
+                $img = '<img src="/images/user/list/' . $value->user->image . '" class="media-object img-circle" style="width:60px;">';
             }
         } else {
             $userName = $value->userName;
@@ -16,7 +16,7 @@ if ($model) {
             <a href="<?php echo $url; ?>" class="pull-left"><?php echo $img; ?></a>
             <div class="media-body">
                 <span class="label label-primary" style="float: left; margin-right: 10px;"><?php echo date('d.m.Y H:i:s', $value->date); ?></span>
-                <h5 class="media-heading" style="float: left;"><a href="#" name="comment-<?php echo $value->id; ?>"><?php echo $userName; ?></a>                
+                <h5 class="media-heading" style="float: left;"><a href="#comment-<?php echo $value->id; ?>" name="comment-<?php echo $value->id; ?>"><?php echo $userName; ?></a>                
                 </h5>
                 <br clear="all" />
                 <?php echo preg_replace( "#\r?\n#", "<br />", $value->text); ?>

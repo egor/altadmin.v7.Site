@@ -15,7 +15,7 @@ class DefaultController extends Controller {
     }
     
     public function actionSaveComment() {
-        if (isset($_POST['SiteComment'])) {
+        if (isset($_POST['SiteComment'])) {            
             $model = new SiteComment;
             $model->attributes = $_POST['SiteComment'];
             if (Yii::app()->user->isGuest) {
