@@ -26,8 +26,13 @@ class DefaultController extends Controller {
             $model->setScenario($scenario);
             if ($model->validate($scenario)) {
                 $model->save();
+                //echo CActiveForm::validate($model);
+                Yii::app()->end();
+                //Yii::app()->end();
                 echo json_encode(array('error' => 0, 'id' => $model->id));
             } else {
+                echo CActiveForm::validate($model);
+                Yii::app()->end();
                 echo json_encode(array('error' => 1));
                 //print_r($model->errors);
             }

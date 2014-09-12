@@ -1,8 +1,7 @@
-<h2>Комментрии</h2>
+<h2><?php echo FrontEditFields::getSettings('CommentSettings', 'header'); ?></h2>
 <?php
 if ($model) {
     foreach ($model as $value) {
-        //$img = '<img data-src="holder.js/100x100" class="media-object">';
         $img = '<img src="/images/user/default.jpg" class="media-object" style="width:100px;">';
         if ($value->user) {
             $userName = $value->user->name . ' ' . $value->user->surname;
@@ -25,7 +24,7 @@ if ($model) {
                 $this->widget('application.widgets.AdminBtn', array(
                     'method' => 'modeleCommentList',
                     'data' => array(
-                        'moduleName' => 'blog',
+                        'moduleName' => 'comment',
                         'id' => $value->id,
                         'moduleCssId' => 'comment-',
                         'edit' => '/altadmin/comment/default/edit/' . $value->id,
@@ -43,3 +42,4 @@ if ($model) {
 } else {
     echo '<p>' . FrontEditFields::getSettings('CommentSettings', 'empty') . '</p>';
 }
+?>

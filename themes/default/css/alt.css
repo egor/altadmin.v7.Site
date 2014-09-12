@@ -106,3 +106,15 @@ ul.nav.navbar-nav li.active div.adminBtn{
 .error label{
     color: #b94a48;
 }
+.preloader{
+    text-align: center;
+    width: 64px;
+    margin: 0 auto;
+}
+.preloadImg{
+    text-align: center;
+    width: 100%;
+}
+#commentInfo {
+    margin: 10px 0;
+}
