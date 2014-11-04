@@ -478,6 +478,10 @@ if ($this->cmsViewSettings->getSetting('rtl') == 1) {
                 } else {
                     $(".ace-nav > li.grey").removeClass("red").find(".badge").removeClass("badge-yellow")
                 }
+                $('[data-rel=popover]').popover({
+                    trigger: 'hover',
+                    html:true,
+                });
                 ///////////////////////////////////////////////////////////////////
 <?php $this->widget('application.modules.altadmin.widgets.ViewSettings', array('method' => 'saveDataScript')); ?>
             });

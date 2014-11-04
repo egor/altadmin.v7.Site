@@ -134,7 +134,12 @@ class ALTNews extends News {
     }
 
     public function attributeLabels() {
-        return array_merge(parent::attributeLabels(), array('tags' => 'Теги', 'galleryId' => 'Вывести галерею'));
+        $data = array_merge(parent::attributeLabels(), array('tags' => 'Теги', 'galleryId' => 'Вывести галерею'));        
+        $data['visibility'] .= ' <i class="icon-question-sign grey tooltip-info" data-rel="popover" data-placement="top" title="<i class=\'icon-exclamation-sign blue\'></i> Выводить" data-content="<small>Флаг вывода новости на сайт.</small>"></i> ';
+        $data['menuName'] .= ' <i class="icon-question-sign grey tooltip-info" data-rel="popover" data-placement="top" title="<i class=\'icon-exclamation-sign blue\'></i> Краткий заголовок" data-content="<small>Используется при выводе списка записей.</small>"></i> ';
+        $data['header'] .= ' <i class="icon-question-sign grey tooltip-info" data-rel="popover" data-placement="top" title="<i class=\'icon-exclamation-sign blue\'></i> Заголовок" data-content="<small>Заголовок (<b>H1</b>) страницы первого уровня.<br />Используется при выводе подробного описания записи.</small>"></i> ';
+        $data['url'] .= ' <i class="icon-question-sign grey tooltip-info" data-rel="popover" data-placement="top" title="<i class=\'icon-exclamation-sign blue\'></i> URL" data-content="<small>URL служит стандартизированным способом записи адреса ресурса в сети Интернет.<br /> Должен быть уникален для раздела.<br /> Пример: new-page</small>"></i> ';
+        return $data;
     }
     
     public function afterFind() {
@@ -142,4 +147,5 @@ class ALTNews extends News {
         $this->galleryId = ALTGalleryRelations::getGalleryId($this->id, $this->recordType);
         return true;
     }
+    
 }

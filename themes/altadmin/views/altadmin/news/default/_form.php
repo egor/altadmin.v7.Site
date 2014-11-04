@@ -5,6 +5,21 @@
 <script type="text/javascript" src="/js/admin/includeEditor.js"></script>
 <script type="text/javascript" src="/js/admin/news/edit.js"></script>
 <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/ace/datepicker.css" />
+<div class="widget-body">
+											<div class="widget-main">
+												<p>
+													<span class="btn btn-small" data-rel="popover" title="Default" data-content="Heads up! This alert needs your attention, but it's not super important.">Default</span>
+													<span class="btn btn-success btn-small tooltip-success" data-rel="popover" data-placement="right" title="<i class='icon-ok green'></i> Right Success" data-content="Well done! You successfully read this important alert message.">Right</span>
+													<span class="btn btn-warning btn-small tooltip-warning" data-rel="popover" data-placement="left" title="<i class='icon-warning-sign orange'></i> Left Warning" data-content="Warning! Best check yo self, you're not looking too good.">Left</span>
+												</p>
+
+												<p>
+													<span class="btn btn-danger btn-small tooltip-error" data-rel="popover" data-placement="top" data-original-title="<i class='icon-bolt red'></i> Top Danger" data-content="Oh snap! Change a few things up and try submitting again.">Top</span>
+													<span class="btn btn-info btn-small tooltip-info" data-rel="popover" data-placement="bottom" title="Some Info" data-content=" Heads up! This alert needs your attention, but it's not super important.">Bottom</span>
+													<span class="btn btn-inverse btn-small popover-notitle" data-rel="popover" data-placement="bottom" data-content="Popover without a title!">No Title</span>
+												</p>
+											</div>
+										</div>
 <?php
 $this->breadcrumbs = array(
     'Новости' => '/altadmin/news',
